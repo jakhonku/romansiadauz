@@ -121,20 +121,26 @@ export function SiteHeader({ locale, nav, labels }: SiteHeaderProps) {
             </Suspense>
             <ThemeToggle labels={labels.theme} />
 
-            {/* Once the eight-item nav appears at xl there is no room left for the
-                label — the container tops out at 1360px, so it would overflow at every
-                width. The CTA collapses to its glyph instead; `aria-label` keeps the
-                accessible name in both states. */}
+            {/*
+              Always present — this is the site's primary conversion, and most visitors
+              are on a phone, so hiding it below `sm` put the main call to action behind
+              a hamburger for the majority of the audience.
+
+              The label is dropped at the two widths where it does not fit: under `sm`
+              the header is already carrying the wordmark and three controls, and from
+              `xl` up the eight-item nav takes the room. `aria-label` carries the
+              accessible name in every state.
+            */}
             <Button
               asChild
               variant="gold"
               size="sm"
               pill
-              className="ms-1 hidden shrink-0 px-5 sm:inline-flex xl:px-2.5"
+              className="ms-1 inline-flex shrink-0 px-2.5 sm:px-5 xl:px-2.5"
             >
               <Link href={href('/registration')} aria-label={labels.register}>
                 <UserRound />
-                <span className="text-xs font-semibold uppercase tracking-[0.1em] xl:hidden">
+                <span className="hidden text-xs font-semibold uppercase tracking-[0.1em] sm:inline xl:hidden">
                   {labels.register}
                 </span>
               </Link>

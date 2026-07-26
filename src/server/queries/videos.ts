@@ -6,6 +6,7 @@ import type { Locale } from '@/lib/i18n/config';
 import { createPublicSupabase } from '@/lib/supabase/public';
 import type { CategoryOption, VideoSummary } from '@/types/content';
 
+import { cacheReference } from './cache';
 import { pickTranslation, safeQuery } from './shared';
 
 const VIDEO_SELECT = `
@@ -72,7 +73,8 @@ export const getVideos = cache(
 );
 
 /** Category chips above the video gallery. */
-export const getVideoCategories = cache(async (locale: Locale): Promise<CategoryOption[]> => {
+export const getVideoCategories = cache(
+  cacheReference(['video-categories'], async (locale: Locale): Promise<CategoryOption[]> => {
   const supabase = createPublicSupabase();
 
   interface CategoryRow {
@@ -92,8 +94,9 @@ export const getVideoCategories = cache(async (locale: Locale): Promise<Category
     [],
   );
 
-  return rows.flatMap((row) => {
-    const t = pickTranslation(row.translations, locale);
-    return t ? [{ slug: row.slug, label: t.name }] : [];
-  });
-});
+    return rows.flatMap((row) => {
+      const t = pickTranslation(row.translations, locale);
+      return t ? [{ slug: row.slug, label: t.name }] : [];
+    });
+  }),
+);

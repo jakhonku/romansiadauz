@@ -64,3 +64,18 @@ export function serverEnv(): z.infer<typeof serverSchema> {
 }
 
 export const siteUrl = clientEnv.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '');
+
+/**
+ * Is a real Supabase project wired up?
+ *
+ * Before provisioning, `.env.local` carries placeholder values that pass the schema
+ * above but point at a host that does not exist. Every query then waits out a DNS
+ * failure — with five or six queries per page that was adding eight to eleven seconds
+ * to *every* navigation, which reads as "the site is slow" rather than "the database is
+ * missing". `safeQuery` checks this and skips the network entirely.
+ */
+export const isSupabaseConfigured = (() => {
+  const url = clientEnv.NEXT_PUBLIC_SUPABASE_URL;
+  const key = clientEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  return !url.includes('placeholder') && !key.startsWith('placeholder');
+})();

@@ -15,10 +15,10 @@ export function BrandMark({
   return (
     <span className={cn('relative inline-flex items-center justify-center shrink-0 h-10 w-10', className)}>
       <Image
-        src="/images/logo-emblem.png"
+        src="/images/logo-emblem.webp"
         alt={title}
-        width={353}
-        height={475}
+        width={300}
+        height={404}
         className="h-full w-full object-contain filter drop-shadow-sm transition-transform duration-300"
         priority
       />

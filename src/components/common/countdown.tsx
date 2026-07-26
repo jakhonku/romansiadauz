@@ -107,19 +107,27 @@ export function Countdown({
         screen reader announce the time every single second. The accessible summary
         below is static text that reads once.
       */}
-      <div className="mt-3 flex items-start gap-3" aria-hidden>
+      {/*
+        Sized down hard on narrow screens. Four cells at the desktop size plus their
+        separators come to roughly 320px, which is the entire content width inside the
+        container on a 360px phone — it fits only by luck, and not at all once the
+        Russian labels ("СЕКУНД") are longer than the Uzbek ones.
+      */}
+      <div className="mt-3 flex items-start gap-1.5 sm:gap-3" aria-hidden>
         {cells.map((cell, index) => (
-          <div key={cell.label} className="flex items-start gap-3">
-            <div className="flex min-w-[3.25rem] flex-col items-center">
-              <span className="font-display text-3xl font-bold leading-none text-primary tabular-nums sm:text-4xl">
+          <div key={cell.label} className="flex items-start gap-1.5 sm:gap-3">
+            <div className="flex min-w-[2.5rem] flex-col items-center sm:min-w-[3.25rem]">
+              <span className="font-display text-2xl font-bold leading-none text-primary tabular-nums sm:text-3xl lg:text-4xl">
                 {String(cell.value).padStart(2, '0')}
               </span>
-              <span className="mt-2 text-[0.5625rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+              <span className="mt-1.5 text-[0.5rem] font-semibold uppercase tracking-[0.1em] text-muted-foreground sm:mt-2 sm:text-[0.5625rem] sm:tracking-[0.16em]">
                 {cell.label}
               </span>
             </div>
             {index < cells.length - 1 ? (
-              <span className="font-display text-2xl leading-none text-gold/50 sm:text-3xl">:</span>
+              <span className="font-display text-xl leading-none text-gold/50 sm:text-2xl lg:text-3xl">
+                :
+              </span>
             ) : null}
           </div>
         ))}

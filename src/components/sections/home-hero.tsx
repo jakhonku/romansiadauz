@@ -14,14 +14,23 @@ import { siteConfig } from '@/lib/site-config';
  * The home hero: sunlit Registan running off the right edge, festival lockup on the
  * left over an ivory veil.
  *
- * The veil (`bg-hero-veil`) is a horizontal gradient rather than a flat scrim over the
- * whole photograph — a full scrim would mute the sunset the composition depends on,
- * while the gradient keeps the left third opaque enough for AA-contrast text and lets
- * the right two thirds stay untouched.
+ * The veil is breakpoint-dependent — a left-to-right gradient on desktop, a flat scrim
+ * on phones. See the comment on the overlay layers below for why one treatment cannot
+ * serve both.
  */
-export function HomeHero({ locale, dictionary }: { locale: Locale; dictionary: Dictionary }) {
+export function HomeHero({
+  locale,
+  dictionary,
+  festivalStartsAt,
+}: {
+  locale: Locale;
+  dictionary: Dictionary;
+  festivalStartsAt?: string | null;
+}) {
   const h = dictionary.home.hero;
   const href = (to: string) => localizeHref(to, locale);
+  // Prefer the DB-stored date; fall back to the build-time default.
+  const target = festivalStartsAt ?? siteConfig.festivalStartsAt;
 
   const facts = [
     { icon: CalendarDays, label: h.facts.annual },
@@ -34,7 +43,7 @@ export function HomeHero({ locale, dictionary }: { locale: Locale; dictionary: D
       <div className="absolute inset-0 -z-10">
         <Parallax className="absolute inset-0" distance={70} scaleTo={1.08}>
           <Image
-            src="/images/hero-registan.png"
+            src="/images/hero-registan.webp"
             alt={h.imageAlt}
             fill
             // The hero is the LCP element on the most-visited page: it must not wait for
@@ -46,9 +55,22 @@ export function HomeHero({ locale, dictionary }: { locale: Locale; dictionary: D
           />
         </Parallax>
 
-        {/* Ivory veil, left → right. Reversed under RTL is unnecessary: all three
-            locales are LTR, so a static direction keeps the gradient honest. */}
-        <div aria-hidden className="absolute inset-0 bg-hero-veil" />
+        {/*
+          Two different veils, because the text does two different things.
+
+          From `sm` up the copy sits in the left column, so a left-to-right gradient
+          keeps it on an opaque canvas while leaving the Registan and the sunset
+          untouched.
+
+          Below `sm` the copy spans the full width — a horizontal gradient would put the
+          headline straight over the brightest part of the photograph, where bordeaux on
+          blown-out sky fails contrast badly. A flat ivory scrim is used instead: the
+          image still reads through it at ~10%, which keeps the atmosphere without
+          costing legibility.
+        */}
+        <div aria-hidden className="absolute inset-0 bg-background/90 sm:hidden" />
+        <div aria-hidden className="absolute inset-0 hidden bg-hero-veil sm:block" />
+
         {/* Vertical fade so the header and the stats band both sit on calm pixels. */}
         <div
           aria-hidden
@@ -61,7 +83,9 @@ export function HomeHero({ locale, dictionary }: { locale: Locale; dictionary: D
           <Reveal delay={0.05}>
             <p className="kicker flex items-center gap-3">
               {h.kicker}
-              <span aria-hidden className="h-px w-16 bg-gold/70" />
+              {/* Dropped on phones: the kicker wraps to two or three lines there, and a
+                  rule pinned beside wrapped text reads as a stray mark. */}
+              <span aria-hidden className="hidden h-px w-16 bg-gold/70 sm:block" />
             </p>
           </Reveal>
 
@@ -87,7 +111,7 @@ export function HomeHero({ locale, dictionary }: { locale: Locale; dictionary: D
               {h.tagline}
             </p>
           </Reveal>
-          <Countdown labels={h.countdown} target={siteConfig.festivalStartsAt} />
+          <Countdown labels={h.countdown} target={target} />
           <Reveal delay={0.36}>
             <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-5">
               {facts.map((fact) => (

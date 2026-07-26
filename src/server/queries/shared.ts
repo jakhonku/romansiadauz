@@ -1,5 +1,6 @@
 import 'server-only';
 
+import { isSupabaseConfigured } from '@/lib/env';
 import { localeFallbacks, type Locale } from '@/lib/i18n/config';
 import type { LocaleCode } from '@/types/database.types';
 
@@ -38,6 +39,9 @@ export function pickTranslation<T extends Translated>(
   return translations[0] ?? null;
 }
 
+/** Logged once per process, not once per query — six identical lines per page is noise. */
+let warnedUnconfigured = false;
+
 /**
  * Run a public query, returning `fallback` if it fails.
  *
@@ -47,6 +51,12 @@ export function pickTranslation<T extends Translated>(
  * to the section's empty state is strictly better: the dictionaries already carry copy
  * for "no news yet", and the page still renders its shell, navigation and SEO tags.
  *
+ * Two distinct failure modes are handled differently:
+ *
+ *   - **Not configured at all.** Skipped without touching the network. Waiting out a
+ *     DNS failure per query was costing seconds per page render.
+ *   - **Configured but failing.** Attempted, then logged and degraded.
+ *
  * Errors are logged, never swallowed silently.
  */
 export async function safeQuery<T>(
@@ -54,6 +64,17 @@ export async function safeQuery<T>(
   run: () => PromiseLike<{ data: T | null; error: { message: string } | null }>,
   fallback: T,
 ): Promise<T> {
+  if (!isSupabaseConfigured) {
+    if (!warnedUnconfigured) {
+      warnedUnconfigured = true;
+      console.warn(
+        '[query] Supabase is not configured — every public list will render its empty ' +
+          'state. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.',
+      );
+    }
+    return fallback;
+  }
+
   try {
     const { data, error } = await run();
     if (error) {

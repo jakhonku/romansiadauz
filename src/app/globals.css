@@ -111,6 +111,19 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+
+    /*
+     * Safety net against horizontal scroll on phones — a decorative rule, a wide
+     * heading or an absolutely-positioned flourish that overshoots by a few pixels
+     * should not make the whole page swipe sideways.
+     *
+     * `clip`, not `hidden`: `overflow-x: hidden` establishes a scroll container, which
+     * silently breaks every `position: sticky` descendant — including the site header.
+     * `clip` crops without creating one.
+     *
+     * This hides a symptom, so it is a floor, not a licence: layouts still have to fit.
+     */
+    overflow-x: clip;
   }
 
   body {

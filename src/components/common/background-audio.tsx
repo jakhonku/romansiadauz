@@ -21,7 +21,12 @@ export function BackgroundAudio({ src }: { src: string }) {
     const audio = new Audio(src);
     audio.loop = true;
     audio.volume = 0.18;
-    audio.preload = 'auto';
+    // `'none'`, not `'auto'`. The theme is ~2.6 MB and this component mounts on every
+    // page, so `'auto'` downloaded it in full for every visitor on every navigation —
+    // including the many who never interact, and the majority who are on mobile data.
+    // Loading starts on the first `play()` instead, which costs a short delay before
+    // the music fades in and nothing at all for everyone else.
+    audio.preload = 'none';
     audioRef.current = audio;
 
     const start = () => {

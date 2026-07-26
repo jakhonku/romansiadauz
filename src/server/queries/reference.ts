@@ -4,6 +4,7 @@ import { cache } from 'react';
 
 import type { Locale } from '@/lib/i18n/config';
 import { createPublicSupabase } from '@/lib/supabase/public';
+import { cacheReference } from './cache';
 
 import { safeQuery } from './shared';
 
@@ -38,7 +39,8 @@ function toOption(row: LookupRow, locale: Locale): LookupOption {
 }
 
 /** «Номинация» options for the application form. */
-export const getNominations = cache(async (locale: Locale): Promise<LookupOption[]> => {
+export const getNominations = cache(
+  cacheReference(['nominations'], async (locale: Locale): Promise<LookupOption[]> => {
   const supabase = createPublicSupabase();
 
   const rows = await safeQuery<LookupRow[]>(
@@ -53,8 +55,9 @@ export const getNominations = cache(async (locale: Locale): Promise<LookupOption
     [],
   );
 
-  return rows.map((row) => toOption(row, locale));
-});
+    return rows.map((row) => toOption(row, locale));
+  }),
+);
 
 export interface AgeCategory extends LookupOption {
   minAge: number;
@@ -71,7 +74,8 @@ type AgeCategoryRowShape = LookupRow & {
 };
 
 /** Age groups, quoted on the Regulations page with their stage time and piece count. */
-export const getAgeCategories = cache(async (locale: Locale): Promise<AgeCategory[]> => {
+export const getAgeCategories = cache(
+  cacheReference(['age-categories'], async (locale: Locale): Promise<AgeCategory[]> => {
   const supabase = createPublicSupabase();
 
   const rows = await safeQuery<AgeCategoryRowShape[]>(
@@ -86,11 +90,12 @@ export const getAgeCategories = cache(async (locale: Locale): Promise<AgeCategor
     [],
   );
 
-  return rows.map((row) => ({
-    ...toOption(row, locale),
-    minAge: row.min_age,
-    maxAge: row.max_age,
-    durationMinutes: row.duration_minutes,
-    piecesCount: row.pieces_count,
-  }));
-});
+    return rows.map((row) => ({
+      ...toOption(row, locale),
+      minAge: row.min_age,
+      maxAge: row.max_age,
+      durationMinutes: row.duration_minutes,
+      piecesCount: row.pieces_count,
+    }));
+  }),
+);

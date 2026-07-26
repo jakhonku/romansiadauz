@@ -94,7 +94,9 @@
       "years": "Yillik tarix",
       "participants": "Ishtirokchi",
       "countries": "Davlat",
-      "goal": "Buyuk maqsad"
+      "goal": "Buyuk maqsad",
+      "festivalDate": "Festival sanasi (taymer)",
+      "finished": "Festival boshlandi!"
     },
     "about": {
       "kicker": "Festival haqida",
@@ -349,7 +351,8 @@
       "rateLimited": "Juda ko'p urinish. Bir necha daqiqadan so'ng qayta urinib ko'ring.",
       "duplicate": "Bu e-mail bilan ariza allaqachon topshirilgan.",
       "fixFields": "Quyidagi maydonlarni to'g'irlang"
-    }
+    },
+    "applicantsCount": "Hozirgacha {count} nafar ishtirokchi ariza topshirgan"
   },
   "validation": {
     "required": "Bu maydon to'ldirilishi shart",
@@ -457,6 +460,7 @@
       "submitting": "Tekshirilmoqda…",
       "error": "E-mail yoki parol noto'g'ri",
       "inactive": "Hisobingiz faol emas. Administrator bilan bog'laning.",
+      "rateLimited": "Juda ko'p urinish. 15 daqiqadan so'ng qayta urinib ko'ring.",
       "backToSite": "Saytga qaytish"
     },
     "nav": {
@@ -499,9 +503,6 @@
       "pending": "Ko'rib chiqilmoqda",
       "approved": "Tasdiqlangan",
       "rejected": "Rad etilgan",
-      "region": "Viloyat",
-      "category": "Toifa",
-      "voiceType": "Ovoz turi",
       "dateFrom": "Sanadan",
       "dateTo": "Sanagacha",
       "exportExcel": "Excel'ga eksport",
@@ -514,14 +515,156 @@
       "reference": "Ariza raqami",
       "submittedAt": "Topshirilgan",
       "reviewedBy": "Ko'rib chiqdi",
-      "documents": "Hujjatlar",
-      "viewPhoto": "Fotosuratni ko'rish",
-      "viewPassport": "Pasportni ko'rish",
-      "viewVideo": "Videoni ko'rish",
       "empty": "Ariza topilmadi",
       "selected": "{count} ta tanlandi",
       "bulkApprove": "Tanlanganlarni tasdiqlash",
-      "bulkReject": "Tanlanganlarni rad etish"
+      "bulkReject": "Tanlanganlarni rad etish",
+      "allStatuses": "Barcha holatlar",
+      "nomination": "Nominatsiya",
+      "programme": "Dastur",
+      "accompanist": "Konsertmeyster",
+      "education": "Ta'lim va ish joyi",
+      "age": "Yosh",
+      "back": "Ro'yxatga qaytish",
+      "detailsTitle": "Ariza tafsilotlari",
+      "decision": "Qaror",
+      "approvedNotice": "Ariza tasdiqlangan",
+      "rejectedNotice": "Ariza rad etilgan",
+      "exportEmpty": "Eksport qilish uchun ariza yo̒q",
+      "reopen": "Qayta ko̒rib chiqish",
+      "confirmReject": "Arizani rad etishni tasdiqlaysizmi?",
+      "saving": "Saqlanmoqda…"
+    },
+    "messages": {
+      "title": "Kiruvchi xabarlar",
+      "inbox": "Kiruvchi",
+      "archived": "Arxiv",
+      "unreadOnly": "O'qilmagan",
+      "markRead": "O'qilgan deb belgilash",
+      "markUnread": "O'qilmagan deb belgilash",
+      "archive": "Arxivga",
+      "unarchive": "Arxivdan qaytarish",
+      "reply": "Javob yozish",
+      "empty": "Xabarlar yo̒q",
+      "receivedAt": "Kelgan vaqti",
+      "noSubject": "Mavzusiz"
+    },
+    "news": {
+      "title": "Yangiliklar",
+      "newArticle": "Yangi maqola",
+      "editArticle": "Maqolani tahrirlash",
+      "empty": "Hozircha maqola yo̒q",
+      "excerpt": "Qisqacha mazmun",
+      "publishedAt": "Chop etish sanasi",
+      "allStatuses": "Barchasi",
+      "body": "Matn",
+      "coverHint": "Muqova rasmi yo̒li (media bucket ichida)",
+      "slugHint": "Bo̒sh qoldirsangiz sarlavhadan avtomatik yaratiladi",
+      "duplicateSlug": "Bu URL manzili band",
+      "translationsHint": "Kamida o̒zbekcha sarlavha to̒ldirilishi shart"
+    },
+    "editor": {
+      "bold": "Qalin",
+      "italic": "Kursiv",
+      "heading2": "Sarlavha 2",
+      "heading3": "Sarlavha 3",
+      "bulletList": "Belgili ro'yxat",
+      "orderedList": "Raqamli ro'yxat",
+      "quote": "Iqtibos",
+      "link": "Havola",
+      "unlink": "Havolani olib tashlash",
+      "linkPrompt": "Havola manzilini kiriting",
+      "undo": "Bekor qilish",
+      "redo": "Qaytarish",
+      "bodyPlaceholder": "Maqola matnini yozing…"
+    },
+    "judges": {
+      "title": "Hakamlar",
+      "newItem": "Yangi hakam",
+      "editItem": "Hakamni tahrirlash",
+      "empty": "Hakamlar royxati bosh",
+      "fullName": "F.I.Sh.",
+      "roleTitle": "Unvon / lavozim",
+      "biography": "Biografiya",
+      "achievements": "Yutuqlar",
+      "photo": "Fotosurat yoli",
+      "country": "Davlat kodi (UZ, RU…)",
+      "isChair": "Hakamlar hayati raisi"
+    },
+    "winners": {
+      "title": "Goliblar",
+      "newItem": "Yangi golib",
+      "editItem": "Golibni tahrirlash",
+      "empty": "Goliblar royxati bosh",
+      "fullName": "F.I.Sh.",
+      "awardTitle": "Mukofot nomi",
+      "biography": "Biografiya",
+      "year": "Yil",
+      "place": "Orin (1–10)",
+      "isGrandPrix": "Gran-pri",
+      "photo": "Fotosurat yoli",
+      "country": "Davlat kodi"
+    },
+    "partners": {
+      "title": "Hamkorlar",
+      "newItem": "Yangi hamkor",
+      "editItem": "Hamkorni tahrirlash",
+      "empty": "Hamkorlar royxati bosh",
+      "name": "Nomi",
+      "description": "Tavsif",
+      "logo": "Logotip yoli",
+      "logoDark": "Qorongi mavzu logotipi",
+      "website": "Veb-sayt",
+      "tier": "Daraja (1–5)"
+    },
+    "events": {
+      "title": "Tadbirlar",
+      "newItem": "Yangi tadbir",
+      "editItem": "Tadbirni tahrirlash",
+      "empty": "Tadbirlar royxati bosh",
+      "eventTitle": "Nomi",
+      "description": "Tavsif",
+      "location": "Joyi",
+      "startsAt": "Boshlanishi",
+      "endsAt": "Tugashi"
+    },
+    "pages": {
+      "title": "Sahifalar",
+      "newItem": "Yangi sahifa",
+      "editItem": "Sahifani tahrirlash",
+      "empty": "Sahifalar royxati bosh",
+      "pageTitle": "Sarlavha",
+      "body": "Matn",
+      "isSystem": "Tizim sahifasi",
+      "systemHint": "Tizim sahifasini ochirib bolmaydi"
+    },
+    "videos": {
+      "title": "Videolar",
+      "newItem": "Yangi video",
+      "editItem": "Videoni tahrirlash",
+      "empty": "Videolar royxati bosh",
+      "videoTitle": "Sarlavha",
+      "description": "Tavsif",
+      "youtubeId": "YouTube ID (11 belgi)",
+      "youtubeHint": "Havoladagi v= dan keyingi qism",
+      "duration": "Davomiyligi (soniya)"
+    },
+    "gallery": {
+      "title": "Galereya",
+      "newItem": "Yangi albom",
+      "editItem": "Albomni tahrirlash",
+      "empty": "Albomlar royxati bosh",
+      "albumTitle": "Albom nomi",
+      "description": "Tavsif",
+      "eventDate": "Tadbir sanasi",
+      "photos": "Fotosuratlar",
+      "photoCount": "Fotosuratlar soni",
+      "managePhotos": "Fotosuratlarni boshqarish",
+      "addPhoto": "Fotosurat qoshish",
+      "storagePath": "Fayl yoli",
+      "altText": "Alt matn",
+      "altHint": "Ekran oquvchilar uchun majburiy",
+      "noPhotos": "Bu albomda fotosurat yoq"
     },
     "common": {
       "create": "Yaratish",
@@ -579,7 +722,19 @@
       "roleViewer": "Kuzatuvchi",
       "active": "Faol",
       "inactive": "Faol emas",
-      "lastSignIn": "Oxirgi kirish"
+      "lastSignIn": "Oxirgi kirish",
+      "lastAdmin": "Oxirgi administratorni ozgartirib bolmaydi",
+      "selfChange": "Oz hisobingizni ozgartirib bolmaydi",
+      "empty": "Foydalanuvchilar royxati bosh",
+      "inviteEmail": "E-mail",
+      "inviteName": "Toliq ism",
+      "inviteSubmit": "Taklif yuborish",
+      "inviteSent": "Taklif yuborildi",
+      "inviteFailed": "Taklifni yuborib bolmadi"
+    },
+    "forbidden": {
+      "title": "Ruxsat yo'q",
+      "body": "Bu bo'limga kirish uchun sizda yetarli huquq yo'q. Administrator bilan bog'laning."
     }
   },
   "errors": {

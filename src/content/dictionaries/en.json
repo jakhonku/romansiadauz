@@ -94,7 +94,9 @@
       "years": "Years of history",
       "participants": "Participants",
       "countries": "Countries",
-      "goal": "Great purpose"
+      "goal": "Great purpose",
+      "festivalDate": "Festival date (timer)",
+      "finished": "Festival has started!"
     },
     "about": {
       "kicker": "About the festival",
@@ -349,7 +351,8 @@
       "rateLimited": "Too many attempts. Please try again in a few minutes.",
       "duplicate": "An application with this e-mail has already been submitted.",
       "fixFields": "Please correct the following fields"
-    }
+    },
+    "applicantsCount": "{count} applications submitted so far"
   },
   "validation": {
     "required": "This field is required",
@@ -457,6 +460,7 @@
       "submitting": "Checking…",
       "error": "Incorrect e-mail or password",
       "inactive": "Your account is inactive. Please contact an administrator.",
+      "rateLimited": "Too many attempts. Please try again in 15 minutes.",
       "backToSite": "Back to the site"
     },
     "nav": {
@@ -499,9 +503,6 @@
       "pending": "Awaiting review",
       "approved": "Approved",
       "rejected": "Rejected",
-      "region": "Region",
-      "category": "Category",
-      "voiceType": "Voice type",
       "dateFrom": "From",
       "dateTo": "To",
       "exportExcel": "Export to Excel",
@@ -514,14 +515,156 @@
       "reference": "Reference",
       "submittedAt": "Submitted",
       "reviewedBy": "Reviewed by",
-      "documents": "Documents",
-      "viewPhoto": "View photo",
-      "viewPassport": "View passport",
-      "viewVideo": "View video",
       "empty": "No applications found",
       "selected": "{count} selected",
       "bulkApprove": "Approve selected",
-      "bulkReject": "Reject selected"
+      "bulkReject": "Reject selected",
+      "allStatuses": "All statuses",
+      "nomination": "Nomination",
+      "programme": "Programme",
+      "accompanist": "Accompanist",
+      "education": "Study and work",
+      "age": "Age",
+      "back": "Back to list",
+      "detailsTitle": "Application details",
+      "decision": "Decision",
+      "approvedNotice": "Application approved",
+      "rejectedNotice": "Application rejected",
+      "exportEmpty": "No applications to export",
+      "reopen": "Reopen for review",
+      "confirmReject": "Reject this application?",
+      "saving": "Saving…"
+    },
+    "messages": {
+      "title": "Incoming messages",
+      "inbox": "Inbox",
+      "archived": "Archived",
+      "unreadOnly": "Unread",
+      "markRead": "Mark as read",
+      "markUnread": "Mark as unread",
+      "archive": "Archive",
+      "unarchive": "Restore from archive",
+      "reply": "Reply",
+      "empty": "No messages",
+      "receivedAt": "Received",
+      "noSubject": "No subject"
+    },
+    "news": {
+      "title": "News",
+      "newArticle": "New article",
+      "editArticle": "Edit article",
+      "empty": "No articles yet",
+      "excerpt": "Excerpt",
+      "publishedAt": "Publication date",
+      "allStatuses": "All",
+      "body": "Body",
+      "coverHint": "Cover image path (inside the media bucket)",
+      "slugHint": "Leave blank to generate from the title",
+      "duplicateSlug": "That URL is already taken",
+      "translationsHint": "The Uzbek title is required"
+    },
+    "editor": {
+      "bold": "Bold",
+      "italic": "Italic",
+      "heading2": "Heading 2",
+      "heading3": "Heading 3",
+      "bulletList": "Bulleted list",
+      "orderedList": "Numbered list",
+      "quote": "Quote",
+      "link": "Link",
+      "unlink": "Remove link",
+      "linkPrompt": "Enter the link address",
+      "undo": "Undo",
+      "redo": "Redo",
+      "bodyPlaceholder": "Write the article…"
+    },
+    "judges": {
+      "title": "Jury",
+      "newItem": "New jury member",
+      "editItem": "Edit jury member",
+      "empty": "No jury members",
+      "fullName": "Full name",
+      "roleTitle": "Title / position",
+      "biography": "Biography",
+      "achievements": "Achievements",
+      "photo": "Photo path",
+      "country": "Country code (UZ, RU…)",
+      "isChair": "Chair of the jury"
+    },
+    "winners": {
+      "title": "Winners",
+      "newItem": "New winner",
+      "editItem": "Edit winner",
+      "empty": "No winners",
+      "fullName": "Full name",
+      "awardTitle": "Award title",
+      "biography": "Biography",
+      "year": "Year",
+      "place": "Place (1–10)",
+      "isGrandPrix": "Grand prix",
+      "photo": "Photo path",
+      "country": "Country code"
+    },
+    "partners": {
+      "title": "Partners",
+      "newItem": "New partner",
+      "editItem": "Edit partner",
+      "empty": "No partners",
+      "name": "Name",
+      "description": "Description",
+      "logo": "Logo path",
+      "logoDark": "Dark-theme logo",
+      "website": "Website",
+      "tier": "Tier (1–5)"
+    },
+    "events": {
+      "title": "Events",
+      "newItem": "New event",
+      "editItem": "Edit event",
+      "empty": "No events",
+      "eventTitle": "Title",
+      "description": "Description",
+      "location": "Location",
+      "startsAt": "Starts",
+      "endsAt": "Ends"
+    },
+    "pages": {
+      "title": "Pages",
+      "newItem": "New page",
+      "editItem": "Edit page",
+      "empty": "No pages",
+      "pageTitle": "Title",
+      "body": "Body",
+      "isSystem": "System page",
+      "systemHint": "A system page cannot be deleted"
+    },
+    "videos": {
+      "title": "Videos",
+      "newItem": "New video",
+      "editItem": "Edit video",
+      "empty": "No videos",
+      "videoTitle": "Title",
+      "description": "Description",
+      "youtubeId": "YouTube ID (11 characters)",
+      "youtubeHint": "The part of the link after v=",
+      "duration": "Duration (seconds)"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "newItem": "New album",
+      "editItem": "Edit album",
+      "empty": "No albums",
+      "albumTitle": "Album title",
+      "description": "Description",
+      "eventDate": "Event date",
+      "photos": "Photos",
+      "photoCount": "Photo count",
+      "managePhotos": "Manage photos",
+      "addPhoto": "Add photo",
+      "storagePath": "File path",
+      "altText": "Alt text",
+      "altHint": "Required for screen readers",
+      "noPhotos": "This album has no photos"
     },
     "common": {
       "create": "Create",
@@ -579,7 +722,19 @@
       "roleViewer": "Viewer",
       "active": "Active",
       "inactive": "Inactive",
-      "lastSignIn": "Last sign-in"
+      "lastSignIn": "Last sign-in",
+      "lastAdmin": "The last administrator cannot be changed",
+      "selfChange": "You cannot change your own account",
+      "empty": "No users",
+      "inviteEmail": "E-mail",
+      "inviteName": "Full name",
+      "inviteSubmit": "Send invitation",
+      "inviteSent": "Invitation sent",
+      "inviteFailed": "Could not send the invitation"
+    },
+    "forbidden": {
+      "title": "Access denied",
+      "body": "You do not have permission for this section. Contact an administrator."
     }
   },
   "errors": {

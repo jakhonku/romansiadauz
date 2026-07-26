@@ -27,10 +27,10 @@ export function Wordmark({
   return (
     <span className={cn('inline-flex items-center gap-2 group shrink-0', className)}>
       <Image
-        src="/images/logo-transparent.png"
+        src="/images/logo-transparent.webp"
         alt={altText}
-        width={1875}
-        height={476}
+        width={900}
+        height={228}
         className={cn(
           'w-auto object-contain transition-transform duration-500 ease-luxe group-hover:scale-105',
           'dark:brightness-125 dark:drop-shadow-[0_1px_8px_rgba(255,215,0,0.25)]',

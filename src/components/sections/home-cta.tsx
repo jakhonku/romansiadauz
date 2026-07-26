@@ -19,7 +19,7 @@ export function HomeCta({ locale, dictionary }: { locale: Locale; dictionary: Di
   const c = dictionary.home.cta;
 
   return (
-    <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
+    <section className="relative isolate overflow-hidden bg-primary text-primary-foreground dark:text-white">
       {/* Two soft gold blooms give the flat bordeaux some depth without a texture asset. */}
       <div
         aria-hidden
@@ -36,7 +36,7 @@ export function HomeCta({ locale, dictionary }: { locale: Locale; dictionary: Di
 
           <p className="kicker mt-8 text-gold-soft">{c.kicker}</p>
           <h2 className="mt-4 text-display-lg font-semibold">{c.title}</h2>
-          <p className="mt-5 text-base leading-relaxed text-primary-foreground/80 sm:text-lg">
+          <p className="mt-5 text-base leading-relaxed text-primary-foreground/80 dark:text-white/80 sm:text-lg">
             {c.body}
           </p>
 
@@ -45,7 +45,7 @@ export function HomeCta({ locale, dictionary }: { locale: Locale; dictionary: Di
               asChild
               size="lg"
               pill
-              className="group bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+              className="group bg-primary-foreground text-primary hover:bg-primary-foreground/90 dark:bg-white dark:text-primary"
             >
               <Link href={localizeHref('/registration', locale)}>
                 <span className="text-xs font-semibold uppercase tracking-[0.14em]">{c.primary}</span>
@@ -58,7 +58,7 @@ export function HomeCta({ locale, dictionary }: { locale: Locale; dictionary: Di
               size="lg"
               pill
               variant="outline"
-              className="border-primary-foreground/40 text-primary-foreground hover:border-gold-soft hover:bg-primary-foreground/10"
+              className="border-primary-foreground/40 text-primary-foreground hover:border-gold-soft hover:bg-primary-foreground/10 dark:border-white/40 dark:text-white dark:hover:bg-white/10"
             >
               <Link href={localizeHref('/regulations', locale)}>
                 <span className="text-xs font-semibold uppercase tracking-[0.14em]">

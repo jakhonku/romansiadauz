@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "dev:turbo": "next dev --turbopack",
+    "clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true})\"",
+    "build": "npm run clean && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",

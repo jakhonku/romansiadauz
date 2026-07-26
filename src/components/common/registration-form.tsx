@@ -3,8 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowLeft, ArrowRight, CheckCircle2, Send } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
-import { useForm, type FieldPath } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { Controller, useForm, type FieldPath } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Field, Input, Select, Textarea } from '@/components/ui/field';
@@ -12,7 +12,7 @@ import { interpolate } from '@/lib/i18n/format';
 import { localizeHref, type Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { cn } from '@/lib/utils/cn';
-import { registrationSchema, type RegistrationInput } from '@/lib/validation/registration';
+import { MIN_AGE, registrationSchema, type RegistrationInput } from '@/lib/validation/registration';
 import { submitRegistration } from '@/server/actions/registration';
 
 interface NominationOption {
@@ -57,6 +57,195 @@ const STEPS = [
   fields: readonly FieldPath<RegistrationInput>[];
 }[];
 
+/**
+ * Show or hide a step.
+ *
+ * `hidden` as an HTML attribute is not enough here: the browser applies it as
+ * `[hidden] { display: none }` from the UA stylesheet, and Tailwind's `.flex`
+ * (`display: flex`) overrides it — which is why every step rendered at once. Toggling
+ * the `hidden` *utility class* instead keeps `display: none` authoritative.
+ *
+ * Steps stay mounted rather than being unmounted, so a visitor stepping backwards finds
+ * their answers — and the browser's autofill state — intact.
+ */
+function stepClass(visible: boolean, gap = 'gap-5'): string {
+  return visible ? `mt-8 flex flex-col ${gap}` : 'hidden';
+}
+
+const MONTH_NAMES: Record<Locale, string[]> = {
+  uz: [
+    '01 — Yanvar',
+    '02 — Fevral',
+    '03 — Mart',
+    '04 — Aprel',
+    '05 — May',
+    '06 — Iyun',
+    '07 — Iyul',
+    '08 — Avgust',
+    '09 — Sentyabr',
+    '10 — Oktyabr',
+    '11 — Noyabr',
+    '12 — Dekabr',
+  ],
+  ru: [
+    '01 — Январь',
+    '02 — Февраль',
+    '03 — Март',
+    '04 — Апрель',
+    '05 — Май',
+    '06 — Июнь',
+    '07 — Июль',
+    '08 — Август',
+    '09 — Сентябрь',
+    '10 — Октябрь',
+    '11 — Ноябрь',
+    '12 — Декабрь',
+  ],
+  en: [
+    '01 — January',
+    '02 — February',
+    '03 — March',
+    '04 — April',
+    '05 — May',
+    '06 — June',
+    '07 — July',
+    '08 — August',
+    '09 — September',
+    '10 — October',
+    '11 — November',
+    '12 — December',
+  ],
+};
+
+const PLACEHOLDERS: Record<Locale, { day: string; month: string; year: string }> = {
+  uz: { day: 'Kun', month: 'Oy', year: 'Yil' },
+  ru: { day: 'День', month: 'Месяц', year: 'Год' },
+  en: { day: 'Day', month: 'Month', year: 'Year' },
+};
+
+function DateOfBirthPicker({
+  value = '',
+  onChange,
+  onBlur,
+  locale,
+  id,
+  ariaInvalid,
+  ariaDescribedBy,
+}: {
+  value?: string;
+  onChange: (val: string) => void;
+  onBlur?: () => void;
+  locale: Locale;
+  id: string;
+  ariaInvalid?: boolean;
+  ariaDescribedBy?: string;
+}) {
+  const parts = value ? value.match(/^(\d{4})-(\d{2})-(\d{2})$/) : null;
+  const initialYear = parts ? parts[1] : '';
+  const initialMonth = parts ? parts[2] : '';
+  const initialDay = parts ? parts[3] : '';
+
+  const [day, setDay] = useState(initialDay);
+  const [month, setMonth] = useState(initialMonth);
+  const [year, setYear] = useState(initialYear);
+
+  useEffect(() => {
+    const p = value ? value.match(/^(\d{4})-(\d{2})-(\d{2})$/) : null;
+    setYear(p ? p[1] : '');
+    setMonth(p ? p[2] : '');
+    setDay(p ? p[3] : '');
+  }, [value]);
+
+  const handleUpdate = (newDay: string, newMonth: string, newYear: string) => {
+    setDay(newDay);
+    setMonth(newMonth);
+    setYear(newYear);
+
+    if (newDay && newMonth && newYear) {
+      const d = parseInt(newDay, 10);
+      const m = parseInt(newMonth, 10);
+      const y = parseInt(newYear, 10);
+
+      const checkDate = new Date(y, m - 1, d);
+      if (
+        checkDate.getFullYear() === y &&
+        checkDate.getMonth() === m - 1 &&
+        checkDate.getDate() === d
+      ) {
+        const iso = `${newYear}-${newMonth.padStart(2, '0')}-${newDay.padStart(2, '0')}`;
+        onChange(iso);
+        return;
+      }
+    }
+    onChange('');
+  };
+
+  const ph = PLACEHOLDERS[locale] ?? PLACEHOLDERS.uz;
+  const months = MONTH_NAMES[locale] ?? MONTH_NAMES.uz;
+
+  const daysList = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
+
+  const currentYear = new Date().getFullYear();
+  const maxYear = currentYear - MIN_AGE;
+  const minYear = 1950;
+  const yearsList = Array.from({ length: maxYear - minYear + 1 }, (_, i) => String(maxYear - i));
+
+  return (
+    <div className="grid grid-cols-3 gap-2.5 sm:gap-3" id={id} onBlur={onBlur}>
+      <Select
+        id={`${id}-day`}
+        aria-label={ph.day}
+        aria-invalid={ariaInvalid}
+        aria-describedby={ariaDescribedBy}
+        value={day}
+        onChange={(e) => handleUpdate(e.target.value, month, year)}
+      >
+        <option value="">{ph.day}</option>
+        {daysList.map((d) => (
+          <option key={d} value={d}>
+            {parseInt(d, 10)}
+          </option>
+        ))}
+      </Select>
+
+      <Select
+        id={`${id}-month`}
+        aria-label={ph.month}
+        aria-invalid={ariaInvalid}
+        aria-describedby={ariaDescribedBy}
+        value={month}
+        onChange={(e) => handleUpdate(day, e.target.value, year)}
+      >
+        <option value="">{ph.month}</option>
+        {months.map((m, idx) => {
+          const val = String(idx + 1).padStart(2, '0');
+          return (
+            <option key={val} value={val}>
+              {m}
+            </option>
+          );
+        })}
+      </Select>
+
+      <Select
+        id={`${id}-year`}
+        aria-label={ph.year}
+        aria-invalid={ariaInvalid}
+        aria-describedby={ariaDescribedBy}
+        value={year}
+        onChange={(e) => handleUpdate(day, month, e.target.value)}
+      >
+        <option value="">{ph.year}</option>
+        {yearsList.map((y) => (
+          <option key={y} value={y}>
+            {y}
+          </option>
+        ))}
+      </Select>
+    </div>
+  );
+}
+
 export function RegistrationForm({
   locale,
   dictionary,
@@ -76,6 +265,7 @@ export function RegistrationForm({
     handleSubmit,
     trigger,
     getValues,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<RegistrationInput>({
     resolver: zodResolver(registrationSchema),
@@ -221,7 +411,7 @@ export function RegistrationForm({
           Unmounting would drop the DOM nodes react-hook-form focuses on error, and would
           discard native autofill state when a visitor steps backwards.
         */}
-        <div className="mt-8 flex flex-col gap-5" hidden={step.key !== 'personal'}>
+        <div className={stepClass(step.key === 'personal')}>
           <div className="grid gap-5 sm:grid-cols-2">
             <Field id="reg-lastName" label={r.fields.lastName} required error={errors.lastName && required}>
               {(p) => <Input {...p} {...register('lastName')} autoComplete="family-name" placeholder={r.placeholders.lastName} />}
@@ -240,11 +430,27 @@ export function RegistrationForm({
             hint={r.hints.age}
             error={errors.birthDate && dictionary.validation.date}
           >
-            {(p) => <Input {...p} {...register('birthDate')} type="date" autoComplete="bday" />}
+            {(p) => (
+              <Controller
+                control={control}
+                name="birthDate"
+                render={({ field }) => (
+                  <DateOfBirthPicker
+                    id={p.id}
+                    ariaInvalid={p['aria-invalid']}
+                    ariaDescribedBy={p['aria-describedby']}
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    locale={locale}
+                  />
+                )}
+              />
+            )}
           </Field>
         </div>
 
-        <div className="mt-8 flex flex-col gap-5" hidden={step.key !== 'education'}>
+        <div className={stepClass(step.key === 'education')}>
           <Field id="reg-institution" label={r.fields.institution} optionalLabel={dictionary.common.optional}>
             {(p) => <Input {...p} {...register('institution')} placeholder={r.placeholders.institution} />}
           </Field>
@@ -258,7 +464,7 @@ export function RegistrationForm({
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-5" hidden={step.key !== 'contact'}>
+        <div className={stepClass(step.key === 'contact')}>
           <Field id="reg-address" label={r.fields.address} required error={errors.address && required}>
             {(p) => <Input {...p} {...register('address')} autoComplete="street-address" placeholder={r.placeholders.address} />}
           </Field>
@@ -272,7 +478,7 @@ export function RegistrationForm({
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-5" hidden={step.key !== 'programme'}>
+        <div className={stepClass(step.key === 'programme')}>
           <Field id="reg-nomination" label={r.fields.nomination} optionalLabel={dictionary.common.optional}>
             {(p) => (
               <Select {...p} {...register('nominationId')} defaultValue="">
@@ -321,7 +527,7 @@ export function RegistrationForm({
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-6" hidden={!isReview}>
+        <div className={stepClass(isReview, 'gap-6')}>
           <div>
             <h3 className="font-display text-lg font-semibold">{r.review.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.review.body}</p>

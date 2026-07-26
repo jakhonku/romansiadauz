@@ -16,6 +16,7 @@ import { getRecentPhotos } from '@/server/queries/gallery';
 import { getJudges } from '@/server/queries/judges';
 import { getLatestNews } from '@/server/queries/news';
 import { getPartners } from '@/server/queries/partners';
+import { getSiteStats } from '@/server/queries/settings';
 
 /**
  * Home page.
@@ -30,21 +31,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  // The five content queries are independent, so they go out together rather than
+  // The content queries are independent, so they go out together rather than
   // waterfalling — at build time this is the difference between one round trip and five.
-  const [dictionary, events, news, judges, photos, partners] = await Promise.all([
+  const [dictionary, events, news, judges, photos, partners, stats] = await Promise.all([
     getDictionary(locale),
     getUpcomingEvents(locale),
     getLatestNews(locale, 3),
     getJudges(locale, 4),
     getRecentPhotos(locale, 7),
     getPartners(locale),
+    getSiteStats(),
   ]);
 
   return (
     <>
-      <HomeHero locale={locale} dictionary={dictionary} />
-      <HomeStats locale={locale} dictionary={dictionary} />
+      <HomeHero locale={locale} dictionary={dictionary} festivalStartsAt={stats.festivalDate} />
+      <HomeStats locale={locale} dictionary={dictionary} stats={stats} />
       <HomeAbout locale={locale} dictionary={dictionary} />
       <HomeEvents locale={locale} dictionary={dictionary} items={events} />
       <HomeNews locale={locale} dictionary={dictionary} items={news} />

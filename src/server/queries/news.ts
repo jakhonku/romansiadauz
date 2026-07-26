@@ -7,6 +7,7 @@ import { createPublicSupabase } from '@/lib/supabase/public';
 import { mediaUrl } from '@/lib/supabase/storage';
 import type { CategoryOption, NewsArticle, NewsSummary } from '@/types/content';
 
+import { cacheReference } from './cache';
 import { pickTranslation, safeQuery } from './shared';
 
 const SUMMARY_SELECT = `
@@ -134,7 +135,8 @@ export const getNewsPage = cache(
 );
 
 /** Category chips above the news list. */
-export const getNewsCategories = cache(async (locale: Locale): Promise<CategoryOption[]> => {
+export const getNewsCategories = cache(
+  cacheReference(['news-categories'], async (locale: Locale): Promise<CategoryOption[]> => {
   const supabase = createPublicSupabase();
 
   interface CategoryRow {
@@ -154,11 +156,12 @@ export const getNewsCategories = cache(async (locale: Locale): Promise<CategoryO
     [],
   );
 
-  return rows.flatMap((row) => {
-    const t = pickTranslation(row.translations, locale);
-    return t ? [{ slug: row.slug, label: t.name }] : [];
-  });
-});
+    return rows.flatMap((row) => {
+      const t = pickTranslation(row.translations, locale);
+      return t ? [{ slug: row.slug, label: t.name }] : [];
+    });
+  }),
+);
 
 // -----------------------------------------------------------------------------
 // Article page

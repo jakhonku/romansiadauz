@@ -16,6 +16,16 @@ import type { Database } from '@/types/database.types';
  *
  * Module-level singleton is safe precisely because it holds no per-user state.
  */
+/**
+ * Ceiling on a single public read.
+ *
+ * A page renders five or six of these in parallel, so without a bound one sick query
+ * holds the whole response open. Six seconds is far longer than a healthy PostgREST
+ * call and short enough that a visitor gets the empty state instead of a spinner that
+ * never resolves — `safeQuery` catches the abort and degrades like any other failure.
+ */
+const QUERY_TIMEOUT_MS = 6000;
+
 let cached: ReturnType<typeof createClient<Database>> | null = null;
 
 export function createPublicSupabase() {
@@ -28,6 +38,10 @@ export function createPublicSupabase() {
         // and lives for the lifetime of the server process.
         persistSession: false,
         autoRefreshToken: false,
+      },
+      global: {
+        fetch: (input, init) =>
+          fetch(input, { ...init, signal: AbortSignal.timeout(QUERY_TIMEOUT_MS) }),
       },
     },
   );

@@ -306,9 +306,39 @@ canonical + hreflang on every page · JSON-LD for `Organization`, `Event`,
 5. ✅ Public shell (header, footer, switchers) — plus the home hero and stats band
 6. ✅ Home (about · events · news · judges · gallery · partners · CTA) — with the public
    read layer behind it · ⬜ About · ⬜ Regulations
-7. Registration (multi-step + uploads)
-8. Judges · News · Gallery · Videos · Winners · Contact
-9. Auth + RBAC
-10. Admin dashboard + CRUD modules
+7. ✅ Registration — multi-step form, Zod + Server Action, rate limit, honeypot.
+   No uploads: the form mirrors the official paper blank, which asks for no files.
+8. ✅ Judges · News (+ article) · Gallery (+ album, lightbox) · Videos · Winners ·
+   Contact · `p/[slug]` · sitemap · robots
+9. ✅ Auth + RBAC — `lib/auth/{rbac,session,admin-nav,admin-locale}.ts`, sign-in /
+   sign-out actions, `/admin` document shell, login screen, auth-gated `(dashboard)`
+   group, `/admin/forbidden`, dashboard counters
+10. Admin CRUD modules
+    - ✅ Registrations — filters, trigram search, detail, approve/reject/reopen,
+      filtered XLSX export
+    - ✅ Messages — inbox / unread / archive, read toggle, mailto reply
+    - ✅ News — full CRUD, three-locale tabs, Tiptap editor, slug generation,
+      scheduled publishing, path invalidation
+    - ✅ Judges · winners · partners · events · pages · videos · gallery — one
+      descriptor registry (`lib/admin/entities.ts`) rendered by one generic list and
+      one generic form through `/admin/[entity]`
+    - ✅ Users — role and activation, last-admin and self-lockout guards, invitations
+    - ✅ Settings — per-group JSONB save; `smtp` deliberately excluded
+    - ⬜ Photos inside an album; media upload UI (paths are typed by hand for now)
+
+**Why some modules are generic and some are not.** Seven editorial entities share one
+shape — scalar columns, a translation table, a status, a sort order — so they are
+described once and rendered by shared components; seven bespoke forms would be seven
+places to fix the next translation-pruning bug. News, registrations, messages, users and
+settings each carry something the descriptor cannot express (a rich-text body with
+scheduling, a review workflow, an inbox, role guards, JSONB groups), so they stay
+explicit. The line is drawn at the point where bending the abstraction would cost more
+than the duplication it saves.
+
+**Cache invalidation, corrected.** §7 describes tag-based invalidation. The admin
+actions use `revalidatePath` with route patterns (`'/[locale]/news', 'page'`) instead,
+which clears all three locales in one call. Tags would require every read to go through
+`fetch` or `unstable_cache`; these queries use the Supabase client directly. Same
+effect, fewer moving parts — recorded so the doc and the code do not disagree.
 11. SEO, performance, security passes
 12. Docs, typecheck, lint, production build
