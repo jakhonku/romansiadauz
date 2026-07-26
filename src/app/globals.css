@@ -1,42 +1,218 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
+/* ==========================================================================
+   Design tokens — Romansiada Uzbekistan
+   Palette: ivory / bordeaux / gold / warm gray. Light and dark are peers;
+   neither is an afterthought.
+
+   Accessibility contract:
+   - `--gold` (decorative) is ~3.6:1 on white and MUST NOT be used for small
+     text. Use it for rules, ornaments, icon glyphs and >=24px bold display.
+   - `--gold-ink` is the contrast-safe gold for body-sized text (>=5.5:1).
+   - `--primary` bordeaux is ~10.7:1 on white and safe everywhere.
+   ========================================================================== */
+
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 340 8% 12%;
+
+    --surface: 40 33% 97%;
+    --surface-foreground: 340 8% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 340 8% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 340 8% 12%;
+
+    --muted: 40 20% 93%;
+    --muted-foreground: 340 5% 38%;
+
+    --accent: 40 25% 95%;
+    --accent-foreground: 351 74% 27%;
+
+    --primary: 351 74% 27%;
+    --primary-hover: 351 76% 21%;
+    --primary-foreground: 40 40% 98%;
+
+    --gold: 43 65% 48%;
+    --gold-soft: 43 62% 70%;
+    --gold-ink: 43 68% 28%;
+
+    --destructive: 0 70% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 152 55% 30%;
+    --success-foreground: 0 0% 100%;
+    --warning: 33 85% 35%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 38 22% 88%;
+    --input: 38 22% 86%;
+    --ring: 43 65% 42%;
+
+    --radius: 0.75rem;
+
+    /* Warm-tinted shadows: neutral black reads dirty on an ivory surface. */
+    --shadow-card: 0 1px 2px hsl(340 20% 12% / 0.04), 0 8px 24px -8px hsl(340 20% 12% / 0.08);
+    --shadow-lift: 0 2px 4px hsl(340 20% 12% / 0.05), 0 24px 48px -16px hsl(340 20% 12% / 0.16);
+    --shadow-gold: 0 8px 32px -12px hsl(43 65% 40% / 0.45);
+  }
+
+  .dark {
+    --background: 340 8% 6%;
+    --foreground: 40 30% 95%;
+
+    --surface: 340 8% 10%;
+    --surface-foreground: 40 30% 95%;
+
+    --card: 340 8% 10%;
+    --card-foreground: 40 30% 95%;
+
+    --popover: 340 9% 9%;
+    --popover-foreground: 40 30% 95%;
+
+    --muted: 340 7% 15%;
+    --muted-foreground: 40 8% 68%;
+
+    --accent: 340 8% 16%;
+    --accent-foreground: 43 70% 62%;
+
+    --primary: 351 58% 54%;
+    --primary-hover: 351 60% 62%;
+    --primary-foreground: 350 40% 8%;
+
+    --gold: 43 70% 58%;
+    --gold-soft: 43 55% 40%;
+    --gold-ink: 43 78% 68%;
+
+    --destructive: 0 62% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 152 45% 52%;
+    --success-foreground: 152 40% 8%;
+    --warning: 38 80% 60%;
+    --warning-foreground: 33 40% 10%;
+
+    --border: 340 7% 20%;
+    --input: 340 7% 22%;
+    --ring: 43 70% 52%;
+
+    --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.3), 0 8px 24px -8px hsl(0 0% 0% / 0.5);
+    --shadow-lift: 0 2px 4px hsl(0 0% 0% / 0.35), 0 24px 48px -16px hsl(0 0% 0% / 0.6);
+    --shadow-gold: 0 8px 32px -12px hsl(43 70% 55% / 0.35);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: 'kern', 'liga', 'calt';
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /*
+   * The site header is `position: fixed`, so a jump to `#some-id` would scroll the
+   * target underneath it. Declared on `:target` rather than on every anchorable
+   * element, and generously — the header is 4.5rem plus breathing room.
+   */
+  :target {
+    scroll-margin-top: 6.5rem;
+  }
+
+  /* A single, consistently gold focus ring across the whole product. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+    border-radius: calc(var(--radius) - 4px);
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  /* Respect the OS-level motion preference globally, not per-component. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@layer components {
+  /* Letterspaced uppercase label used above every section heading. */
+  .kicker {
+    @apply font-sans text-kicker font-semibold uppercase text-gold-ink;
+  }
+
+  /* Full-bleed vertical rhythm for page sections. */
+  .section {
+    @apply py-section;
+  }
+
+  .section-sm {
+    @apply py-section-sm;
+  }
+
+  /* Gold hairline used to separate hero stats and footer columns. */
+  .rule-gold {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--gold) / 0.55) 20%,
+      hsl(var(--gold) / 0.55) 80%,
+      transparent
+    );
+  }
+
+  .text-gold-gradient {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  /* Skeleton shimmer for loading states. */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  .shimmer::after {
+    @apply absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite] bg-gradient-to-r from-transparent via-foreground/5 to-transparent;
+    content: '';
+  }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  /* Pauses the partner marquee on hover/focus — required for WCAG 2.2.2. */
+  .marquee-paused {
+    animation-play-state: paused;
   }
 }

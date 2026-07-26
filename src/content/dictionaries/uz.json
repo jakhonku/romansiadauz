@@ -1,0 +1,591 @@
+{
+  "meta": {
+    "siteName": "Romansiada Uzbekistan",
+    "shortName": "Romansiada",
+    "region": "Uzbekistan",
+    "tagline": "Xalqaro romans ijrochilari festivali",
+    "description": "«Romansiada Uzbekistan» — romans janridagi yosh va iste'dodli ijrochilar uchun xalqaro festival-tanlov. Ro'yxatdan o'ting, nizom bilan tanishing va festival yangiliklarini kuzating."
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Festival haqida",
+    "regulations": "Nizom",
+    "news": "Yangiliklar",
+    "judges": "Hakamlar",
+    "gallery": "Galereya",
+    "photos": "Foto galereya",
+    "videos": "Video galereya",
+    "winners": "G'oliblar",
+    "contact": "Kontakt",
+    "register": "Ro'yxatdan o'tish",
+    "menu": "Menyu",
+    "openMenu": "Menyuni ochish",
+    "closeMenu": "Menyuni yopish",
+    "language": "Til",
+    "theme": "Mavzu",
+    "themeLight": "Yorug'",
+    "themeDark": "Qorong'i",
+    "themeSystem": "Tizim",
+    "skipToContent": "Asosiy qismga o'tish"
+  },
+  "common": {
+    "readMore": "Batafsil",
+    "viewAll": "Barchasini ko'rish",
+    "learnMore": "Ko'proq ma'lumot",
+    "loading": "Yuklanmoqda…",
+    "search": "Qidirish",
+    "searchPlaceholder": "Qidiruv…",
+    "filter": "Filtr",
+    "all": "Barchasi",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "previous": "Oldingi",
+    "submit": "Yuborish",
+    "cancel": "Bekor qilish",
+    "save": "Saqlash",
+    "close": "Yopish",
+    "share": "Ulashish",
+    "download": "Yuklab olish",
+    "page": "Sahifa",
+    "of": "dan",
+    "noResults": "Hech narsa topilmadi",
+    "noResultsHint": "Boshqa so'z bilan qidirib ko'ring yoki filtrlarni tozalang.",
+    "clearFilters": "Filtrlarni tozalash",
+    "required": "majburiy",
+    "optional": "ixtiyoriy",
+    "yes": "Ha",
+    "no": "Yo'q",
+    "copyLink": "Havolani nusxalash",
+    "linkCopied": "Havola nusxalandi",
+    "views": "ko'rishlar",
+    "publishedOn": "Chop etilgan",
+    "backToList": "Ro'yxatga qaytish",
+    "error": "Xatolik yuz berdi",
+    "retry": "Qayta urinish",
+    "notFound": "Sahifa topilmadi",
+    "notFoundHint": "Siz qidirgan sahifa mavjud emas yoki ko'chirilgan.",
+    "goHome": "Bosh sahifaga"
+  },
+  "home": {
+    "hero": {
+      "kicker": "Xalqaro romans ijrochilari festivali",
+      "title": "Romansiada",
+      "subtitle": "Uzbekistan",
+      "tagline": "Musiqa qalbni birlashtiradi, madaniyat xalqlarni yaqinlashtiradi!",
+      "countdown": {
+        "title": "Tanlovga qadar",
+        "days": "Kun",
+        "hours": "Soat",
+        "minutes": "Daqiqa",
+        "seconds": "Soniya",
+        "finished": "Tanlov boshlandi!"
+      },
+      "ctaPrimary": "Ro'yxatdan o'tish",
+      "ctaSecondary": "Ko'proq ma'lumot",
+      "facts": {
+        "annual": "Har yili o'tkaziladi",
+        "location": "O'zbekiston, Toshkent",
+        "talents": "Iste'dodli ijrochilar"
+      },
+      "imageAlt": "Samarqanddagi Registon maydoni kunbotarda, oltin mikrofon va qizil ipak matoda musiqa notalari bilan"
+    },
+    "stats": {
+      "title": "Festival raqamlarda",
+      "years": "Yillik tarix",
+      "participants": "Ishtirokchi",
+      "countries": "Davlat",
+      "goal": "Buyuk maqsad"
+    },
+    "about": {
+      "kicker": "Festival haqida",
+      "title": "Romans — qalbdan qalbga yo'l",
+      "lead": "«Romansiada Uzbekistan» — bu klassik va zamonaviy romans janrini asrab-avaylash, yosh iste'dodlarni qo'llab-quvvatlash va xalqlar o'rtasidagi madaniy ko'prikni mustahkamlashga qaratilgan xalqaro festival-tanlov.",
+      "body": "Festival har yili O'zbekistonning tarixiy shaharlarida o'tkaziladi. Unda turli davlatlardan kelgan ijrochilar rus, o'zbek va jahon romans merosidan namunalar ijro etadilar. Tanlov g'oliblari xalqaro sahnalarda chiqish qilish, tajribali ustozlardan saboq olish va professional yozuv studiyasida ishlash imkoniyatiga ega bo'ladilar.",
+      "cta": "Festival tarixi bilan tanishish"
+    },
+    "events": {
+      "kicker": "Taqvim",
+      "title": "Yaqinlashib kelayotgan tadbirlar",
+      "subtitle": "Festival bosqichlari va muhim sanalar",
+      "empty": "Hozircha rejalashtirilgan tadbirlar yo'q. Yangiliklarni kuzatib boring.",
+      "addToCalendar": "Taqvimga qo'shish"
+    },
+    "news": {
+      "kicker": "Matbuot markazi",
+      "title": "So'nggi yangiliklar",
+      "subtitle": "Festival hayotidan eng so'nggi xabarlar",
+      "empty": "Yangiliklar tez orada e'lon qilinadi."
+    },
+    "judges": {
+      "kicker": "Hakamlar hay'ati",
+      "title": "Tanlov hakamlari",
+      "subtitle": "Xalqaro miqyosda tan olingan musiqashunoslar va ijrochilar",
+      "empty": "Hakamlar hay'ati tarkibi tez orada e'lon qilinadi."
+    },
+    "gallery": {
+      "kicker": "Galereya",
+      "title": "Festival lahzalari",
+      "subtitle": "Sahna ortidagi va sahnadagi eng yorqin daqiqalar",
+      "empty": "Fotosuratlar tez orada joylanadi."
+    },
+    "partners": {
+      "kicker": "Hamkorlar",
+      "title": "Bizning hamkorlarimiz",
+      "subtitle": "Festivalni qo'llab-quvvatlayotgan tashkilotlar"
+    },
+    "cta": {
+      "kicker": "Ishtirok etish",
+      "title": "Sahnaga chiqishga tayyormisiz?",
+      "body": "Ariza topshirish bepul. Ro'yxatdan o'tish uchun bir necha daqiqa vaqt ajrating — qolganini biz hal qilamiz.",
+      "primary": "Hoziroq ro'yxatdan o'tish",
+      "secondary": "Nizomni o'qish"
+    }
+  },
+  "about": {
+    "title": "Festival haqida",
+    "subtitle": "Tarix, missiya va maqsadlar",
+    "history": {
+      "kicker": "Tarix",
+      "title": "Bizning yo'limiz",
+      "body": "Romansiada harakati romans san'atini yangi avlodga yetkazish g'oyasi bilan boshlangan. Yillar davomida festival o'nlab davlatlardan minglab ijrochilarni bir sahnada birlashtirdi va bugungi kunda mintaqadagi eng nufuzli vokal tanlovlaridan biriga aylandi."
+    },
+    "mission": {
+      "kicker": "Missiya",
+      "title": "Missiyamiz",
+      "body": "Romans janrini asrab-avaylash, yosh iste'dodlarga professional sahna ochish va musiqa orqali xalqlar o'rtasidagi do'stlikni mustahkamlash."
+    },
+    "vision": {
+      "kicker": "Vizyon",
+      "title": "Kelajak qarashimiz",
+      "body": "Romansiada Uzbekistan'ni Markaziy Osiyodagi romans san'atining asosiy markaziga aylantirish va festival g'oliblariga xalqaro karyera yo'lini ochish."
+    },
+    "objectives": {
+      "kicker": "Maqsadlar",
+      "title": "Asosiy vazifalar",
+      "items": [
+        {
+          "title": "Iste'dodlarni izlash",
+          "body": "Mamlakatning barcha hududlaridan yosh vokalchilarni aniqlash va qo'llab-quvvatlash."
+        },
+        {
+          "title": "Merosni saqlash",
+          "body": "Klassik romans repertuarini to'plash, yozib olish va yangi avlodga yetkazish."
+        },
+        {
+          "title": "Professional o'sish",
+          "body": "Mahorat darslari, ustozlar bilan uchrashuvlar va studiya yozuvlari orqali ijrochilarni rivojlantirish."
+        },
+        {
+          "title": "Madaniy diplomatiya",
+          "body": "Xalqaro hamkorlik orqali O'zbekiston madaniyatini dunyoga tanitish."
+        }
+      ]
+    },
+    "organizers": {
+      "kicker": "Tashkilotchilar",
+      "title": "Festival tashkilotchilari",
+      "empty": "Ma'lumot tez orada qo'shiladi."
+    },
+    "partners": {
+      "kicker": "Hamkorlar",
+      "title": "Hamkorlar va homiylar",
+      "empty": "Hamkorlar ro'yxati yangilanmoqda."
+    }
+  },
+  "regulations": {
+    "title": "Festival nizomi",
+    "subtitle": "Ishtirok etish shartlari, yosh toifalari va baholash mezonlari",
+    "downloadPdf": "Nizomni PDF'da yuklab olish",
+    "rules": {
+      "kicker": "Qoidalar",
+      "title": "Umumiy qoidalar"
+    },
+    "categories": {
+      "kicker": "Toifalar",
+      "title": "Yosh toifalari",
+      "ageRange": "Yosh",
+      "years": "yosh",
+      "duration": "Chiqish davomiyligi",
+      "pieces": "Asarlar soni"
+    },
+    "criteria": {
+      "kicker": "Baholash",
+      "title": "Baholash mezonlari",
+      "weight": "Ulush",
+      "maxScore": "Maksimal ball",
+      "items": [
+        {
+          "title": "Vokal mahorat",
+          "body": "Ovoz sifati, diapazon, intonatsiya aniqligi va nafas texnikasi.",
+          "weight": 30
+        },
+        {
+          "title": "Artistlik",
+          "body": "Sahna madaniyati, obrazni ochib berish va tomoshabin bilan muloqot.",
+          "weight": 25
+        },
+        {
+          "title": "Repertuar tanlovi",
+          "body": "Asarning ijrochi ovoziga va yosh toifasiga mosligi.",
+          "weight": 20
+        },
+        {
+          "title": "Talqin",
+          "body": "Asar mazmunini his qilish, uslubga sodiqlik va o'ziga xoslik.",
+          "weight": 15
+        },
+        {
+          "title": "Umumiy taassurot",
+          "body": "Chiqishning yaxlitligi, tashqi ko'rinish va professionallik.",
+          "weight": 10
+        }
+      ]
+    },
+    "documents": {
+      "kicker": "Hujjatlar",
+      "title": "Talab qilinadigan hujjatlar",
+      "items": [
+        "To'ldirilgan onlayn ariza",
+        "Rangli fotosurat (3×4 yoki portret, 5 MB gacha)",
+        "Pasport yoki tug'ilganlik haqidagi guvohnoma nusxasi",
+        "Ijro yozuvi (video havola yoki fayl)",
+        "18 yoshgacha bo'lgan ishtirokchilar uchun ota-ona roziligi"
+      ]
+    },
+    "faq": {
+      "kicker": "Savollar",
+      "title": "Ko'p beriladigan savollar"
+    }
+  },
+  "registration": {
+    "title": "Onlayn ro'yxatdan o'tish",
+    "subtitle": "Rasmiy ariza blankasi bo'yicha. To'ldirish uchun 4-6 daqiqa kerak bo'ladi.",
+    "stepOf": "{current}-qadam / {total}",
+    "steps": {
+      "personal": {
+        "title": "Ishtirokchi",
+        "description": "F.I.Sh. va tug'ilgan sana"
+      },
+      "education": {
+        "title": "Ta'lim va ish joyi",
+        "description": "Muassasa, fakultet, lavozim"
+      },
+      "contact": {
+        "title": "Aloqa",
+        "description": "Manzil, e-mail va telefon"
+      },
+      "programme": {
+        "title": "Dastur",
+        "description": "Nominatsiya, turlar va konsertmeyster"
+      },
+      "review": {
+        "title": "Tasdiqlash",
+        "description": "Ma'lumotlarni tekshirib, arizani yuboring"
+      }
+    },
+    "fields": {
+      "firstName": "Ism",
+      "lastName": "Familiya",
+      "middleName": "Otasining ismi",
+      "birthDate": "Tug'ilgan sana",
+      "age": "Yosh",
+      "institution": "Ta'lim muassasasi / ish joyi",
+      "faculty": "Fakultet",
+      "position": "Lavozim",
+      "address": "Yashash manzili",
+      "email": "Elektron pochta",
+      "phone": "Telefon raqami",
+      "nomination": "Nominatsiya",
+      "programme": "Dastur",
+      "round1": "I tur",
+      "round2": "II tur",
+      "round3": "III tur",
+      "accompanistName": "Konsertmeyster F.I.Sh.",
+      "accompanistWorkplace": "Konsertmeyster ish joyi",
+      "consent": "Shaxsiy ma'lumotlarimni qayta ishlashga va festival qoidalariga roziman"
+    },
+    "placeholders": {
+      "firstName": "Masalan: Dilnoza",
+      "lastName": "Masalan: Karimova",
+      "middleName": "Masalan: Anvarovna",
+      "phone": "+998 90 123 45 67",
+      "email": "ism@example.com",
+      "address": "Viloyat, tuman, ko'cha, uy",
+      "institution": "Masalan: O'zbekiston davlat konservatoriyasi",
+      "faculty": "Masalan: Vokal fakulteti",
+      "position": "Masalan: talaba, o'qituvchi, solist",
+      "round": "Har bir asarni yangi qatordan yozing: muallif — asar nomi",
+      "accompanistName": "Konsertmeyster ismi (agar bo'lsa)",
+      "accompanistWorkplace": "Konsertmeysterning ish joyi",
+      "select": "Tanlang…"
+    },
+    "hints": {
+      "age": "Tug'ilgan sanadan avtomatik hisoblanadi",
+      "rounds": "Har bir tur uchun ijro etiladigan asarlarni yozing. Kamida I tur to'ldirilishi shart.",
+      "accompanist": "Konsertmeystersiz chiqsangiz, bo'sh qoldiring.",
+      "privacy": "Ma'lumotlaringiz faqat tanlov komissiyasiga ko'rsatiladi va uchinchi shaxslarga berilmaydi."
+    },
+    "actions": {
+      "next": "Keyingi qadam",
+      "previous": "Orqaga",
+      "submit": "Arizani yuborish",
+      "submitting": "Yuborilmoqda…"
+    },
+    "review": {
+      "title": "Ma'lumotlarni tekshiring",
+      "body": "Arizani yuborishdan oldin barcha maydonlarni diqqat bilan tekshiring. Yuborilgandan so'ng o'zgartirish uchun tashkilotchilarga murojaat qilishingiz kerak bo'ladi.",
+      "edit": "Tahrirlash"
+    },
+    "success": {
+      "title": "Arizangiz qabul qilindi!",
+      "body": "Ariza tanlov komissiyasiga yuborildi. Natijalar haqida sizga e-mail orqali xabar beramiz.",
+      "referenceLabel": "Ariza raqamingiz",
+      "referenceHint": "Bu raqamni saqlab qo'ying — tashkilotchilar bilan bog'lanishda kerak bo'ladi.",
+      "backHome": "Bosh sahifaga qaytish",
+      "readRegulations": "Nizom bilan tanishish"
+    },
+    "errors": {
+      "generic": "Arizani yuborishda xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
+      "rateLimited": "Juda ko'p urinish. Bir necha daqiqadan so'ng qayta urinib ko'ring.",
+      "duplicate": "Bu e-mail bilan ariza allaqachon topshirilgan.",
+      "fixFields": "Quyidagi maydonlarni to'g'irlang"
+    }
+  },
+  "validation": {
+    "required": "Bu maydon to'ldirilishi shart",
+    "minLength": "Kamida {min} belgi bo'lishi kerak",
+    "maxLength": "Ko'pi bilan {max} belgi bo'lishi mumkin",
+    "email": "To'g'ri e-mail manzilini kiriting",
+    "phone": "Telefon raqamini +998 XX XXX XX XX ko'rinishida kiriting",
+    "date": "To'g'ri sanani kiriting",
+    "ageRange": "Ishtirokchi yoshi {min} dan {max} gacha bo'lishi kerak",
+    "url": "To'g'ri havola kiriting",
+    "consent": "Davom etish uchun roziligingiz talab qilinadi"
+  },
+  "judges": {
+    "title": "Hakamlar hay'ati",
+    "subtitle": "Tanlovni baholaydigan xalqaro mutaxassislar",
+    "achievements": "Yutuqlar va unvonlar",
+    "biography": "Biografiya",
+    "empty": "Hakamlar hay'ati tarkibi tez orada e'lon qilinadi.",
+    "chairman": "Hay'at raisi"
+  },
+  "news": {
+    "title": "Yangiliklar",
+    "subtitle": "Festival hayotidan xabarlar va e'lonlar",
+    "categories": "Bo'limlar",
+    "allCategories": "Barcha bo'limlar",
+    "searchPlaceholder": "Yangiliklar ichidan qidirish…",
+    "related": "O'xshash maqolalar",
+    "shareOn": "Ulashish:",
+    "empty": "Bu bo'limda hozircha yangilik yo'q.",
+    "readingTime": "{minutes} daqiqa o'qish"
+  },
+  "gallery": {
+    "title": "Foto galereya",
+    "subtitle": "Festival albomlari",
+    "photos": "foto",
+    "openAlbum": "Albomni ochish",
+    "empty": "Albomlar tez orada joylanadi.",
+    "lightbox": {
+      "next": "Keyingi rasm",
+      "previous": "Oldingi rasm",
+      "close": "Yopish",
+      "counter": "{current} / {total}"
+    }
+  },
+  "videos": {
+    "title": "Video galereya",
+    "subtitle": "Chiqishlar, intervyular va festival reportajlari",
+    "allCategories": "Barcha bo'limlar",
+    "watch": "Tomosha qilish",
+    "empty": "Videolar tez orada joylanadi."
+  },
+  "winners": {
+    "title": "Festival g'oliblari",
+    "subtitle": "Yillar davomida sahnani zabt etganlar",
+    "filterByYear": "Yil bo'yicha",
+    "allYears": "Barcha yillar",
+    "place": "o'rin",
+    "grandPrix": "Gran-pri",
+    "award": "Mukofot",
+    "empty": "Bu yil uchun ma'lumot topilmadi."
+  },
+  "contact": {
+    "title": "Biz bilan bog'laning",
+    "subtitle": "Savollaringiz bormi? Bizga yozing yoki tashrif buyuring.",
+    "phone": "Telefon",
+    "email": "Elektron pochta",
+    "address": "Manzil",
+    "workingHours": "Ish vaqti",
+    "socialMedia": "Ijtimoiy tarmoqlar",
+    "mapTitle": "Xaritadagi joylashuv",
+    "form": {
+      "title": "Xabar yuborish",
+      "name": "Ismingiz",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "subject": "Mavzu",
+      "message": "Xabar",
+      "namePlaceholder": "Ism familiyangiz",
+      "messagePlaceholder": "Savolingizni yozing…",
+      "submit": "Xabarni yuborish",
+      "submitting": "Yuborilmoqda…",
+      "success": "Rahmat! Xabaringiz yuborildi. Tez orada javob beramiz.",
+      "error": "Xabarni yuborib bo'lmadi. Qayta urinib ko'ring."
+    }
+  },
+  "footer": {
+    "about": "«Romansiada Uzbekistan» — romans janridagi yosh ijrochilar uchun xalqaro festival-tanlov.",
+    "navigation": "Navigatsiya",
+    "participants": "Ishtirokchilarga",
+    "contactUs": "Aloqa",
+    "followUs": "Ijtimoiy tarmoqlarda",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "privacy": "Maxfiylik siyosati",
+    "terms": "Foydalanish shartlari",
+    "madeWith": "Festival matbuot xizmati"
+  },
+  "admin": {
+    "title": "Boshqaruv paneli",
+    "login": {
+      "title": "Tizimga kirish",
+      "subtitle": "Boshqaruv paneliga kirish uchun ma'lumotlaringizni kiriting",
+      "email": "E-mail",
+      "password": "Parol",
+      "submit": "Kirish",
+      "submitting": "Tekshirilmoqda…",
+      "error": "E-mail yoki parol noto'g'ri",
+      "inactive": "Hisobingiz faol emas. Administrator bilan bog'laning.",
+      "backToSite": "Saytga qaytish"
+    },
+    "nav": {
+      "dashboard": "Boshqaruv paneli",
+      "registrations": "Arizalar",
+      "news": "Yangiliklar",
+      "gallery": "Galereya",
+      "videos": "Videolar",
+      "judges": "Hakamlar",
+      "winners": "G'oliblar",
+      "partners": "Hamkorlar",
+      "events": "Tadbirlar",
+      "pages": "Sahifalar",
+      "messages": "Xabarlar",
+      "users": "Foydalanuvchilar",
+      "settings": "Sozlamalar",
+      "logout": "Chiqish",
+      "viewSite": "Saytni ko'rish"
+    },
+    "dashboard": {
+      "welcome": "Xush kelibsiz, {name}",
+      "subtitle": "Festival bo'yicha umumiy ko'rsatkichlar",
+      "totalRegistrations": "Jami arizalar",
+      "pendingRegistrations": "Ko'rib chiqilmoqda",
+      "approvedRegistrations": "Tasdiqlangan",
+      "rejectedRegistrations": "Rad etilgan",
+      "publishedNews": "Chop etilgan yangiliklar",
+      "unreadMessages": "O'qilmagan xabarlar",
+      "registrationsChart": "Arizalar dinamikasi",
+      "byRegionChart": "Hududlar bo'yicha",
+      "byCategoryChart": "Toifalar bo'yicha",
+      "latestRegistrations": "So'nggi arizalar",
+      "latestNews": "So'nggi yangiliklar",
+      "noData": "Ma'lumot yo'q"
+    },
+    "registrations": {
+      "title": "Arizalar boshqaruvi",
+      "searchPlaceholder": "Ism, e-mail, telefon yoki ariza raqami…",
+      "status": "Holat",
+      "pending": "Ko'rib chiqilmoqda",
+      "approved": "Tasdiqlangan",
+      "rejected": "Rad etilgan",
+      "region": "Viloyat",
+      "category": "Toifa",
+      "voiceType": "Ovoz turi",
+      "dateFrom": "Sanadan",
+      "dateTo": "Sanagacha",
+      "exportExcel": "Excel'ga eksport",
+      "exportCsv": "CSV'ga eksport",
+      "print": "Chop etish",
+      "approve": "Tasdiqlash",
+      "reject": "Rad etish",
+      "reviewNote": "Izoh",
+      "reviewNotePlaceholder": "Qaror sababini yozing (ixtiyoriy)…",
+      "reference": "Ariza raqami",
+      "submittedAt": "Topshirilgan",
+      "reviewedBy": "Ko'rib chiqdi",
+      "documents": "Hujjatlar",
+      "viewPhoto": "Fotosuratni ko'rish",
+      "viewPassport": "Pasportni ko'rish",
+      "viewVideo": "Videoni ko'rish",
+      "empty": "Ariza topilmadi",
+      "selected": "{count} ta tanlandi",
+      "bulkApprove": "Tanlanganlarni tasdiqlash",
+      "bulkReject": "Tanlanganlarni rad etish"
+    },
+    "common": {
+      "create": "Yaratish",
+      "edit": "Tahrirlash",
+      "delete": "O'chirish",
+      "duplicate": "Nusxalash",
+      "publish": "Chop etish",
+      "unpublish": "Chopdan olish",
+      "draft": "Qoralama",
+      "published": "Chop etilgan",
+      "archived": "Arxivlangan",
+      "status": "Holat",
+      "title": "Sarlavha",
+      "slug": "URL manzili",
+      "category": "Bo'lim",
+      "coverImage": "Muqova rasmi",
+      "sortOrder": "Tartib",
+      "featured": "Tanlangan",
+      "createdAt": "Yaratilgan",
+      "updatedAt": "Yangilangan",
+      "actions": "Amallar",
+      "confirmDelete": "Ishonchingiz komilmi?",
+      "confirmDeleteBody": "Bu amalni ortga qaytarib bo'lmaydi. Yozuv butunlay o'chiriladi.",
+      "saved": "Saqlandi",
+      "deleted": "O'chirildi",
+      "saveFailed": "Saqlab bo'lmadi",
+      "noPermission": "Bu amal uchun ruxsatingiz yo'q",
+      "translations": "Tarjimalar",
+      "seo": "SEO sozlamalari",
+      "seoTitle": "SEO sarlavha",
+      "seoDescription": "SEO tavsif",
+      "rowsPerPage": "Sahifadagi qatorlar",
+      "showingRange": "{from}–{to} / {total}"
+    },
+    "settings": {
+      "title": "Sayt sozlamalari",
+      "branding": "Brending",
+      "logo": "Logotip",
+      "favicon": "Favicon",
+      "seo": "SEO",
+      "analytics": "Analitika",
+      "smtp": "Pochta (SMTP)",
+      "social": "Ijtimoiy tarmoqlar",
+      "contacts": "Aloqa ma'lumotlari",
+      "stats": "Bosh sahifa statistikasi",
+      "saved": "Sozlamalar saqlandi"
+    },
+    "users": {
+      "title": "Foydalanuvchilar",
+      "invite": "Foydalanuvchi qo'shish",
+      "role": "Rol",
+      "roleAdmin": "Administrator",
+      "roleEditor": "Muharrir",
+      "roleModerator": "Moderator",
+      "roleViewer": "Kuzatuvchi",
+      "active": "Faol",
+      "inactive": "Faol emas",
+      "lastSignIn": "Oxirgi kirish"
+    }
+  },
+  "errors": {
+    "404Title": "Sahifa topilmadi",
+    "404Body": "Kechirasiz, siz qidirgan sahifa mavjud emas yoki boshqa manzilga ko'chirilgan.",
+    "500Title": "Serverda xatolik",
+    "500Body": "Kutilmagan xatolik yuz berdi. Bir ozdan so'ng qayta urinib ko'ring."
+  }
+}

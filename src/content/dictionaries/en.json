@@ -1,0 +1,591 @@
+{
+  "meta": {
+    "siteName": "Romansiada Uzbekistan",
+    "shortName": "Romansiada",
+    "region": "Uzbekistan",
+    "tagline": "International Festival of Romance Singers",
+    "description": "Romansiada Uzbekistan is an international festival-competition for young and gifted performers of the romance song. Apply online, read the regulations and follow the festival news."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "regulations": "Regulations",
+    "news": "News",
+    "judges": "Jury",
+    "gallery": "Gallery",
+    "photos": "Photo gallery",
+    "videos": "Video gallery",
+    "winners": "Winners",
+    "contact": "Contact",
+    "register": "Apply now",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "skipToContent": "Skip to content"
+  },
+  "common": {
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "loading": "Loading…",
+    "search": "Search",
+    "searchPlaceholder": "Search…",
+    "filter": "Filter",
+    "all": "All",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "share": "Share",
+    "download": "Download",
+    "page": "Page",
+    "of": "of",
+    "noResults": "Nothing found",
+    "noResultsHint": "Try a different search term or clear the filters.",
+    "clearFilters": "Clear filters",
+    "required": "required",
+    "optional": "optional",
+    "yes": "Yes",
+    "no": "No",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied",
+    "views": "views",
+    "publishedOn": "Published",
+    "backToList": "Back to list",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "notFound": "Page not found",
+    "notFoundHint": "The page you are looking for does not exist or has been moved.",
+    "goHome": "Go to homepage"
+  },
+  "home": {
+    "hero": {
+      "kicker": "International Festival of Romance Singers",
+      "title": "Romansiada",
+      "subtitle": "Uzbekistan",
+      "tagline": "Music unites hearts, culture brings nations closer!",
+      "countdown": {
+        "title": "Until the festival begins",
+        "days": "days",
+        "hours": "hours",
+        "minutes": "minutes",
+        "seconds": "seconds",
+        "finished": "The festival has begun"
+      },
+      "ctaPrimary": "Apply now",
+      "ctaSecondary": "Learn more",
+      "facts": {
+        "annual": "Held annually",
+        "location": "Tashkent, Uzbekistan",
+        "talents": "Gifted performers"
+      },
+      "imageAlt": "Registan Square in Samarkand at sunset with a golden microphone and musical notes on red silk"
+    },
+    "stats": {
+      "title": "The festival in numbers",
+      "years": "Years of history",
+      "participants": "Participants",
+      "countries": "Countries",
+      "goal": "Great purpose"
+    },
+    "about": {
+      "kicker": "About the festival",
+      "title": "The romance — a path from heart to heart",
+      "lead": "Romansiada Uzbekistan is an international festival-competition dedicated to preserving the classical and contemporary romance song, supporting young talent and strengthening the cultural bridge between nations.",
+      "body": "The festival takes place every year in the historic cities of Uzbekistan. Performers from many countries present works from the Russian, Uzbek and world romance heritage. Winners earn the chance to perform on international stages, study with acclaimed masters and record in a professional studio.",
+      "cta": "Explore our history"
+    },
+    "events": {
+      "kicker": "Calendar",
+      "title": "Upcoming events",
+      "subtitle": "Festival stages and key dates",
+      "empty": "No events are scheduled yet. Stay tuned for news.",
+      "addToCalendar": "Add to calendar"
+    },
+    "news": {
+      "kicker": "Press centre",
+      "title": "Latest news",
+      "subtitle": "Fresh stories from festival life",
+      "empty": "News will be published shortly."
+    },
+    "judges": {
+      "kicker": "The jury",
+      "title": "Competition jury",
+      "subtitle": "Internationally recognised musicians and performers",
+      "empty": "The jury line-up will be announced shortly."
+    },
+    "gallery": {
+      "kicker": "Gallery",
+      "title": "Festival moments",
+      "subtitle": "The brightest moments on stage and behind the scenes",
+      "empty": "Photographs will be added shortly."
+    },
+    "partners": {
+      "kicker": "Partners",
+      "title": "Our partners",
+      "subtitle": "Organisations supporting the festival"
+    },
+    "cta": {
+      "kicker": "Take part",
+      "title": "Ready to step on stage?",
+      "body": "Applying is free. Give the form a few minutes — we will take care of the rest.",
+      "primary": "Apply now",
+      "secondary": "Read the regulations"
+    }
+  },
+  "about": {
+    "title": "About the festival",
+    "subtitle": "History, mission and objectives",
+    "history": {
+      "kicker": "History",
+      "title": "Our journey",
+      "body": "The Romansiada movement began with a simple idea: to pass the art of the romance song on to a new generation. Over the years the festival has brought thousands of performers from dozens of countries onto one stage and has become one of the most respected vocal competitions in the region."
+    },
+    "mission": {
+      "kicker": "Mission",
+      "title": "Our mission",
+      "body": "To preserve the romance genre, to open a professional stage to young talent, and to strengthen friendship between nations through music."
+    },
+    "vision": {
+      "kicker": "Vision",
+      "title": "Looking ahead",
+      "body": "To make Romansiada Uzbekistan the leading centre of romance singing in Central Asia and to open an international career path for its winners."
+    },
+    "objectives": {
+      "kicker": "Objectives",
+      "title": "Core objectives",
+      "items": [
+        {
+          "title": "Discovering talent",
+          "body": "Finding and supporting young vocalists from every region of the country."
+        },
+        {
+          "title": "Preserving heritage",
+          "body": "Collecting, recording and passing the classical romance repertoire to a new generation."
+        },
+        {
+          "title": "Professional growth",
+          "body": "Developing performers through masterclasses, mentorship and studio recordings."
+        },
+        {
+          "title": "Cultural diplomacy",
+          "body": "Presenting the culture of Uzbekistan to the world through international cooperation."
+        }
+      ]
+    },
+    "organizers": {
+      "kicker": "Organisers",
+      "title": "Festival organisers",
+      "empty": "Details will be added shortly."
+    },
+    "partners": {
+      "kicker": "Partners",
+      "title": "Partners and sponsors",
+      "empty": "The partner list is being updated."
+    }
+  },
+  "regulations": {
+    "title": "Festival regulations",
+    "subtitle": "Conditions of entry, age categories and judging criteria",
+    "downloadPdf": "Download regulations (PDF)",
+    "rules": {
+      "kicker": "Rules",
+      "title": "General rules"
+    },
+    "categories": {
+      "kicker": "Categories",
+      "title": "Age categories",
+      "ageRange": "Age",
+      "years": "years",
+      "duration": "Performance length",
+      "pieces": "Number of pieces"
+    },
+    "criteria": {
+      "kicker": "Judging",
+      "title": "Evaluation criteria",
+      "weight": "Weight",
+      "maxScore": "Maximum score",
+      "items": [
+        {
+          "title": "Vocal technique",
+          "body": "Tone quality, range, intonation accuracy and breath control.",
+          "weight": 30
+        },
+        {
+          "title": "Stage presence",
+          "body": "Stagecraft, characterisation and connection with the audience.",
+          "weight": 25
+        },
+        {
+          "title": "Repertoire choice",
+          "body": "How well the piece suits the performer's voice and age category.",
+          "weight": 20
+        },
+        {
+          "title": "Interpretation",
+          "body": "Understanding of the text, stylistic fidelity and individuality.",
+          "weight": 15
+        },
+        {
+          "title": "Overall impression",
+          "body": "Coherence of the performance, appearance and professionalism.",
+          "weight": 10
+        }
+      ]
+    },
+    "documents": {
+      "kicker": "Documents",
+      "title": "Required documents",
+      "items": [
+        "Completed online application",
+        "Colour photograph (3×4 or portrait, up to 5 MB)",
+        "Copy of passport or birth certificate",
+        "Performance recording (video link or file)",
+        "Parental consent for participants under 18"
+      ]
+    },
+    "faq": {
+      "kicker": "Questions",
+      "title": "Frequently asked questions"
+    }
+  },
+  "registration": {
+    "title": "Online application",
+    "subtitle": "Follows the official application form. Takes about 4–6 minutes.",
+    "stepOf": "Step {current} of {total}",
+    "steps": {
+      "personal": {
+        "title": "Contestant",
+        "description": "Full name and date of birth"
+      },
+      "education": {
+        "title": "Study and work",
+        "description": "Institution, faculty, position"
+      },
+      "contact": {
+        "title": "Contact",
+        "description": "Address, e-mail and phone"
+      },
+      "programme": {
+        "title": "Programme",
+        "description": "Nomination, rounds and accompanist"
+      },
+      "review": {
+        "title": "Review",
+        "description": "Check your details and submit"
+      }
+    },
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "middleName": "Middle name",
+      "birthDate": "Date of birth",
+      "age": "Age",
+      "institution": "Institution or place of work",
+      "faculty": "Faculty",
+      "position": "Position",
+      "address": "Place of residence",
+      "email": "E-mail",
+      "phone": "Phone",
+      "nomination": "Nomination",
+      "programme": "Programme",
+      "round1": "Round I",
+      "round2": "Round II",
+      "round3": "Round III",
+      "accompanistName": "Accompanist's full name",
+      "accompanistWorkplace": "Accompanist's place of work",
+      "consent": "I consent to the processing of my personal data and accept the festival rules"
+    },
+    "placeholders": {
+      "firstName": "e.g. Dilnoza",
+      "lastName": "e.g. Karimova",
+      "middleName": "e.g. Anvarovna",
+      "phone": "+998 90 123 45 67",
+      "email": "name@example.com",
+      "address": "Region, district, street, building",
+      "institution": "e.g. State Conservatory of Uzbekistan",
+      "faculty": "e.g. Faculty of Vocal Performance",
+      "position": "e.g. student, lecturer, soloist",
+      "round": "One piece per line: composer — title",
+      "accompanistName": "Accompanist's name (if any)",
+      "accompanistWorkplace": "Where the accompanist works",
+      "select": "Select…"
+    },
+    "hints": {
+      "age": "Calculated automatically from the date of birth",
+      "rounds": "List the pieces for each round. Round I is required.",
+      "accompanist": "Leave blank if you perform without an accompanist.",
+      "privacy": "Your details are seen only by the selection committee and are not shared with third parties."
+    },
+    "actions": {
+      "next": "Next step",
+      "previous": "Back",
+      "submit": "Submit application",
+      "submitting": "Submitting…"
+    },
+    "review": {
+      "title": "Check your details",
+      "body": "Please review every field before submitting. After submission, changes can only be made through the organisers.",
+      "edit": "Edit"
+    },
+    "success": {
+      "title": "Your application has been received",
+      "body": "It has been passed to the selection committee. We will contact you by e-mail with the outcome.",
+      "referenceLabel": "Your reference number",
+      "referenceHint": "Keep this number — you will need it when contacting the organisers.",
+      "backHome": "Back to homepage",
+      "readRegulations": "Read the regulations"
+    },
+    "errors": {
+      "generic": "The application could not be submitted. Please try again.",
+      "rateLimited": "Too many attempts. Please try again in a few minutes.",
+      "duplicate": "An application with this e-mail has already been submitted.",
+      "fixFields": "Please correct the following fields"
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "minLength": "Must be at least {min} characters",
+    "maxLength": "Must be at most {max} characters",
+    "email": "Enter a valid e-mail address",
+    "phone": "Enter the number as +998 XX XXX XX XX",
+    "date": "Enter a valid date",
+    "ageRange": "Participants must be between {min} and {max} years old",
+    "url": "Enter a valid link",
+    "consent": "Your consent is required to continue"
+  },
+  "judges": {
+    "title": "The jury",
+    "subtitle": "International experts judging the competition",
+    "achievements": "Awards and titles",
+    "biography": "Biography",
+    "empty": "The jury line-up will be announced shortly.",
+    "chairman": "Chair of the jury"
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Stories and announcements from the festival",
+    "categories": "Sections",
+    "allCategories": "All sections",
+    "searchPlaceholder": "Search the news…",
+    "related": "Related articles",
+    "shareOn": "Share:",
+    "empty": "There are no articles in this section yet.",
+    "readingTime": "{minutes} min read"
+  },
+  "gallery": {
+    "title": "Photo gallery",
+    "subtitle": "Festival albums",
+    "photos": "photos",
+    "openAlbum": "Open album",
+    "empty": "Albums will be added shortly.",
+    "lightbox": {
+      "next": "Next photo",
+      "previous": "Previous photo",
+      "close": "Close",
+      "counter": "{current} / {total}"
+    }
+  },
+  "videos": {
+    "title": "Video gallery",
+    "subtitle": "Performances, interviews and festival reports",
+    "allCategories": "All sections",
+    "watch": "Watch",
+    "empty": "Videos will be added shortly."
+  },
+  "winners": {
+    "title": "Festival winners",
+    "subtitle": "Those who have conquered the stage over the years",
+    "filterByYear": "By year",
+    "allYears": "All years",
+    "place": "place",
+    "grandPrix": "Grand Prix",
+    "award": "Award",
+    "empty": "No records found for this year."
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Have a question? Write to us or come and visit.",
+    "phone": "Phone",
+    "email": "E-mail",
+    "address": "Address",
+    "workingHours": "Opening hours",
+    "socialMedia": "Social media",
+    "mapTitle": "Location on the map",
+    "form": {
+      "title": "Send a message",
+      "name": "Your name",
+      "email": "E-mail",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message",
+      "namePlaceholder": "First and last name",
+      "messagePlaceholder": "Write your question…",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "success": "Thank you. Your message has been sent — we will reply soon.",
+      "error": "The message could not be sent. Please try again."
+    }
+  },
+  "footer": {
+    "about": "Romansiada Uzbekistan is an international festival-competition for young performers of the romance song.",
+    "navigation": "Navigation",
+    "participants": "For participants",
+    "contactUs": "Contact",
+    "followUs": "Follow us",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "madeWith": "Festival press office"
+  },
+  "admin": {
+    "title": "Admin panel",
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Enter your credentials to access the admin panel",
+      "email": "E-mail",
+      "password": "Password",
+      "submit": "Sign in",
+      "submitting": "Checking…",
+      "error": "Incorrect e-mail or password",
+      "inactive": "Your account is inactive. Please contact an administrator.",
+      "backToSite": "Back to the site"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "registrations": "Applications",
+      "news": "News",
+      "gallery": "Gallery",
+      "videos": "Videos",
+      "judges": "Jury",
+      "winners": "Winners",
+      "partners": "Partners",
+      "events": "Events",
+      "pages": "Pages",
+      "messages": "Messages",
+      "users": "Users",
+      "settings": "Settings",
+      "logout": "Sign out",
+      "viewSite": "View site"
+    },
+    "dashboard": {
+      "welcome": "Welcome, {name}",
+      "subtitle": "Festival performance at a glance",
+      "totalRegistrations": "Total applications",
+      "pendingRegistrations": "Awaiting review",
+      "approvedRegistrations": "Approved",
+      "rejectedRegistrations": "Rejected",
+      "publishedNews": "Published articles",
+      "unreadMessages": "Unread messages",
+      "registrationsChart": "Applications over time",
+      "byRegionChart": "By region",
+      "byCategoryChart": "By category",
+      "latestRegistrations": "Latest applications",
+      "latestNews": "Latest news",
+      "noData": "No data"
+    },
+    "registrations": {
+      "title": "Application management",
+      "searchPlaceholder": "Name, e-mail, phone or reference…",
+      "status": "Status",
+      "pending": "Awaiting review",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "region": "Region",
+      "category": "Category",
+      "voiceType": "Voice type",
+      "dateFrom": "From",
+      "dateTo": "To",
+      "exportExcel": "Export to Excel",
+      "exportCsv": "Export to CSV",
+      "print": "Print",
+      "approve": "Approve",
+      "reject": "Reject",
+      "reviewNote": "Note",
+      "reviewNotePlaceholder": "Reason for the decision (optional)…",
+      "reference": "Reference",
+      "submittedAt": "Submitted",
+      "reviewedBy": "Reviewed by",
+      "documents": "Documents",
+      "viewPhoto": "View photo",
+      "viewPassport": "View passport",
+      "viewVideo": "View video",
+      "empty": "No applications found",
+      "selected": "{count} selected",
+      "bulkApprove": "Approve selected",
+      "bulkReject": "Reject selected"
+    },
+    "common": {
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "duplicate": "Duplicate",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "draft": "Draft",
+      "published": "Published",
+      "archived": "Archived",
+      "status": "Status",
+      "title": "Title",
+      "slug": "URL slug",
+      "category": "Section",
+      "coverImage": "Cover image",
+      "sortOrder": "Order",
+      "featured": "Featured",
+      "createdAt": "Created",
+      "updatedAt": "Updated",
+      "actions": "Actions",
+      "confirmDelete": "Are you sure?",
+      "confirmDeleteBody": "This action cannot be undone. The record will be permanently deleted.",
+      "saved": "Saved",
+      "deleted": "Deleted",
+      "saveFailed": "Could not save",
+      "noPermission": "You do not have permission for this action",
+      "translations": "Translations",
+      "seo": "SEO settings",
+      "seoTitle": "SEO title",
+      "seoDescription": "SEO description",
+      "rowsPerPage": "Rows per page",
+      "showingRange": "{from}–{to} of {total}"
+    },
+    "settings": {
+      "title": "Site settings",
+      "branding": "Branding",
+      "logo": "Logo",
+      "favicon": "Favicon",
+      "seo": "SEO",
+      "analytics": "Analytics",
+      "smtp": "Mail (SMTP)",
+      "social": "Social media",
+      "contacts": "Contact details",
+      "stats": "Homepage statistics",
+      "saved": "Settings saved"
+    },
+    "users": {
+      "title": "Users",
+      "invite": "Add user",
+      "role": "Role",
+      "roleAdmin": "Administrator",
+      "roleEditor": "Editor",
+      "roleModerator": "Moderator",
+      "roleViewer": "Viewer",
+      "active": "Active",
+      "inactive": "Inactive",
+      "lastSignIn": "Last sign-in"
+    }
+  },
+  "errors": {
+    "404Title": "Page not found",
+    "404Body": "Sorry, the page you are looking for does not exist or has been moved.",
+    "500Title": "Server error",
+    "500Body": "An unexpected error occurred. Please try again in a moment."
+  }
+}
