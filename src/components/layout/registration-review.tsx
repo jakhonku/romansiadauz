@@ -1,11 +1,16 @@
 'use client';
 
-import { Check, RotateCcw, X } from 'lucide-react';
+import { Check, RotateCcw, Trash2, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/field';
-import { reopenRegistration, reviewRegistration } from '@/server/actions/admin-registrations';
+import {
+  deleteRegistration,
+  reopenRegistration,
+  reviewRegistration,
+} from '@/server/actions/admin-registrations';
 import type { RegistrationStatus } from '@/types/database.types';
 
 export interface ReviewLabels {
@@ -20,6 +25,9 @@ export interface ReviewLabels {
   approvedNotice: string;
   rejectedNotice: string;
   confirmReject: string;
+  delete: string;
+  deleteHint: string;
+  confirmDelete: string;
 }
 
 /**
@@ -34,13 +42,17 @@ export function RegistrationReview({
   id,
   status,
   initialNote,
+  /** Only an administrator may delete; the page decides, this only draws the control. */
+  canDelete = false,
   labels,
 }: {
   id: string;
   status: RegistrationStatus;
   initialNote: string | null;
+  canDelete?: boolean;
   labels: ReviewLabels;
 }) {
+  const router = useRouter();
   const [note, setNote] = useState(initialNote ?? '');
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -60,6 +72,23 @@ export function RegistrationReview({
     startTransition(async () => {
       const result = await reopenRegistration(id);
       if (!result.ok) setError(labels.error);
+    });
+  }
+
+  function remove() {
+    if (!window.confirm(labels.confirmDelete)) return;
+
+    setError(null);
+    startTransition(async () => {
+      const result = await deleteRegistration(id);
+      if (result.ok) {
+        // The row this page is built from no longer exists, so staying here would 404 on
+        // the next refresh.
+        router.replace('/admin/registrations');
+        router.refresh();
+      } else {
+        setError(labels.error);
+      }
     });
   }
 
@@ -118,6 +147,25 @@ export function RegistrationReview({
           </>
         )}
       </div>
+
+      {/* Kept apart from the decision buttons by a rule and its own explanation. Rejecting
+          and deleting sit one click from each other otherwise, and only one of them can
+          be taken back. */}
+      {canDelete ? (
+        <div className="mt-7 border-t border-border pt-5">
+          <p className="text-xs leading-relaxed text-muted-foreground">{labels.deleteHint}</p>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={remove}
+            disabled={pending}
+            className="mt-3 text-destructive hover:bg-destructive/10 hover:text-destructive"
+          >
+            <Trash2 />
+            {labels.delete}
+          </Button>
+        </div>
+      ) : null}
     </section>
   );
 }

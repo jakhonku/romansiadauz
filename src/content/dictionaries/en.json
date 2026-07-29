@@ -569,7 +569,10 @@
       "exportEmpty": "No applications to export",
       "reopen": "Reopen for review",
       "confirmReject": "Reject this application?",
-      "saving": "Saving…"
+      "saving": "Saving…",
+      "delete": "Delete application",
+      "deleteHint": "A deleted application cannot be restored. Rejecting is reversible, this is not — it is for duplicates and test entries.",
+      "confirmDelete": "Application {reference} will be deleted permanently. This cannot be undone. Continue?"
     },
     "messages": {
       "title": "Incoming messages",

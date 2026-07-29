@@ -6,8 +6,9 @@ import { RegistrationStatusBadge } from '@/components/common/status-badge';
 import { RegistrationReview } from '@/components/layout/registration-review';
 import { Button } from '@/components/ui/button';
 import { getAdminDictionary, getAdminLocale } from '@/lib/auth/admin-locale';
+import { can } from '@/lib/auth/rbac';
 import { requirePermission } from '@/lib/auth/session';
-import { ageAt, formatDate, formatDateTime } from '@/lib/i18n/format';
+import { ageAt, formatDate, formatDateTime, interpolate } from '@/lib/i18n/format';
 import { getRegistration } from '@/server/queries/admin-registrations';
 import type { RegistrationStatus } from '@/types/database.types';
 
@@ -16,7 +17,7 @@ export default async function AdminRegistrationDetailPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  await requirePermission('registrations.review');
+  const session = await requirePermission('registrations.review');
 
   const { id } = await params;
   const [d, locale] = await Promise.all([getAdminDictionary(), getAdminLocale()]);
@@ -98,6 +99,7 @@ export default async function AdminRegistrationDetailPage({
           id={row.id}
           status={row.status}
           initialNote={row.reviewNote}
+          canDelete={can(session.role, 'registrations.delete')}
           labels={{
             decision: r.decision,
             approve: r.approve,
@@ -110,6 +112,9 @@ export default async function AdminRegistrationDetailPage({
             approvedNotice: r.approvedNotice,
             rejectedNotice: r.rejectedNotice,
             confirmReject: r.confirmReject,
+            delete: r.delete,
+            deleteHint: r.deleteHint,
+            confirmDelete: interpolate(r.confirmDelete, { reference: row.referenceCode }),
           }}
         />
       </div>

@@ -51,6 +51,37 @@ export async function reviewRegistration(
 }
 
 /**
+ * Delete an application outright.
+ *
+ * Admin only, in all three places: `registrations.delete` sits with `admin` alone in the
+ * matrix, this action demands it, and `registrations_admin_delete` in 0007 restricts the
+ * DELETE to `is_admin()`. A moderator can decide an application but cannot erase it.
+ *
+ * There is no soft delete and no undo. Rejecting is the reversible way to say no — this
+ * is for rows that should never have existed at all: a duplicate submission, a test
+ * entry, or a withdrawal the applicant asked for. The confirmation in the UI names the
+ * reference code for that reason.
+ */
+export async function deleteRegistration(id: string): Promise<ReviewResult> {
+  await requirePermission('registrations.delete');
+
+  if (!id) return { ok: false, message: 'missing_id' };
+
+  const supabase = await createServerSupabase();
+  const { error } = await supabase.from('registrations').delete().eq('id', id);
+
+  if (error) {
+    console.error('[admin:registration-delete]', error.message);
+    return { ok: false, message: error.message };
+  }
+
+  revalidatePath('/admin/registrations');
+  revalidatePath('/admin');
+
+  return { ok: true };
+}
+
+/**
  * Return an application to `pending`.
  *
  * The trigger clears `reviewed_at` and `reviewed_by` on the way back, so a re-opened

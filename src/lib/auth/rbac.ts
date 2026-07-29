@@ -18,6 +18,13 @@ export const PERMISSIONS = [
   'dashboard.view',
   'content.manage',
   'registrations.review',
+  /**
+   * Separate from `registrations.review` and held by `admin` alone, because the two are
+   * different in kind: a decision is reversible through "reopen", a deletion destroys
+   * someone's submission. This mirrors `registrations_admin_delete` in 0007, which
+   * already restricts the DELETE to `is_admin()`.
+   */
+  'registrations.delete',
   'messages.review',
   'users.manage',
   'settings.manage',
@@ -30,6 +37,7 @@ const MATRIX: Record<AppRole, readonly Permission[]> = {
     'dashboard.view',
     'content.manage',
     'registrations.review',
+    'registrations.delete',
     'messages.review',
     'users.manage',
     'settings.manage',

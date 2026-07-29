@@ -197,8 +197,8 @@
   },
   "regulations": {
     "title": "Festival nizomi",
-    "subtitle": "Rus va o‘zbek romansi yosh ijrochilarining I\u00a0Xalqaro tanlovi «O‘zbek Romansiadasi»",
-    "documentTitle": "Rus va o‘zbek romansi yosh ijrochilarining I\u00a0Xalqaro tanlovi «O‘zbek Romansiadasi» NIZOMI",
+    "subtitle": "Rus va o‘zbek romansi yosh ijrochilarining I Xalqaro tanlovi «O‘zbek Romansiadasi»",
+    "documentTitle": "Rus va o‘zbek romansi yosh ijrochilarining I Xalqaro tanlovi «O‘zbek Romansiadasi» NIZOMI",
     "approvalLabel": "TASDIQLAYMAN",
     "approvals": [
       {
@@ -569,7 +569,10 @@
       "exportEmpty": "Eksport qilish uchun ariza yo̒q",
       "reopen": "Qayta ko̒rib chiqish",
       "confirmReject": "Arizani rad etishni tasdiqlaysizmi?",
-      "saving": "Saqlanmoqda…"
+      "saving": "Saqlanmoqda…",
+      "delete": "Arizani o‘chirish",
+      "deleteHint": "O‘chirilgan arizani tiklab bo‘lmaydi. Rad etish qaytarib olinadi, o‘chirish esa yo‘q — bu takroriy yoki sinov arizalari uchun.",
+      "confirmDelete": "{reference} raqamli ariza butunlay o‘chiriladi. Buni ortga qaytarib bo‘lmaydi. Davom etasizmi?"
     },
     "messages": {
       "title": "Kiruvchi xabarlar",
