@@ -1,5 +1,6 @@
 import { AdminPageHeader } from '@/components/layout/admin-page-header';
 import { SettingsGroupForm, type SettingsFieldDef } from '@/components/layout/settings-group-form';
+import { mediaLabels } from '@/lib/admin/media-labels';
 import { getAdminDictionary } from '@/lib/auth/admin-locale';
 import { requirePermission } from '@/lib/auth/session';
 import { createServerSupabase } from '@/lib/supabase/server';
@@ -50,8 +51,8 @@ export default async function AdminSettingsPage() {
   const brandingFields: SettingsFieldDef[] = [
     { name: 'siteName', label: d.meta.siteName },
     { name: 'tagline', label: d.meta.tagline },
-    { name: 'logoPath', label: s.logo },
-    { name: 'faviconPath', label: s.favicon },
+    { name: 'logoPath', label: s.logo, type: 'image' },
+    { name: 'faviconPath', label: s.favicon, type: 'image' },
   ];
 
   const seoFields: SettingsFieldDef[] = [
@@ -86,6 +87,7 @@ export default async function AdminSettingsPage() {
         fields={brandingFields}
         initial={group('branding')}
         labels={labels}
+        media={mediaLabels(d)}
       />
       <SettingsGroupForm
         group="contacts"

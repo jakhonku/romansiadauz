@@ -27,7 +27,6 @@ export type AdminIconName =
   | 'winners'
   | 'partners'
   | 'events'
-  | 'pages'
   | 'users'
   | 'settings';
 
@@ -76,7 +75,6 @@ export const adminNav: readonly AdminNavGroup[] = [
       { href: '/admin/winners', label: (d) => d.admin.nav.winners, permission: 'content.manage', icon: 'winners' },
       { href: '/admin/partners', label: (d) => d.admin.nav.partners, permission: 'content.manage', icon: 'partners' },
       { href: '/admin/events', label: (d) => d.admin.nav.events, permission: 'content.manage', icon: 'events' },
-      { href: '/admin/pages', label: (d) => d.admin.nav.pages, permission: 'content.manage', icon: 'pages' },
     ],
   },
   {

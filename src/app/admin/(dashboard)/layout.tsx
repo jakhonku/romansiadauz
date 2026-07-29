@@ -57,11 +57,13 @@ export default async function AdminDashboardLayout({
             siteHref={localizeHref('/', locale)}
             navGroups={groups}
             brand={{ name: d.meta.shortName, region: d.meta.region }}
+            locale={locale}
             labels={{
               logout: d.admin.nav.logout,
               viewSite: d.admin.nav.viewSite,
               menu: d.nav.menu,
               closeMenu: d.nav.closeMenu,
+              language: d.nav.language,
               theme: {
                 theme: d.nav.theme,
                 light: d.nav.themeLight,

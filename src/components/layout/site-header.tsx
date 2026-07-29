@@ -178,7 +178,13 @@ export function SiteHeader({ locale, nav, labels }: SiteHeaderProps) {
                           {item.label}
                         </Link>
                       </SheetClose>
-                      {item.children?.map((child) => (
+                      {/* The parent is already a link in this list, so a child pointing
+                          at the same route would print the same label twice. The desktop
+                          dropdown still needs it — there the trigger is not a tap target
+                          on its own. */}
+                      {item.children
+                        ?.filter((child) => child.href !== item.href)
+                        .map((child) => (
                         <SheetClose asChild key={child.href}>
                           <Link
                             href={href(child.href)}

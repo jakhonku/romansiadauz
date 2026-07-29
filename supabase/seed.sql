@@ -276,35 +276,31 @@ on conflict (code) do update
 -- -----------------------------------------------------------------------------
 -- Age categories
 -- -----------------------------------------------------------------------------
+-- § IV of the Regulations. `min_age` for «Романс без границ» is the competition's
+-- youngest admissible age rather than a rule of its own — the document sets only a
+-- ceiling, and the CHECK constraint needs a floor. See 0011.
 insert into public.age_categories
-  (code, name_uz, name_ru, name_en, min_age, max_age, duration_minutes, pieces_count, sort_order) values
-  ('junior', 'Kichik guruh',  'Младшая группа', 'Junior',  10, 15,  8, 2, 1),
-  ('middle', 'O''rta guruh',  'Средняя группа', 'Middle',  16, 20, 10, 2, 2),
-  ('senior', 'Katta guruh',   'Старшая группа', 'Senior',  21, 28, 12, 2, 3),
-  ('master', 'Professional',  'Профессионалы',  'Master',  29, 45, 15, 3, 4)
+  (code, name_uz, name_ru, name_en, min_age, max_age, sort_order) values
+  ('hope',       'Romansiada umidi',  'Надежда Романсиады',  'Hope of Romansiada',      12, 17, 1),
+  ('young',      'Yosh ijrochilar',   'Молодые исполнители', 'Young performers',        18, 27, 2),
+  ('no-borders', 'Chegarasiz romans', 'Романс без границ',   'Romance without borders', 12, 35, 3)
 on conflict (code) do update
   set name_uz = excluded.name_uz,
       name_ru = excluded.name_ru,
       name_en = excluded.name_en,
       min_age = excluded.min_age,
       max_age = excluded.max_age,
-      duration_minutes = excluded.duration_minutes,
-      pieces_count = excluded.pieces_count;
+      sort_order = excluded.sort_order;
 
 -- -----------------------------------------------------------------------------
 -- Nominations
 -- -----------------------------------------------------------------------------
--- «Номинация» on the application form. The competition is named for the Russian
--- and Uzbek romance repertoire, so those two are the primary nominations; the
--- rest cover what the paper applications have historically been filled in with.
--- Organisers can edit this list from the admin panel — these are starting values,
--- not a fixed taxonomy.
+-- «Номинация» on the official application form. § IV of the Regulations defines
+-- exactly two creative directions, and this list must not offer a third: an entry
+-- filed under a category the jury does not judge cannot be scored. See 0011.
 insert into public.nominations (code, name_uz, name_ru, name_en, sort_order) values
-  ('russian-romance', 'Rus romansi',        'Русский романс',      'Russian romance',   1),
-  ('uzbek-romance',   'O''zbek romansi',    'Узбекский романс',    'Uzbek romance',     2),
-  ('classical',       'Klassik asar',       'Классическое произведение', 'Classical piece', 3),
-  ('authors-song',    'Muallif qo''shig''i', 'Авторская песня',    'Author''s song',    4),
-  ('duet',            'Duet / ansambl',     'Дуэт / ансамбль',     'Duet / ensemble',   5)
+  ('russian-romance', 'Rus romansi',     'Русский романс',   'Russian romance', 1),
+  ('uzbek-romance',   'O''zbek romansi', 'Узбекский романс', 'Uzbek romance',   2)
 on conflict (code) do update
   set name_uz = excluded.name_uz,
       name_ru = excluded.name_ru,

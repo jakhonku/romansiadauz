@@ -3,14 +3,16 @@
 import { CheckCircle2, Save } from 'lucide-react';
 import { useState, useTransition } from 'react';
 
+import { ImageUpload } from '@/components/common/image-upload';
 import { Button } from '@/components/ui/button';
 import { Field, Input } from '@/components/ui/field';
+import type { MediaLabels } from '@/lib/admin/media-labels';
 import { saveSettingsGroup } from '@/server/actions/admin-settings';
 
 export interface SettingsFieldDef {
   name: string;
   label: string;
-  type?: 'text' | 'number' | 'url' | 'email' | 'datetime-local';
+  type?: 'text' | 'number' | 'url' | 'email' | 'datetime-local' | 'image';
   placeholder?: string;
 }
 
@@ -29,6 +31,7 @@ export function SettingsGroupForm({
   fields,
   initial,
   labels,
+  media,
 }: {
   group: string;
   title: string;
@@ -36,10 +39,15 @@ export function SettingsGroupForm({
   fields: SettingsFieldDef[];
   initial: Record<string, unknown>;
   labels: { save: string; saving: string; saved: string; failed: string };
+  /** Required only by groups that carry an `image` field — branding, today. */
+  media?: MediaLabels;
 }) {
   const [values, setValues] = useState<Record<string, string>>(() =>
     Object.fromEntries(
-      fields.map((field) => [field.name, initial[field.name] == null ? '' : String(initial[field.name])]),
+      fields.map((field) => [
+        field.name,
+        initial[field.name] == null ? '' : String(initial[field.name]),
+      ]),
     ),
   );
   const [status, setStatus] = useState<'idle' | 'saved' | 'failed'>('idle');
@@ -75,26 +83,43 @@ export function SettingsGroupForm({
       {description ? <p className="mt-1.5 text-sm text-muted-foreground">{description}</p> : null}
 
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
-        {fields.map((field) => (
-          <Field key={field.name} id={`${group}-${field.name}`} label={field.label}>
-            {(props) => (
-              <Input
-                {...props}
-                type={
-                    field.type === 'number' ? 'number'
-                  : field.type === 'email' ? 'email'
-                  : field.type === 'datetime-local' ? 'datetime-local'
-                  : 'text'
-                }
-                placeholder={field.placeholder}
-                value={values[field.name] ?? ''}
-                onChange={(event) =>
-                  setValues((previous) => ({ ...previous, [field.name]: event.target.value }))
-                }
-              />
-            )}
-          </Field>
-        ))}
+        {fields.map((field) =>
+          field.type === 'image' && media ? (
+            <ImageUpload
+              key={field.name}
+              id={`${group}-${field.name}`}
+              label={field.label}
+              value={values[field.name] ?? ''}
+              onChange={(path) => setValues((previous) => ({ ...previous, [field.name]: path }))}
+              folder="branding"
+              labels={media}
+              placeholder={field.placeholder}
+              className="sm:col-span-2"
+            />
+          ) : (
+            <Field key={field.name} id={`${group}-${field.name}`} label={field.label}>
+              {(props) => (
+                <Input
+                  {...props}
+                  type={
+                    field.type === 'number'
+                      ? 'number'
+                      : field.type === 'email'
+                        ? 'email'
+                        : field.type === 'datetime-local'
+                          ? 'datetime-local'
+                          : 'text'
+                  }
+                  placeholder={field.placeholder}
+                  value={values[field.name] ?? ''}
+                  onChange={(event) =>
+                    setValues((previous) => ({ ...previous, [field.name]: event.target.value }))
+                  }
+                />
+              )}
+            </Field>
+          ),
+        )}
       </div>
 
       <div className="mt-6 flex flex-wrap items-center gap-3">

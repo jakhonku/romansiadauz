@@ -10,20 +10,25 @@ import { siteUrl } from '@/lib/env';
 export const siteConfig = {
   url: siteUrl,
   domain: 'romansiada.uz',
-  email: 'info@romansiada.uz',
-  phone: '+998 71 200 00 00',
+  /** Both taken from the closing lines of the Regulations. */
+  email: 'romansiadauzbekistan@mail.ru',
+  phone: '+99899 050 7144',
   /** `tel:` needs the bare international form, no spaces. */
-  phoneHref: '+998712000000',
+  phoneHref: '+998990507144',
   addressKey: 'Toshkent',
   foundingYear: 2019,
   /**
    * Instant the festival opens, for the hero countdown.
    *
-   * PLACEHOLDER — replace with the announced date. The `+05:00` offset is not optional:
+   * § II of the Regulations: 28–30 November 2026 in Tashkent. The document names the
+   * days, not an hour, so the countdown runs to the start of the first day rather than
+   * to an opening time nobody has announced. The `+05:00` offset is not optional:
    * without it the string is parsed as UTC and the countdown runs five hours late for
    * everyone in Tashkent.
    */
-  festivalStartsAt: '2026-11-20T10:00:00+05:00',
+  festivalStartsAt: '2026-11-15T00:00:00+05:00',
+  /** § III: entries close on 15 November 2026. */
+  applicationsCloseAt: '2026-11-15T23:59:59+05:00',
   /**
    * Headline figures for the hero band. Editable from admin → settings → stats once a
    * `site_settings` row exists; these are the pre-launch defaults.

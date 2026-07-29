@@ -17,7 +17,16 @@ export interface NavItem {
 export const primaryNav: readonly NavItem[] = [
   { href: '/', label: (d) => d.nav.home },
   { href: '/about', label: (d) => d.nav.about },
-  { href: '/regulations', label: (d) => d.nav.regulations },
+  {
+    // Grouped like the gallery: the sheet music is an annex to the Regulations, and a
+    // ninth top-level item would push the header into wrapping on a laptop.
+    href: '/regulations',
+    label: (d) => d.nav.regulations,
+    children: [
+      { href: '/regulations', label: (d) => d.nav.regulations },
+      { href: '/notes', label: (d) => d.nav.notes },
+    ],
+  },
   { href: '/judges', label: (d) => d.nav.judges },
   { href: '/news', label: (d) => d.nav.news },
   {
@@ -36,6 +45,7 @@ export const primaryNav: readonly NavItem[] = [
 export const participantNav: readonly NavItem[] = [
   { href: '/registration', label: (d) => d.nav.register },
   { href: '/regulations', label: (d) => d.nav.regulations },
+  { href: '/notes', label: (d) => d.nav.notes },
   { href: '/contact', label: (d) => d.nav.contact },
 ] as const;
 
@@ -53,6 +63,7 @@ export const staticRoutes: readonly string[] = [
   '/',
   '/about',
   '/regulations',
+  '/notes',
   '/judges',
   '/news',
   '/gallery',

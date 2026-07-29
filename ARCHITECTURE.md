@@ -18,8 +18,19 @@ Two distinct applications served from one Next.js deployment:
 | Admin panel | `/admin/…` | Staff (4 roles) | Dynamic, auth-gated, `no-store` |
 
 The public site is fully localized (`uz`, `ru`, `en`). The admin panel keeps
-un-prefixed routes and resolves its UI language from a `NEXT_LOCALE` cookie, so
-operators are never forced through a locale segment to reach a record.
+un-prefixed routes and resolves its UI language from a cookie, so operators are never
+forced through a locale segment to reach a record.
+
+**The panel's chrome ships in Uzbek and Russian only.** Staff work in one of those two;
+an English *interface* nobody asked for would be a third copy of every label to keep in
+step. This is the chrome alone — content is still authored in all three locales, because
+visitors read all three, so every editor keeps its `UZ / RU / EN` translation tabs.
+
+The choice lives in its own `ADMIN_LOCALE` cookie rather than in `NEXT_LOCALE`. An
+operator previewing the English site in the next tab would otherwise drag the panel along
+with them, and switching the panel to Russian would silently re-language the site they
+were checking. `NEXT_LOCALE` is still consulted as a fallback (with `en` falling through
+to Uzbek), so nobody has to make a choice before the panel picks a sensible one.
 
 ---
 
@@ -100,13 +111,13 @@ src/
     [locale]/                  # public site
       layout.tsx               # locale shell: fonts, theme, header/footer
       page.tsx                 # home
-      about/ regulations/ judges/ news/ gallery/ videos/ winners/
+      about/ regulations/ notes/ judges/ news/ gallery/ videos/ winners/
       contact/ registration/ p/[slug]/
     admin/
       login/
       (dashboard)/             # route group: auth-gated shell
         page.tsx registrations/ news/ gallery/ videos/ judges/
-        winners/ partners/ pages/ settings/ users/
+        winners/ partners/ settings/ users/
     api/                       # only where a route handler is genuinely required
     sitemap.ts  robots.ts  opengraph-image.tsx
   components/
@@ -127,6 +138,7 @@ src/
     queries/                   # cached read helpers
   types/                       # database.types.ts (generated) + domain types
   content/dictionaries/        # uz.json ru.json en.json
+  content/scores.ts            # competition repertoire, transcribed from the annex
 supabase/
   migrations/                  # ordered, idempotent SQL
   seed.sql
@@ -204,6 +216,34 @@ React discard the subtree. Client-side formatting therefore goes through the
 `Intl`-free helpers in `lib/i18n/format.ts` (`formatInteger`); Server Components, which
 render once, may use `Intl` freely.
 
+### The Regulations are not content
+
+`/[locale]/regulations` renders the approved «Положение», and `/[locale]/notes` renders
+its repertoire annex. Both live in the repository — the text in the three dictionaries,
+the repertoire in `content/scores.ts` — rather than in the CMS, for three reasons:
+
+- **It is a document, not an entry.** An applicant is held to it, and the rule they read
+  in Uzbek must be the rule the jury applies. Three rows that can be edited independently
+  can be edited into disagreement; three dictionary blocks are reviewed and deployed
+  together.
+- **It changes once a season**, as a signed file, which is a deploy rather than an
+  editorial workflow.
+- **It cannot silently disappear.** A DB-backed page degrades to an empty state when the
+  row is missing; the Regulations page cannot render blank.
+
+The consequence to accept: revising it means editing `regulations` in `uz.json`, `ru.json`
+and `en.json` and shipping. The Russian block is the document verbatim; the other two are
+translations of it. Nothing on that page is authored — the criteria weights and document
+checklist that were there before the document arrived were invented placeholders, and
+they are gone.
+
+**§ IV drives the reference lists.** `nominations` and `age_categories` are seeded from
+the Regulations, not from a guess: a form that offers a category the jury does not judge
+produces an entry that cannot be scored. Migration `0011` retires the placeholder rows by
+deactivating them rather than deleting — `registrations.nomination_id` is ON DELETE
+RESTRICT, so a nomination an applicant already chose cannot be removed without taking
+their application with it.
+
 ---
 
 ## 5. Data model
@@ -216,6 +256,10 @@ render once, may use `Intl` freely.
 ### Tables
 
 **Identity** — `profiles` (1:1 with `auth.users`, holds `role`, `is_active`).
+
+**Storage** — two public buckets: `media` (editorial images, 10 MB, JPEG/PNG/WebP/AVIF)
+and `scores` (the repertoire PDFs, 50 MB, `application/pdf` only). They stay separate
+because widening `media` to admit documents would widen it for every editorial upload.
 
 **Editorial** — `news_categories`, `news`, `judges`, `albums`, `photos`,
 `video_categories`, `videos`, `winners`, `partners`, `pages`, `events`
@@ -261,7 +305,7 @@ Role checks are resolved by a `SECURITY DEFINER` helper `auth_role()` that reads
 | | admin | editor | moderator | viewer |
 | --- | :-: | :-: | :-: | :-: |
 | Dashboard | ● | ● | ● | ● |
-| News / gallery / videos / pages | ● | ● | ○ | ○ |
+| News / gallery / videos | ● | ● | ○ | ○ |
 | Judges / winners / partners | ● | ● | ○ | ○ |
 | Registrations (review, export) | ● | ○ | ● | ○ |
 | Contact messages | ● | ○ | ● | ○ |
@@ -305,7 +349,7 @@ canonical + hreflang on every page · JSON-LD for `Organization`, `Event`,
 4. ✅ Supabase clients, buckets, generated types
 5. ✅ Public shell (header, footer, switchers) — plus the home hero and stats band
 6. ✅ Home (about · events · news · judges · gallery · partners · CTA) — with the public
-   read layer behind it · ⬜ About · ⬜ Regulations
+   read layer behind it · ✅ About · ✅ Regulations
 7. ✅ Registration — multi-step form, Zod + Server Action, rate limit, honeypot.
    No uploads: the form mirrors the official paper blank, which asks for no files.
 8. ✅ Judges · News (+ article) · Gallery (+ album, lightbox) · Videos · Winners ·
@@ -319,12 +363,48 @@ canonical + hreflang on every page · JSON-LD for `Organization`, `Event`,
     - ✅ Messages — inbox / unread / archive, read toggle, mailto reply
     - ✅ News — full CRUD, three-locale tabs, Tiptap editor, slug generation,
       scheduled publishing, path invalidation
-    - ✅ Judges · winners · partners · events · pages · videos · gallery — one
+    - ✅ Judges · winners · partners · events · videos · gallery — one
       descriptor registry (`lib/admin/entities.ts`) rendered by one generic list and
       one generic form through `/admin/[entity]`
     - ✅ Users — role and activation, last-admin and self-lockout guards, invitations
     - ✅ Settings — per-group JSONB save; `smtp` deliberately excluded
-    - ⬜ Photos inside an album; media upload UI (paths are typed by hand for now)
+    - ✅ Media — `<ImageUpload>` on every `*_path` field (cover, portrait, logo,
+      branding), uploading straight from the browser to the `media` bucket
+    - ✅ Photos inside an album — bulk upload, per-locale alt text and caption,
+      ordering, delete (row and object), rendered under the album form
+    - ❌ Pages — removed. The site has no free-form editorial pages, so the module was a
+      menu entry that only ever opened an empty list
+
+**Removing `pages` from the registry removed the module.** `/admin/pages` now 404s,
+because the registry is the whitelist for `/admin/[entity]`. Two consequences are worth
+stating rather than discovering:
+
+- The `pages` **table, RLS and public routes are untouched** — `/[locale]/p/[slug]` and
+  its sitemap entries still work; they simply have no way to be filled from the panel any
+  more. The table held no rows when the module was removed, so nothing that existed was
+  lost. The Regulations page no longer reads from it at all: its text now lives in the
+  dictionaries (see §4). What remains dangling is the footer's `/p/privacy` and
+  `/p/terms`, which can only ever 404 — give them a home elsewhere or drop them.
+- **The generic form no longer carries Tiptap.** `pages` was the only descriptor with a
+  `richtext` field, so the type and its branch went with it — `/admin/[entity]/[id]` fell
+  from 339 kB to 213 kB of first-load JavaScript. The article editor is unaffected; it
+  was never rendered by this registry.
+
+**Uploads do not pass through the server.** `lib/supabase/upload.ts` writes to Storage
+with the editor's own browser session, so `media_editor_write` decides whether an upload
+is allowed and a 6 MB photograph never enters a Server Action — whose body is capped at
+1 MB by default. Intrinsic dimensions are read from the file before it is sent and stored
+on `photos.width/height`, which is what lets the public gallery reserve the right box and
+avoid layout shift; the server would otherwise have to download the object back to learn
+them. The bucket's limits (10 MB, JPEG/PNG/WebP/AVIF) are mirrored as constants in
+`lib/supabase/storage.ts` so the UI can refuse a file before spending a round trip on it
+— the bucket remains the authority, and the two must be changed together.
+
+**Alt text gates a photograph, not decorates it.** The public album query drops any photo
+with no alt text in any locale rather than emitting `alt=""`, which would tell a screen
+reader that a festival photograph is ornamental. The admin panel therefore flags such
+photos in place and says what the consequence is, rather than letting an editor discover
+it from an empty gallery.
 
 **Why some modules are generic and some are not.** Seven editorial entities share one
 shape — scalar columns, a translation table, a status, a sort order — so they are
@@ -340,5 +420,8 @@ actions use `revalidatePath` with route patterns (`'/[locale]/news', 'page'`) in
 which clears all three locales in one call. Tags would require every read to go through
 `fetch` or `unstable_cache`; these queries use the Supabase client directly. Same
 effect, fewer moving parts — recorded so the doc and the code do not disagree.
-11. SEO, performance, security passes
-12. Docs, typecheck, lint, production build
+11. ✅ Regulations and repertoire — the approved «Положение» in three languages, the
+    reference lists rebuilt from its § IV, and the 24 supplied scores published from the
+    `scores` bucket at `/[locale]/notes`
+12. SEO, performance, security passes
+13. Docs, typecheck, lint, production build

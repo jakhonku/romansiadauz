@@ -6,7 +6,6 @@ import { getEntity, type EntityConfig } from '@/lib/admin/entities';
 import { requirePermission } from '@/lib/auth/session';
 import { locales } from '@/lib/i18n/config';
 import { createServerSupabase } from '@/lib/supabase/server';
-import { sanitizeHtml } from '@/lib/utils/sanitize';
 import { toSlugOrFallback } from '@/lib/utils/slug';
 import { syncTranslations } from '@/server/actions/translation-sync';
 import type { LocaleCode } from '@/types/database.types';
@@ -70,7 +69,7 @@ function coerce(config: EntityConfig, name: string, value: string | boolean): un
  * section, and working out precisely which sections a given partner touches is more
  * fragile than clearing the handful of routes involved.
  */
-function revalidateEntity(config: EntityConfig, slug?: string) {
+function revalidateEntity(config: EntityConfig) {
   revalidatePath('/[locale]', 'page');
 
   const publicPath: Record<string, string> = {
@@ -78,7 +77,6 @@ function revalidateEntity(config: EntityConfig, slug?: string) {
     winners: '/[locale]/winners',
     partners: '/[locale]',
     events: '/[locale]',
-    pages: '/[locale]/p/[slug]',
     videos: '/[locale]/videos',
     gallery: '/[locale]/gallery',
   };
@@ -87,8 +85,6 @@ function revalidateEntity(config: EntityConfig, slug?: string) {
   if (path) revalidatePath(path, 'page');
 
   if (config.key === 'gallery') revalidatePath('/[locale]/gallery/[slug]', 'page');
-  if (config.key === 'pages' && slug) revalidatePath(`/[locale]/p/${slug}`, 'page');
-  if (config.key === 'about') revalidatePath('/[locale]/about', 'page');
 
   revalidatePath('/sitemap.xml');
   revalidatePath(`/admin/${config.key}`);
@@ -152,10 +148,11 @@ export async function saveEntity(payload: EntityPayload): Promise<EntitySaveResu
       const source = payload.translations[locale]!;
       const out: Record<string, unknown> & { locale: LocaleCode } = { locale };
 
+      // Every descriptor-driven field is plain text — no descriptor carries HTML since
+      // `pages` was retired, so there is nothing here to sanitise. The article body,
+      // which is HTML, is written by `admin-news.ts` and sanitised there.
       for (const field of config.translationFields) {
-        const value = (source[field.name] ?? '').trim();
-        // Rich text is sanitised on write as well as on render — ARCHITECTURE §6.
-        out[field.name] = field.type === 'richtext' ? sanitizeHtml(value) : value || null;
+        out[field.name] = (source[field.name] ?? '').trim() || null;
       }
 
       // A NOT NULL translation column cannot take null; the required field always has
@@ -175,15 +172,11 @@ export async function saveEntity(payload: EntityPayload): Promise<EntitySaveResu
 
   if (syncError) return { ok: false, reason: 'error', message: syncError };
 
-  revalidateEntity(config, slug);
+  revalidateEntity(config);
   return { ok: true, id: id! };
 }
 
-export async function deleteEntity(
-  entityKey: string,
-  id: string,
-  slug?: string,
-): Promise<EntitySaveResult> {
+export async function deleteEntity(entityKey: string, id: string): Promise<EntitySaveResult> {
   await requirePermission('content.manage');
 
   const config = getEntity(entityKey);
@@ -198,6 +191,6 @@ export async function deleteEntity(
     return { ok: false, reason: 'error', message: error.message };
   }
 
-  revalidateEntity(config, slug);
+  revalidateEntity(config);
   return { ok: true, id };
 }

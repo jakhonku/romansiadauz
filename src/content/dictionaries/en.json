@@ -10,6 +10,7 @@
     "home": "Home",
     "about": "About",
     "regulations": "Regulations",
+    "notes": "Sheet music",
     "news": "News",
     "judges": "Jury",
     "gallery": "Gallery",
@@ -196,67 +197,102 @@
   },
   "regulations": {
     "title": "Festival regulations",
-    "subtitle": "Conditions of entry, age categories and judging criteria",
-    "downloadPdf": "Download regulations (PDF)",
-    "rules": {
-      "kicker": "Rules",
-      "title": "General rules"
+    "subtitle": "I International Competition of Young Performers of Russian and Uzbek Romance “Uzbek Romansiada”",
+    "documentTitle": "REGULATIONS of the I International Competition of Young Performers of Russian and Uzbek Romance “Uzbek Romansiada”",
+    "approvalLabel": "APPROVED BY",
+    "approvals": [
+      {
+        "role": "Artistic Director of the International Competition of Young Performers of Russian and Uzbek Romance “Uzbek Romansiada”",
+        "name": "A. A. Radjabov"
+      },
+      {
+        "role": "Artistic Director of the International Competition of Young Performers of Russian Romance “Romansiada”",
+        "name": "G. S. Preobrazhenskaya"
+      }
+    ],
+    "sections": [
+      {
+        "number": "§ I",
+        "title": "Aims and objectives of the competition",
+        "body": [
+          "“Uzbek Romansiada” is an international competition of young performers of Russian and Uzbek romance, founded by the creative association “Opera san’ati birlashmasi” (“Creative Association of Opera Art”) with the support of the Ministry for Poverty Reduction and Employment and the Ministry of Culture of the Republic of Uzbekistan.",
+          "The competition is held as part of the international series of “Romansiada” competitions, in agreement with the organising committees of the Moscow International Competition of Young Performers of Russian Romance “Romansiada” and the International Competition “Central Asian Romansiada” (Bishkek). The competition is included in the programme of the XXX Moscow International Competition of Young Performers of Russian Romance “Romansiada-2026”.",
+          "The aims of the competition are:",
+          "— to support and creatively develop the youth of Uzbekistan and the countries of Central Asia;",
+          "— to strengthen friendship and cultural and humanitarian cooperation between Uzbekistan, Russia and the countries of the region;",
+          "— to promote classical musical culture and the traditions of Russian romance;",
+          "— to preserve, develop and popularise Uzbek romance and lyrical song set to verses by Uzbek poets;",
+          "— to discover new names among performers and to assist their professional growth."
+        ]
+      },
+      {
+        "number": "§ II",
+        "title": "Order and dates of the competition",
+        "body": [
+          "The competition is held from 28 to 30 November 2026 in Tashkent.",
+          "The organising committee gives advance notice of any possible changes to the dates of the competition.",
+          "The competition auditions take place in three rounds; one romance is performed in each round.",
+          "In the first round participants perform a romance by a classical composer of the 19th–20th centuries (A. Gurilyov, A. Varlamov, P. Bulakhov, M. Glinka, A. Dargomyzhsky, M. Balakirev, P. Tchaikovsky, S. Taneyev, S. Rachmaninoff, C. Cui, A. Grechaninov, D. Shostakovich, S. Prokofiev and others).",
+          "No more than half of the competitors are admitted to the second round. In the second round a salon (urban, domestic) romance of the late 19th – early 20th century is performed (L. Malashkin, V. Abaza, N. Shishkin, Y. Prigozhy, S. Pokrass, B. Prozorovsky, Y. Khait, B. Fomin and others), or a romance by contemporary authors of the 21st century.",
+          "In the third round participants perform a romance by Uzbek composers (M. Ashrafi, R. Abdullaev, M. Burkhonov, S. Boboev, D. Zokirov, S. Jalil, H. Rakhimov, T. Sadykov, S. Yudakov and others)"
+        ]
+      },
+      {
+        "number": "§ III",
+        "title": "Participants of the competition",
+        "body": [
+          "Students of creative higher education institutions, pupils of secondary specialised educational institutions and music schools, as well as amateurs of Russian and Uzbek romance — citizens of the Republic of Uzbekistan and representatives of the countries of Central Asia — may take part in the competition.",
+          "To submit an entry, the registration form on the “Uzbek Romansiada” website (https://romansiada.uz/) must be completed by 15 November 2026.",
+          "The submission of an entry is regarded as the competitor’s agreement with all the provisions of these Regulations."
+        ]
+      },
+      {
+        "number": "§ IV",
+        "title": "Competition nominations",
+        "body": [
+          "The competition is held in two creative directions:",
+          "— “Russian romance” — performance of romances by Russian classical composers and authors of the 20th–21st centuries;",
+          "— “Uzbek romance” — performance of Uzbek romances;",
+          "In each direction the competition is held in the following age categories:",
+          "— “Hope of Romansiada” — from 12 to 17 years;",
+          "— “Young performers” — from 18 to 27 years;",
+          "— “Romance without borders” — no older than 35, without professional musical education."
+        ]
+      },
+      {
+        "number": "§ V",
+        "title": "Technical requirements",
+        "body": [
+          "The competition programme is performed exclusively with live musical accompaniment (accompaniment recorded on a phonogram is not permitted).",
+          "Where necessary, the organising committee provides competitors from other cities with a concertmaster for rehearsals and competition performances free of charge."
+        ]
+      },
+      {
+        "number": "§ VI",
+        "title": "Jury of the competition and prizes",
+        "body": [
+          "The winners of the competition are determined by an international jury headed by the Honoured Art Worker of Russia, Honoured Artist of Russia, director of the Moscow “House of Romance” Galina Preobrazhenskaya.",
+          "The jury also includes recognised organisers, musicians and specialists in the field of vocal art and Russian romance from Uzbekistan, Kazakhstan, Kyrgyzstan, Russia and Tajikistan.",
+          "Following the results of the competition, the jury awards diplomas, laureate titles and prizes. In addition, one of the competitors whose talent and mastery deserve a particularly high assessment may be awarded the “Grand Prix”. One of the winners of the competition may also take part in the final of the XXX International Competition of Young Performers of Russian Romance “Romansiada” in December 2026 in Moscow. The best participants of the competition are also recognised with special diplomas (“Audience Choice Award”, “Miss Romansiada”, “Youngest Participant” and so on).",
+          "The jury reserves the right:",
+          "- not to award all the prizes;",
+          "- to divide prizes between performers;",
+          "- to establish special prizes, including those timed to the anniversaries of cultural figures of Uzbekistan and Russia;",
+          "- to select the best concert numbers for participation in the concert “Stars of Russian Romance”.",
+          "The decisions of the jury are final and not subject to review."
+        ]
+      }
+    ],
+    "contacts": {
+      "title": "Contacts",
+      "phone": "+99899 050 7144",
+      "email": "romansiadauzbekistan@mail.ru",
+      "person": "Artistic Director of “Uzbek Romansiada” Avaz Akbarovich Radjabov"
     },
-    "categories": {
-      "kicker": "Categories",
-      "title": "Age categories",
-      "ageRange": "Age",
-      "years": "years",
-      "duration": "Performance length",
-      "pieces": "Number of pieces"
-    },
-    "criteria": {
-      "kicker": "Judging",
-      "title": "Evaluation criteria",
-      "weight": "Weight",
-      "maxScore": "Maximum score",
-      "items": [
-        {
-          "title": "Vocal technique",
-          "body": "Tone quality, range, intonation accuracy and breath control.",
-          "weight": 30
-        },
-        {
-          "title": "Stage presence",
-          "body": "Stagecraft, characterisation and connection with the audience.",
-          "weight": 25
-        },
-        {
-          "title": "Repertoire choice",
-          "body": "How well the piece suits the performer's voice and age category.",
-          "weight": 20
-        },
-        {
-          "title": "Interpretation",
-          "body": "Understanding of the text, stylistic fidelity and individuality.",
-          "weight": 15
-        },
-        {
-          "title": "Overall impression",
-          "body": "Coherence of the performance, appearance and professionalism.",
-          "weight": 10
-        }
-      ]
-    },
-    "documents": {
-      "kicker": "Documents",
-      "title": "Required documents",
-      "items": [
-        "Completed online application",
-        "Colour photograph (3×4 or portrait, up to 5 MB)",
-        "Copy of passport or birth certificate",
-        "Performance recording (video link or file)",
-        "Parental consent for participants under 18"
-      ]
-    },
-    "faq": {
-      "kicker": "Questions",
-      "title": "Frequently asked questions"
+    "notesCta": {
+      "title": "Sheet music for the competition romances",
+      "body": "A recommended list of romances by Uzbek composers, with sheet music to download.",
+      "action": "Open the sheet music"
     }
   },
   "registration": {
@@ -352,7 +388,8 @@
       "duplicate": "An application with this e-mail has already been submitted.",
       "fixFields": "Please correct the following fields"
     },
-    "applicantsCount": "{count} applications submitted so far"
+    "applicantsCount": "{count} applications submitted so far",
+    "deadline": "Applications are accepted until 15 November 2026"
   },
   "validation": {
     "required": "This field is required",
@@ -473,7 +510,6 @@
       "winners": "Winners",
       "partners": "Partners",
       "events": "Events",
-      "pages": "Pages",
       "messages": "Messages",
       "users": "Users",
       "settings": "Settings",
@@ -578,6 +614,18 @@
       "redo": "Redo",
       "bodyPlaceholder": "Write the article…"
     },
+    "media": {
+      "upload": "Upload image",
+      "replace": "Replace",
+      "remove": "Remove",
+      "uploading": "Uploading…",
+      "dropHint": "Drop an image here or choose a file · JPG, PNG, WebP, AVIF · up to 10 MB",
+      "pathLabel": "File path",
+      "typeError": "Only JPG, PNG, WebP or AVIF images can be uploaded",
+      "sizeError": "The file must be 10 MB or smaller",
+      "uploadError": "The file could not be uploaded. Please try again.",
+      "noImage": "No image selected"
+    },
     "judges": {
       "title": "Jury",
       "newItem": "New jury member",
@@ -628,16 +676,6 @@
       "startsAt": "Starts",
       "endsAt": "Ends"
     },
-    "pages": {
-      "title": "Pages",
-      "newItem": "New page",
-      "editItem": "Edit page",
-      "empty": "No pages",
-      "pageTitle": "Title",
-      "body": "Body",
-      "isSystem": "System page",
-      "systemHint": "A system page cannot be deleted"
-    },
     "videos": {
       "title": "Videos",
       "newItem": "New video",
@@ -664,7 +702,16 @@
       "storagePath": "File path",
       "altText": "Alt text",
       "altHint": "Required for screen readers",
-      "noPhotos": "This album has no photos"
+      "noPhotos": "This album has no photos",
+      "uploadPhotos": "Upload photos",
+      "uploadHint": "You can select several files at once",
+      "uploadProgress": "{done} of {total} uploaded",
+      "caption": "Caption",
+      "altMissing": "No alt text",
+      "altMissingHint": "A photo without alt text is not shown on the site.",
+      "deletePhoto": "Delete photo",
+      "confirmDeletePhoto": "The photo and its file will be deleted permanently. Continue?",
+      "openAlbum": "Open the album on the site"
     },
     "common": {
       "create": "Create",
@@ -742,5 +789,25 @@
     "404Body": "Sorry, the page you are looking for does not exist or has been moved.",
     "500Title": "Server error",
     "500Body": "An unexpected error occurred. Please try again in a moment."
+  },
+  "notes": {
+    "title": "Sheet music",
+    "subtitle": "Recommended Uzbek romances for the competition",
+    "intro": [
+      "This list of romances is purely advisory; competitors may choose any romance by Uzbek composers besides those in the list.",
+      "The romances may be transposed into convenient keys.",
+      "A QR code linking to a recording of the work on YouTube is attached to each romance."
+    ],
+    "voices": {
+      "bass": "Bass",
+      "baritone": "Baritone",
+      "tenor": "Tenor",
+      "mezzo": "Mezzo-soprano",
+      "soprano": "Soprano"
+    },
+    "view": "View",
+    "download": "Download",
+    "missing": "No sheet music supplied",
+    "count": "{count} romances"
   }
 }

@@ -4,25 +4,39 @@ import type { TranslationTable } from '@/server/actions/translation-sync';
 /**
  * Descriptor-driven admin modules.
  *
- * Seven of the editorial entities have the same shape: a handful of scalar columns, a
- * per-locale translation table, a publication status and a sort order. Writing seven
- * bespoke list pages and seven bespoke forms would be seven places to fix the next bug
+ * Six of the editorial entities have the same shape: a handful of scalar columns, a
+ * per-locale translation table, a publication status and a sort order. Writing six
+ * bespoke list pages and six bespoke forms would be six places to fix the next bug
  * in translation pruning or status handling.
  *
  * So they are described here and rendered by one generic list and one generic form.
  * News is deliberately *not* in this registry: it carries a rich-text body, scheduled
  * publishing and SEO fields, and bending the generic form far enough to cover it would
  * make the abstraction cost more than it saves.
+ *
+ * The registry is also the whitelist for `/admin/[entity]` — a key that is not here 404s.
+ * Removing an entry removes the module, which is how `pages` was retired: the site has
+ * no free-form editorial pages, so a screen for authoring them was a menu entry that
+ * only ever led to an empty list.
  */
 
 export type FieldType =
   | 'text'
   | 'textarea'
-  | 'richtext'
   | 'number'
   | 'checkbox'
   | 'date'
-  | 'datetime';
+  | 'datetime'
+  /** A `*_path` column, edited through the uploader. Stored as a plain string. */
+  | 'image';
+
+/*
+ * There is no `richtext` field type. `pages` was the only descriptor that used one, and
+ * with it gone the generic form no longer has to carry Tiptap — which is most of its
+ * JavaScript. The article editor keeps its own rich text; it was never rendered by this
+ * registry. Reintroducing the type means adding the branch back to `entity-form.tsx`,
+ * and accepting the bundle it drags with it.
+ */
 
 export interface FieldDef {
   /** Database column name. */
@@ -39,7 +53,7 @@ export interface FieldDef {
 export interface EntityConfig {
   /** URL segment: `/admin/<key>`. */
   key: string;
-  table: 'judges' | 'winners' | 'partners' | 'events' | 'pages' | 'videos' | 'albums';
+  table: 'judges' | 'winners' | 'partners' | 'events' | 'videos' | 'albums';
   translationTable: TranslationTable;
   foreignKey: string;
 
@@ -81,7 +95,7 @@ export const ENTITIES: Record<string, EntityConfig> = {
     hasSortOrder: true,
     titleColumn: 'full_name',
     baseFields: [
-      { name: 'photo_path', label: (d) => d.admin.judges.photo, type: 'text' },
+      { name: 'photo_path', label: (d) => d.admin.judges.photo, type: 'image' },
       { name: 'country_code', label: (d) => d.admin.judges.country, type: 'text', max: 2 },
       { name: 'is_chair', label: (d) => d.admin.judges.isChair, type: 'checkbox' },
     ],
@@ -114,7 +128,7 @@ export const ENTITIES: Record<string, EntityConfig> = {
       { name: 'year', label: (d) => d.admin.winners.year, type: 'number', required: true, min: 1990, max: 2200 },
       { name: 'place', label: (d) => d.admin.winners.place, type: 'number', min: 1, max: 10 },
       { name: 'is_grand_prix', label: (d) => d.admin.winners.isGrandPrix, type: 'checkbox' },
-      { name: 'photo_path', label: (d) => d.admin.winners.photo, type: 'text' },
+      { name: 'photo_path', label: (d) => d.admin.winners.photo, type: 'image' },
       { name: 'country_code', label: (d) => d.admin.winners.country, type: 'text', max: 2 },
     ],
     translationFields: [
@@ -143,8 +157,8 @@ export const ENTITIES: Record<string, EntityConfig> = {
     hasSortOrder: true,
     titleColumn: 'name',
     baseFields: [
-      { name: 'logo_path', label: (d) => d.admin.partners.logo, type: 'text' },
-      { name: 'logo_dark_path', label: (d) => d.admin.partners.logoDark, type: 'text' },
+      { name: 'logo_path', label: (d) => d.admin.partners.logo, type: 'image' },
+      { name: 'logo_dark_path', label: (d) => d.admin.partners.logoDark, type: 'image' },
       { name: 'website_url', label: (d) => d.admin.partners.website, type: 'text', placeholder: 'https://' },
       { name: 'tier', label: (d) => d.admin.partners.tier, type: 'number', min: 1, max: 5 },
     ],
@@ -174,7 +188,7 @@ export const ENTITIES: Record<string, EntityConfig> = {
     baseFields: [
       { name: 'starts_at', label: (d) => d.admin.events.startsAt, type: 'datetime', required: true },
       { name: 'ends_at', label: (d) => d.admin.events.endsAt, type: 'datetime' },
-      { name: 'cover_path', label: (d) => d.admin.common.coverImage, type: 'text' },
+      { name: 'cover_path', label: (d) => d.admin.common.coverImage, type: 'image' },
     ],
     translationFields: [
       { name: 'title', label: (d) => d.admin.events.eventTitle, type: 'text', required: true },
@@ -183,32 +197,6 @@ export const ENTITIES: Record<string, EntityConfig> = {
     ],
     listColumns: [{ label: (d) => d.admin.events.startsAt, column: 'starts_at' }],
     orderBy: [{ column: 'starts_at', ascending: false }],
-  },
-
-  pages: {
-    key: 'pages',
-    table: 'pages',
-    translationTable: 'page_translations',
-    foreignKey: 'page_id',
-    title: (d) => d.admin.pages.title,
-    newLabel: (d) => d.admin.pages.newItem,
-    editLabel: (d) => d.admin.pages.editItem,
-    emptyLabel: (d) => d.admin.pages.empty,
-    hasSlug: true,
-    hasStatus: true,
-    // `pages` has no sort_order column — it is addressed by slug, never ordered.
-    hasSortOrder: false,
-    titleColumn: 'title',
-    baseFields: [
-      { name: 'is_system', label: (d) => d.admin.pages.isSystem, type: 'checkbox', hint: (d) => d.admin.pages.systemHint },
-    ],
-    translationFields: [
-      { name: 'title', label: (d) => d.admin.pages.pageTitle, type: 'text', required: true },
-      { name: 'body', label: (d) => d.admin.pages.body, type: 'richtext' },
-      { name: 'seo_title', label: (d) => d.admin.common.seoTitle, type: 'text' },
-      { name: 'seo_description', label: (d) => d.admin.common.seoDescription, type: 'text' },
-    ],
-    orderBy: [{ column: 'slug', ascending: true }],
   },
 
   videos: {
@@ -261,7 +249,7 @@ export const ENTITIES: Record<string, EntityConfig> = {
     hasSortOrder: true,
     titleColumn: 'title',
     baseFields: [
-      { name: 'cover_path', label: (d) => d.admin.common.coverImage, type: 'text' },
+      { name: 'cover_path', label: (d) => d.admin.common.coverImage, type: 'image' },
       { name: 'event_date', label: (d) => d.admin.gallery.eventDate, type: 'date' },
     ],
     translationFields: [

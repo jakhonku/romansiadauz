@@ -36,7 +36,6 @@ const ICONS: Record<AdminIconName, typeof Gauge> = {
   winners: Trophy,
   partners: Handshake,
   events: CalendarDays,
-  pages: FileText,
   users: UserRound,
   settings: Settings,
 };

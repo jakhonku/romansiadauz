@@ -1,4 +1,4 @@
-import { Users } from 'lucide-react';
+import { CalendarClock, Users } from 'lucide-react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -64,16 +64,25 @@ export default async function RegistrationPage({
           Hidden at zero: "0 applications so far" discourages the first applicant,
           which is exactly the moment the encouragement is needed.
         */}
-        {applicantCount > 0 ? (
+        <div className="flex flex-wrap items-center gap-3">
+          {/* § III of the Regulations sets the closing date; an applicant should meet it
+              before the form, not after filling it in. */}
           <p className="inline-flex items-center gap-2.5 rounded-full border border-gold/40 bg-background/70 px-4 py-2 text-sm">
-            <Users className="size-4 text-gold" aria-hidden />
-            <span className="text-muted-foreground">
-              {interpolate(d.registration.applicantsCount, {
-                count: formatNumber(applicantCount, locale),
-              })}
-            </span>
+            <CalendarClock className="size-4 text-gold" aria-hidden />
+            <span className="text-muted-foreground">{d.registration.deadline}</span>
           </p>
-        ) : null}
+
+          {applicantCount > 0 ? (
+            <p className="inline-flex items-center gap-2.5 rounded-full border border-gold/40 bg-background/70 px-4 py-2 text-sm">
+              <Users className="size-4 text-gold" aria-hidden />
+              <span className="text-muted-foreground">
+                {interpolate(d.registration.applicantsCount, {
+                  count: formatNumber(applicantCount, locale),
+                })}
+              </span>
+            </p>
+          ) : null}
+        </div>
       </PageHero>
 
       <section className="section bg-background">

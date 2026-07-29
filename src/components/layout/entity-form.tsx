@@ -4,11 +4,12 @@ import { Save, Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
 
-import { RichTextEditor, type EditorLabels } from '@/components/common/rich-text-editor';
+import { ImageUpload } from '@/components/common/image-upload';
 import { TranslationTabs, panelClass } from '@/components/layout/translation-tabs';
 import { Button } from '@/components/ui/button';
 import { Field, Input, Select, Textarea } from '@/components/ui/field';
 import type { ResolvedEntityConfig, ResolvedField } from '@/lib/admin/entities';
+import { mediaLabels, type MediaLabels } from '@/lib/admin/media-labels';
 import { locales, type Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { deleteEntity, saveEntity } from '@/server/actions/admin-entity';
@@ -75,21 +76,7 @@ export function EntityForm({
   const [pending, startTransition] = useTransition();
 
   const requiredField = config.translationFields.find((f) => f.required);
-
-  const editorLabels: EditorLabels = {
-    bold: d.admin.editor.bold,
-    italic: d.admin.editor.italic,
-    heading2: d.admin.editor.heading2,
-    heading3: d.admin.editor.heading3,
-    bulletList: d.admin.editor.bulletList,
-    orderedList: d.admin.editor.orderedList,
-    quote: d.admin.editor.quote,
-    link: d.admin.editor.link,
-    unlink: d.admin.editor.unlink,
-    linkPrompt: d.admin.editor.linkPrompt,
-    undo: d.admin.editor.undo,
-    redo: d.admin.editor.redo,
-  };
+  const media = mediaLabels(d);
 
   function patchBase(name: string, next: string | boolean) {
     setValue((previous) => ({ ...previous, base: { ...previous.base, [name]: next } }));
@@ -140,7 +127,7 @@ export function EntityForm({
     if (!window.confirm(`${c.confirmDelete}\n\n${c.confirmDeleteBody}`)) return;
 
     startTransition(async () => {
-      const result = await deleteEntity(config.key, value.id, value.slug);
+      const result = await deleteEntity(config.key, value.id);
       if (result.ok) {
         router.push(`/admin/${config.key}`);
         router.refresh();
@@ -181,8 +168,6 @@ export function EntityForm({
                 value={value.translations[locale][field.name] ?? ''}
                 onChange={(next) => patchTranslation(locale, field.name, next)}
                 optionalLabel={d.common.optional}
-                editorLabels={editorLabels}
-                editorPlaceholder={d.admin.editor.bodyPlaceholder}
               />
             ))}
           </div>
@@ -251,6 +236,7 @@ export function EntityForm({
               onChange={(next) => patchBase(field.name, next)}
               optionalLabel={d.common.optional}
               entityKey={config.key}
+              media={media}
             />
           ))}
         </div>
@@ -285,36 +271,14 @@ function TranslationField({
   value,
   onChange,
   optionalLabel,
-  editorLabels,
-  editorPlaceholder,
 }: {
   field: ResolvedField;
   locale: Locale;
   value: string;
   onChange: (next: string) => void;
   optionalLabel: string;
-  editorLabels: EditorLabels;
-  editorPlaceholder: string;
 }) {
   const id = `${field.name}-${locale}`;
-
-  if (field.type === 'richtext') {
-    return (
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium" htmlFor={id}>
-          {field.label}
-        </label>
-        <div id={id}>
-          <RichTextEditor
-            value={value}
-            onChange={onChange}
-            placeholder={editorPlaceholder}
-            labels={editorLabels}
-          />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <Field
@@ -343,14 +307,34 @@ function BaseField({
   onChange,
   optionalLabel,
   entityKey,
+  media,
 }: {
   field: ResolvedField;
   value: string | boolean;
   onChange: (next: string | boolean) => void;
   optionalLabel: string;
   entityKey: string;
+  media: MediaLabels;
 }) {
   const id = `${entityKey}-${field.name}`;
+
+  if (field.type === 'image') {
+    return (
+      <ImageUpload
+        id={id}
+        label={field.label}
+        value={String(value)}
+        onChange={onChange}
+        // Objects are filed under the module they belong to, so the bucket reads like
+        // the sidebar rather than one flat heap.
+        folder={entityKey}
+        labels={media}
+        hint={field.hint}
+        optionalLabel={field.required ? undefined : optionalLabel}
+        className="sm:col-span-2"
+      />
+    );
+  }
 
   if (field.type === 'checkbox') {
     return (

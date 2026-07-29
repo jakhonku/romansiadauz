@@ -1,20 +1,53 @@
-import { Check, FileText } from 'lucide-react';
+import { ArrowRight, Mail, Music4, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { EmptyState } from '@/components/common/empty-state';
-import { Prose } from '@/components/common/prose';
 import { Reveal } from '@/components/motion/reveal';
-import { Stagger, StaggerItem } from '@/components/motion/stagger';
 import { PageHero } from '@/components/sections/page-hero';
-import { SectionHeading } from '@/components/sections/section-heading';
+import { Button } from '@/components/ui/button';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 import { isLocale, localizeHref, type Locale } from '@/lib/i18n/config';
 import { buildMetadata } from '@/lib/seo/metadata';
-import { getAgeCategories } from '@/server/queries/reference';
-import { getPageBySlug } from '@/server/queries/pages';
 
 export const revalidate = 3600;
+
+/**
+ * The competition regulations, as approved.
+ *
+ * This page renders a document, not a CMS entry. The text lives in the dictionaries so
+ * that all three languages are versioned with the code and cannot drift apart or be
+ * edited into disagreement — a rule an applicant is held to should not be a row someone
+ * can quietly change. Revising it between seasons is a deliberate act: edit the three
+ * `regulations` blocks and deploy.
+ *
+ * Structure comes from the document's own punctuation. A line that opens with an em dash
+ * or a hyphen is one of its bullets, so consecutive ones are gathered into a list and
+ * everything else is a paragraph — no parallel markup to keep in step with the wording.
+ */
+
+type Block = { kind: 'paragraph'; text: string } | { kind: 'list'; items: string[] };
+
+function toBlocks(body: readonly string[]): Block[] {
+  const blocks: Block[] = [];
+
+  for (const line of body) {
+    const bullet = /^[—-]\s*/.exec(line);
+
+    if (!bullet) {
+      blocks.push({ kind: 'paragraph', text: line });
+      continue;
+    }
+
+    const item = line.slice(bullet[0].length);
+    const previous = blocks[blocks.length - 1];
+
+    if (previous?.kind === 'list') previous.items.push(item);
+    else blocks.push({ kind: 'list', items: [item] });
+  }
+
+  return blocks;
+}
 
 export async function generateMetadata({
   params,
@@ -41,14 +74,7 @@ export default async function RegulationsPage({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const [d, categories, rulesPage] = await Promise.all([
-    getDictionary(locale),
-    getAgeCategories(locale),
-    // The long-form rules text is editorial, so it lives in `pages` under the
-    // `regulations` slug where staff can revise it between seasons without a deploy.
-    getPageBySlug(locale, 'regulations'),
-  ]);
-
+  const d = await getDictionary(locale);
   const r = d.regulations;
 
   return (
@@ -65,102 +91,129 @@ export default async function RegulationsPage({
 
       <section className="section bg-background">
         <div className="container">
-          <SectionHeading kicker={r.rules.kicker} title={r.rules.title} align="start" />
-
-          <Reveal className="mt-10 max-w-3xl">
-            {rulesPage ? (
-              <Prose html={rulesPage.body} />
-            ) : (
-              <EmptyState message={d.common.noResultsHint} icon={FileText} />
-            )}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Age categories — the one part of this page that is data, not prose, because the
-          jury adjusts stage time and piece counts between seasons. */}
-      <section className="section-sm bg-surface">
-        <div className="container">
-          <SectionHeading kicker={r.categories.kicker} title={r.categories.title} />
-
-          {categories.length ? (
-            <Stagger className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {categories.map((category) => (
-                <StaggerItem key={category.id}>
-                  <article className="h-full rounded-card border border-border bg-card p-6 text-center shadow-card">
-                    <h3 className="font-display text-lg font-semibold">{category.name}</h3>
-
-                    <p className="mt-4 font-display text-display-sm font-bold leading-none text-primary">
-                      {category.minAge}–{category.maxAge}
+          <article className="mx-auto max-w-3xl">
+            {/* The approval block sits at the head of the paper document; keeping it
+                keeps the page recognisable as the same document rather than a summary
+                of it. */}
+            <Reveal>
+              <div className="grid gap-8 border-b border-border pb-10 sm:grid-cols-2">
+                {r.approvals.map((approval) => (
+                  <div key={approval.name}>
+                    <p className="text-kicker font-semibold uppercase tracking-[0.18em] text-gold-ink">
+                      {r.approvalLabel}
                     </p>
-                    <p className="mt-2 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                      {r.categories.years}
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {approval.role}
                     </p>
-
-                    <dl className="mt-6 space-y-2 border-t border-border pt-5 text-sm">
-                      <div className="flex items-center justify-between gap-3">
-                        <dt className="text-muted-foreground">{r.categories.duration}</dt>
-                        <dd className="font-medium">{category.durationMinutes} min</dd>
-                      </div>
-                      <div className="flex items-center justify-between gap-3">
-                        <dt className="text-muted-foreground">{r.categories.pieces}</dt>
-                        <dd className="font-medium">{category.piecesCount}</dd>
-                      </div>
-                    </dl>
-                  </article>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          ) : (
-            <EmptyState className="mt-12" message={d.common.noResults} />
-          )}
-        </div>
-      </section>
-
-      <section className="section bg-background">
-        <div className="container">
-          <SectionHeading kicker={r.criteria.kicker} title={r.criteria.title} />
-
-          <Stagger className="mx-auto mt-12 flex max-w-3xl flex-col gap-4">
-            {r.criteria.items.map((item) => (
-              <StaggerItem key={item.title}>
-                <article className="rounded-card border border-border bg-card p-6 shadow-card">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="font-display text-lg font-semibold">{item.title}</h3>
-                    <span className="shrink-0 font-display text-xl font-bold text-gold-ink">
-                      {item.weight}%
-                    </span>
+                    <p className="mt-3 border-t border-border pt-3 text-sm font-medium">
+                      {approval.name}
+                    </p>
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+                ))}
+              </div>
+            </Reveal>
 
-                  {/* The weight bar is decorative; the number above it is the accessible
-                      value, so the track is hidden from assistive tech. */}
-                  <div aria-hidden className="mt-4 h-1 overflow-hidden rounded-full bg-muted">
-                    <div className="h-full rounded-full bg-gold-gradient" style={{ width: `${item.weight}%` }} />
+            <Reveal>
+              <h2 className="mt-12 text-center font-display text-display-sm font-semibold leading-tight">
+                {r.documentTitle}
+              </h2>
+            </Reveal>
+
+            {r.sections.map((section) => (
+              <Reveal key={section.number}>
+                <section className="mt-14">
+                  <h3 className="font-display text-xl font-semibold">
+                    <span className="text-gold-ink">{section.number}</span>{' '}
+                    <span>{section.title}</span>
+                  </h3>
+
+                  <div className="mt-5 flex flex-col gap-4">
+                    {toBlocks(section.body).map((block, index) =>
+                      block.kind === 'paragraph' ? (
+                        <p key={index} className="text-[0.9375rem] leading-relaxed">
+                          {block.text}
+                        </p>
+                      ) : (
+                        <ul key={index} className="flex flex-col gap-2.5 ps-1">
+                          {block.items.map((item) => (
+                            <li key={item} className="flex gap-3 text-[0.9375rem] leading-relaxed">
+                              <span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-gold" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ),
+                    )}
                   </div>
-                </article>
-              </StaggerItem>
+                </section>
+              </Reveal>
             ))}
-          </Stagger>
+
+            <Reveal>
+              <section className="mt-14 rounded-card border border-border bg-surface p-6 shadow-card sm:p-8">
+                <h3 className="font-display text-lg font-semibold">{r.contacts.title}</h3>
+
+                <dl className="mt-5 flex flex-col gap-3 text-[0.9375rem]">
+                  <div className="flex items-center gap-3">
+                    <dt>
+                      <Phone className="size-4 text-gold" aria-hidden />
+                      <span className="sr-only">{d.contact.phone}</span>
+                    </dt>
+                    <dd>
+                      <a
+                        href={`tel:${r.contacts.phone.replace(/[^\d+]/g, '')}`}
+                        className="transition-colors hover:text-primary"
+                      >
+                        {r.contacts.phone}
+                      </a>
+                    </dd>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <dt>
+                      <Mail className="size-4 text-gold" aria-hidden />
+                      <span className="sr-only">{d.contact.email}</span>
+                    </dt>
+                    <dd>
+                      <a
+                        href={`mailto:${r.contacts.email}`}
+                        className="transition-colors hover:text-primary"
+                      >
+                        {r.contacts.email}
+                      </a>
+                    </dd>
+                  </div>
+                </dl>
+
+                <p className="mt-4 text-sm text-muted-foreground">{r.contacts.person}</p>
+              </section>
+            </Reveal>
+          </article>
         </div>
       </section>
 
       <section className="section-sm bg-surface">
         <div className="container">
-          <SectionHeading kicker={r.documents.kicker} title={r.documents.title} />
+          <Reveal className="mx-auto max-w-3xl">
+            <div className="flex flex-col items-start gap-5 rounded-card border border-border bg-card p-7 shadow-card sm:flex-row sm:items-center sm:gap-8">
+              <span className="grid size-14 shrink-0 place-items-center rounded-full bg-gold/10">
+                <Music4 className="size-6 text-gold-ink" aria-hidden />
+              </span>
 
-          <Reveal className="mx-auto mt-12 max-w-2xl">
-            <ul className="flex flex-col gap-3">
-              {r.documents.items.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 rounded-card border border-border bg-card p-4 shadow-card"
-                >
-                  <Check className="mt-0.5 size-5 shrink-0 text-gold" aria-hidden />
-                  <span className="text-sm leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
+              <div className="min-w-0 flex-1">
+                <h2 className="font-display text-lg font-semibold">{r.notesCta.title}</h2>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                  {r.notesCta.body}
+                </p>
+              </div>
+
+              <Button asChild variant="gold" className="shrink-0">
+                <Link href={localizeHref('/notes', locale as Locale)}>
+                  {r.notesCta.action}
+                  <ArrowRight className="rtl:rotate-180" />
+                </Link>
+              </Button>
+            </div>
           </Reveal>
         </div>
       </section>

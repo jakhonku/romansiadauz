@@ -17,6 +17,36 @@ export const LOCALE_COOKIE = 'NEXT_LOCALE';
 /** One year — a language preference should not expire mid-season. */
 export const LOCALE_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
+/**
+ * Languages the admin panel's own chrome is offered in.
+ *
+ * The visitor-facing site is trilingual; the panel is not. The people who operate it
+ * work in Uzbek or Russian, and an English *interface* nobody asked for would be a third
+ * copy of every label to keep in step with the other two.
+ *
+ * This governs the chrome only. Content is still authored in all three locales — the
+ * translation tabs in every editor are unaffected, because visitors read all three.
+ */
+export const adminLocales = ['uz', 'ru'] as const;
+
+export type AdminLocale = (typeof adminLocales)[number];
+
+export const defaultAdminLocale: AdminLocale = 'uz';
+
+/**
+ * The panel's language lives in its own cookie, not in `NEXT_LOCALE`.
+ *
+ * An operator previewing the English site in the next tab would otherwise drag the panel
+ * along with them, and switching the panel to Russian would silently re-language the
+ * public site they are checking. Two preferences, two cookies. `NEXT_LOCALE` is still
+ * the fallback, so nobody has to make a choice before the panel picks a sensible one.
+ */
+export const ADMIN_LOCALE_COOKIE = 'ADMIN_LOCALE';
+
+export function isAdminLocale(value: string | undefined | null): value is AdminLocale {
+  return !!value && (adminLocales as readonly string[]).includes(value);
+}
+
 export const localeMetadata: Record<
   Locale,
   { label: string; nativeName: string; htmlLang: string; ogLocale: string; dir: 'ltr' }

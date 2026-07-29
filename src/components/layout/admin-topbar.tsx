@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { useTransition } from 'react';
 
 import { ThemeToggle, type ThemeToggleLabels } from '@/components/common/theme-toggle';
+import { AdminLocaleSwitcher } from '@/components/layout/admin-locale-switcher';
 import { AdminMobileNav } from '@/components/layout/admin-sidebar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import type { ResolvedAdminNavGroup } from '@/lib/auth/admin-nav';
+import type { AdminLocale } from '@/lib/i18n/config';
 import { signOut } from '@/server/actions/auth';
 
 export interface AdminTopbarLabels {
@@ -16,6 +18,7 @@ export interface AdminTopbarLabels {
   viewSite: string;
   menu: string;
   closeMenu: string;
+  language: string;
   theme: ThemeToggleLabels;
 }
 
@@ -33,6 +36,7 @@ export function AdminTopbar({
   siteHref,
   navGroups,
   brand,
+  locale,
   labels,
 }: {
   fullName: string;
@@ -41,6 +45,8 @@ export function AdminTopbar({
   siteHref: string;
   navGroups: ResolvedAdminNavGroup[];
   brand: { name: string; region: string };
+  /** Language the panel's chrome is currently drawn in. */
+  locale: AdminLocale;
   labels: AdminTopbarLabels;
 }) {
   const [pending, startTransition] = useTransition();
@@ -67,6 +73,8 @@ export function AdminTopbar({
             <ExternalLink className="size-[1.1rem]" />
           </Link>
         </Button>
+
+        <AdminLocaleSwitcher current={locale} label={labels.language} />
 
         <ThemeToggle labels={labels.theme} />
 

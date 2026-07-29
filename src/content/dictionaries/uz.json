@@ -10,6 +10,7 @@
     "home": "Bosh sahifa",
     "about": "Festival haqida",
     "regulations": "Nizom",
+    "notes": "Notalar",
     "news": "Yangiliklar",
     "judges": "Hakamlar",
     "gallery": "Galereya",
@@ -196,67 +197,102 @@
   },
   "regulations": {
     "title": "Festival nizomi",
-    "subtitle": "Ishtirok etish shartlari, yosh toifalari va baholash mezonlari",
-    "downloadPdf": "Nizomni PDF'da yuklab olish",
-    "rules": {
-      "kicker": "Qoidalar",
-      "title": "Umumiy qoidalar"
+    "subtitle": "Rus va o‘zbek romansi yosh ijrochilarining I\u00a0Xalqaro tanlovi «O‘zbek Romansiadasi»",
+    "documentTitle": "Rus va o‘zbek romansi yosh ijrochilarining I\u00a0Xalqaro tanlovi «O‘zbek Romansiadasi» NIZOMI",
+    "approvalLabel": "TASDIQLAYMAN",
+    "approvals": [
+      {
+        "role": "Rus va o‘zbek romansi yosh ijrochilarining «O‘zbek Romansiadasi» xalqaro tanlovi badiiy rahbari",
+        "name": "A.A. Rajabov"
+      },
+      {
+        "role": "Rus romansi yosh ijrochilarining «Romansiada» xalqaro tanlovi badiiy rahbari",
+        "name": "G.S. Preobrajenskaya"
+      }
+    ],
+    "sections": [
+      {
+        "number": "§ I",
+        "title": "Tanlovning maqsad va vazifalari",
+        "body": [
+          "«O‘zbek Romansiadasi» — rus va o‘zbek romansi yosh ijrochilarining xalqaro tanlovi bo‘lib, «Opera san’ati birlashmasi» ijodiy birlashmasi tomonidan O‘zbekiston Respublikasi Kambag‘allikni qisqartirish va bandlik vazirligi hamda Madaniyat vazirligi ko‘magida ta’sis etilgan.",
+          "Tanlov «Romansiada» xalqaro tanlovlar turkumi doirasida, rus romansi yosh ijrochilarining Moskva xalqaro tanlovi «Romansiada» va «O‘rta Osiyo Romansiadasi» xalqaro tanlovi (Bishkek sh.) tashkiliy qo‘mitalari bilan kelishilgan holda o‘tkaziladi. Tanlov rus romansi yosh ijrochilarining XXX Moskva xalqaro tanlovi «Romansiada-2026» dasturiga kiritilgan.",
+          "Tanlovning maqsadlari:",
+          "— O‘zbekiston va Markaziy Osiyo mamlakatlari yoshlarini qo‘llab-quvvatlash va ijodiy rivojlantirish;",
+          "— O‘zbekiston, Rossiya va mintaqa mamlakatlari o‘rtasidagi do‘stlik, madaniy va gumanitar hamkorlikni mustahkamlash;",
+          "— klassik musiqa madaniyati va rus romansi an’analarini targ‘ib qilish;",
+          "— o‘zbek romansi va o‘zbek shoirlari she’rlariga yozilgan lirik qo‘shiqni saqlash, rivojlantirish va ommalashtirish;",
+          "— yangi ijrochi nomlarini kashf etish va ularning professional o‘sishiga ko‘maklashish."
+        ]
+      },
+      {
+        "number": "§ II",
+        "title": "Tanlovni o‘tkazish tartibi va muddatlari",
+        "body": [
+          "Tanlov 2026-yil 28-noyabrdan 30-noyabrgacha Toshkent shahrida o‘tkaziladi.",
+          "Tanlov o‘tkazish muddatlari o‘zgarishi mumkinligi haqida tashkiliy qo‘mita oldindan xabar beradi.",
+          "Tanlov tinglovlari uch turda o‘tadi, har bir turda bittadan romans ijro etiladi.",
+          "Birinchi turda ishtirokchilar XIX–XX asr klassik kompozitorining romansini ijro etadilar (A. Gurilyov, A. Varlamov, P. Bulaxov, M. Glinka, A. Dargomijskiy, M. Balakirev, P. Chaykovskiy, S. Taneyev, S. Raxmaninov, Ts. Kyui, A. Grechaninov, D. Shostakovich, S. Prokofyev va boshq.).",
+          "Ikkinchi turda ishtirok etishga tanlov ishtirokchilarining yarmidan ko‘p bo‘lmagan qismi qo‘yiladi. Ikkinchi turda XIX asr oxiri – XX asr boshlaridagi salon (shahar, maishiy) romansi (L. Malashkin, V. Abaza, N. Shishkin, Ya. Prigojiy, S. Pokrass, B. Prozorovskiy, Yu. Xayt, B. Fomin va boshq.), yoxud XXI asr zamonaviy mualliflarining romansi ijro etiladi.",
+          "Uchinchi turda ishtirokchilar o‘zbek kompozitorlarining romansini ijro etadilar (M. Ashrafiy, R. Abdullayev, M. Burhonov, S. Boboyev, D. Zokirov, S. Jalil, X. Rahimov, T. Sodiqov, S. Yudakov va boshq.)"
+        ]
+      },
+      {
+        "number": "§ III",
+        "title": "Tanlov ishtirokchilari",
+        "body": [
+          "Tanlovda ijod oliy o‘quv yurtlari talabalari, o‘rta maxsus o‘quv yurtlari va musiqa maktablari o‘quvchilari, shuningdek rus va o‘zbek romansi ixlosmandlari — O‘zbekiston Respublikasi fuqarolari va Markaziy Osiyo mamlakatlari vakillari ishtirok etishlari mumkin.",
+          "Ariza topshirish uchun 2026-yil 15-noyabrga qadar «O‘zbek Romansiadasi» saytida (https://romansiada.uz/) ro‘yxatdan o‘tish shaklini to‘ldirish zarur.",
+          "Ishtirok etish uchun arizaning mavjudligi konkursantning ushbu Nizomning barcha bandlariga roziligi sifatida baholanadi."
+        ]
+      },
+      {
+        "number": "§ IV",
+        "title": "Tanlov nominatsiyalari",
+        "body": [
+          "Tanlov ikkita ijodiy yo‘nalish bo‘yicha o‘tkaziladi:",
+          "— «Rus romansi» — rus klassik kompozitorlari va XX–XXI asr mualliflari romanslarini ijro etish;",
+          "— «O‘zbek romansi» — o‘zbek romanslarini ijro etish;",
+          "Har bir yo‘nalishda tanlov quyidagi yosh toifalari bo‘yicha o‘tkaziladi:",
+          "— «Romansiada umidi» — 12 yoshdan 17 yoshgacha;",
+          "— «Yosh ijrochilar» — 18 yoshdan 27 yoshgacha;",
+          "— «Chegarasiz romans» — 35 yoshdan katta bo‘lmagan, professional musiqiy ma’lumotsiz."
+        ]
+      },
+      {
+        "number": "§ V",
+        "title": "Texnik talablar",
+        "body": [
+          "Tanlov dasturi faqat jonli musiqiy jo‘rlik ostida ijro etiladi (fonogrammaga yozilgan jo‘rlikka yo‘l qo‘yilmaydi).",
+          "Zarur bo‘lganda tashkiliy qo‘mita boshqa shaharlardan kelgan konkursantlarga repetitsiya va tanlov chiqishlari uchun konsertmeysterni bepul asosda taqdim etadi."
+        ]
+      },
+      {
+        "number": "§ VI",
+        "title": "Tanlov hakamlar hay’ati va sovrinlar",
+        "body": [
+          "Tanlov g‘oliblarini Rossiyaning xizmat ko‘rsatgan san’at arbobi, Rossiyaning xizmat ko‘rsatgan artisti, Moskvadagi «Romans uyi» direktori Galina Preobrajenskaya boshchiligidagi xalqaro hakamlar hay’ati aniqlaydi.",
+          "Hakamlar hay’ati tarkibiga, shuningdek, O‘zbekiston, Qozog‘iston, Qirg‘iziston, Rossiya, Tojikistondan taniqli tashkilotchilar, musiqachilar hamda vokal va rus romansi sohasidagi mutaxassislar kiradi.",
+          "Tanlov natijalariga ko‘ra hakamlar hay’ati diplomlar, laureat unvonlari va sovrinlarni topshiradi. Bundan tashqari, iste’dodi va mahorati alohida yuqori bahoga loyiq bo‘lgan tanlov ishtirokchilaridan biriga «Gran-pri» berilishi mumkin. Shuningdek, tanlov g‘oliblaridan biri 2026-yil dekabr oyida Moskvada bo‘lib o‘tadigan rus romansi yosh ijrochilarining XXX Xalqaro tanlovi «Romansiada» finalida ishtirok etishi mumkin. Tanlovning eng yaxshi ishtirokchilari maxsus diplomlar bilan ham taqdirlanadi («Tomoshabinlar mehri sovrini», «Miss Romansiada», «Eng yosh ishtirokchi» va h.k.).",
+          "Hakamlar hay’ati quyidagi huquqlarni o‘zida saqlab qoladi:",
+          "- barcha mukofotlarni bermaslik;",
+          "- mukofotlarni ijrochilar o‘rtasida bo‘lish;",
+          "- maxsus sovrinlar, jumladan O‘zbekiston va Rossiya madaniyat arboblarining yubiley sanalariga bag‘ishlangan sovrinlarni ta’sis etish;",
+          "- «Rus romansi yulduzlari» konsertida ishtirok etish uchun eng yaxshi konsert raqamlarini tanlash.",
+          "Hakamlar hay’atining qarorlari yakuniy va qayta ko‘rib chiqilmaydi."
+        ]
+      }
+    ],
+    "contacts": {
+      "title": "Aloqa",
+      "phone": "+99899 050 7144",
+      "email": "romansiadauzbekistan@mail.ru",
+      "person": "«O‘zbek Romansiadasi» badiiy rahbari Avaz Akbarovich Rajabov"
     },
-    "categories": {
-      "kicker": "Toifalar",
-      "title": "Yosh toifalari",
-      "ageRange": "Yosh",
-      "years": "yosh",
-      "duration": "Chiqish davomiyligi",
-      "pieces": "Asarlar soni"
-    },
-    "criteria": {
-      "kicker": "Baholash",
-      "title": "Baholash mezonlari",
-      "weight": "Ulush",
-      "maxScore": "Maksimal ball",
-      "items": [
-        {
-          "title": "Vokal mahorat",
-          "body": "Ovoz sifati, diapazon, intonatsiya aniqligi va nafas texnikasi.",
-          "weight": 30
-        },
-        {
-          "title": "Artistlik",
-          "body": "Sahna madaniyati, obrazni ochib berish va tomoshabin bilan muloqot.",
-          "weight": 25
-        },
-        {
-          "title": "Repertuar tanlovi",
-          "body": "Asarning ijrochi ovoziga va yosh toifasiga mosligi.",
-          "weight": 20
-        },
-        {
-          "title": "Talqin",
-          "body": "Asar mazmunini his qilish, uslubga sodiqlik va o'ziga xoslik.",
-          "weight": 15
-        },
-        {
-          "title": "Umumiy taassurot",
-          "body": "Chiqishning yaxlitligi, tashqi ko'rinish va professionallik.",
-          "weight": 10
-        }
-      ]
-    },
-    "documents": {
-      "kicker": "Hujjatlar",
-      "title": "Talab qilinadigan hujjatlar",
-      "items": [
-        "To'ldirilgan onlayn ariza",
-        "Rangli fotosurat (3×4 yoki portret, 5 MB gacha)",
-        "Pasport yoki tug'ilganlik haqidagi guvohnoma nusxasi",
-        "Ijro yozuvi (video havola yoki fayl)",
-        "18 yoshgacha bo'lgan ishtirokchilar uchun ota-ona roziligi"
-      ]
-    },
-    "faq": {
-      "kicker": "Savollar",
-      "title": "Ko'p beriladigan savollar"
+    "notesCta": {
+      "title": "Tanlov romanslari notalari",
+      "body": "O‘zbek kompozitorlari romanslarining tavsiyaviy ro‘yxati va yuklab olish uchun notalar.",
+      "action": "Notalarni ochish"
     }
   },
   "registration": {
@@ -352,7 +388,8 @@
       "duplicate": "Bu e-mail bilan ariza allaqachon topshirilgan.",
       "fixFields": "Quyidagi maydonlarni to'g'irlang"
     },
-    "applicantsCount": "Hozirgacha {count} nafar ishtirokchi ariza topshirgan"
+    "applicantsCount": "Hozirgacha {count} nafar ishtirokchi ariza topshirgan",
+    "deadline": "Arizalar 2026-yil 15-noyabrgacha qabul qilinadi"
   },
   "validation": {
     "required": "Bu maydon to'ldirilishi shart",
@@ -473,7 +510,6 @@
       "winners": "G'oliblar",
       "partners": "Hamkorlar",
       "events": "Tadbirlar",
-      "pages": "Sahifalar",
       "messages": "Xabarlar",
       "users": "Foydalanuvchilar",
       "settings": "Sozlamalar",
@@ -578,6 +614,18 @@
       "redo": "Qaytarish",
       "bodyPlaceholder": "Maqola matnini yozing…"
     },
+    "media": {
+      "upload": "Rasm yuklash",
+      "replace": "Almashtirish",
+      "remove": "Olib tashlash",
+      "uploading": "Yuklanmoqda…",
+      "dropHint": "Rasmni shu yerga tashlang yoki fayl tanlang · JPG, PNG, WebP, AVIF · 10 MB gacha",
+      "pathLabel": "Fayl yo'li",
+      "typeError": "Faqat JPG, PNG, WebP yoki AVIF rasm yuklash mumkin",
+      "sizeError": "Fayl hajmi 10 MB dan oshmasligi kerak",
+      "uploadError": "Faylni yuklab bo'lmadi. Qayta urinib ko'ring.",
+      "noImage": "Rasm tanlanmagan"
+    },
     "judges": {
       "title": "Hakamlar",
       "newItem": "Yangi hakam",
@@ -628,16 +676,6 @@
       "startsAt": "Boshlanishi",
       "endsAt": "Tugashi"
     },
-    "pages": {
-      "title": "Sahifalar",
-      "newItem": "Yangi sahifa",
-      "editItem": "Sahifani tahrirlash",
-      "empty": "Sahifalar royxati bosh",
-      "pageTitle": "Sarlavha",
-      "body": "Matn",
-      "isSystem": "Tizim sahifasi",
-      "systemHint": "Tizim sahifasini ochirib bolmaydi"
-    },
     "videos": {
       "title": "Videolar",
       "newItem": "Yangi video",
@@ -664,7 +702,16 @@
       "storagePath": "Fayl yoli",
       "altText": "Alt matn",
       "altHint": "Ekran oquvchilar uchun majburiy",
-      "noPhotos": "Bu albomda fotosurat yoq"
+      "noPhotos": "Bu albomda fotosurat yoq",
+      "uploadPhotos": "Fotosuratlar yuklash",
+      "uploadHint": "Bir vaqtning o'zida bir nechta rasm tanlashingiz mumkin",
+      "uploadProgress": "{done} / {total} yuklandi",
+      "caption": "Izoh",
+      "altMissing": "Alt matn yo'q",
+      "altMissingHint": "Alt matni bo'lmagan fotosurat saytda ko'rsatilmaydi.",
+      "deletePhoto": "Fotosuratni o'chirish",
+      "confirmDeletePhoto": "Fotosurat va uning fayli butunlay o'chiriladi. Davom etasizmi?",
+      "openAlbum": "Albomni saytda ko'rish"
     },
     "common": {
       "create": "Yaratish",
@@ -742,5 +789,25 @@
     "404Body": "Kechirasiz, siz qidirgan sahifa mavjud emas yoki boshqa manzilga ko'chirilgan.",
     "500Title": "Serverda xatolik",
     "500Body": "Kutilmagan xatolik yuz berdi. Bir ozdan so'ng qayta urinib ko'ring."
+  },
+  "notes": {
+    "title": "Notalar",
+    "subtitle": "Tanlov uchun tavsiya etilgan o‘zbek romanslari",
+    "intro": [
+      "Ushbu romanslar ro‘yxati faqat tavsiyaviy xarakterga ega, konkursantlar ro‘yxatda mavjud bo‘lganlaridan tashqari o‘zbek kompozitorlarining istalgan romansini tanlashlari mumkin.",
+      "Romanslar qulay tonalliklarga ko‘chirilishi mumkin.",
+      "Har bir romansga asarning YouTube’dagi yozuviga havola qiluvchi QR kod biriktirilgan."
+    ],
+    "voices": {
+      "bass": "Bas",
+      "baritone": "Bariton",
+      "tenor": "Tenor",
+      "mezzo": "Mecco-soprano",
+      "soprano": "Soprano"
+    },
+    "view": "Ko‘rish",
+    "download": "Yuklab olish",
+    "missing": "Nota fayli taqdim etilmagan",
+    "count": "{count} ta romans"
   }
 }

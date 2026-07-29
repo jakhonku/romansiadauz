@@ -191,7 +191,13 @@ function DateOfBirthPicker({
   const yearsList = Array.from({ length: maxYear - minYear + 1 }, (_, i) => String(maxYear - i));
 
   return (
-    <div className="grid grid-cols-3 gap-2.5 sm:gap-3" id={id} onBlur={onBlur}>
+    // Equal thirds squeeze the month name ("Сентябрь") into an ellipsis on a phone, so
+    // below `sm` the columns are weighted towards it. Unchanged from `sm` up.
+    <div
+      className="grid grid-cols-[0.8fr_1.5fr_1.1fr] gap-2.5 sm:grid-cols-3 sm:gap-3"
+      id={id}
+      onBlur={onBlur}
+    >
       <Select
         id={`${id}-day`}
         aria-label={ph.day}
@@ -559,7 +565,10 @@ export function RegistrationForm({
           ) : null}
         </div>
 
-        <div className="mt-10 flex items-center justify-between gap-4 border-t border-border pt-7">
+        {/* Both buttons carry `whitespace-nowrap`, so side by side they overflow a 360px
+            screen once the labels are Russian. Below `sm` they stack full width, primary
+            first — which is also the easier thumb target. */}
+        <div className="mt-10 flex flex-col-reverse gap-3 border-t border-border pt-7 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <Button
             type="button"
             variant="ghost"

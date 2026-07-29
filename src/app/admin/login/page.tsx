@@ -2,6 +2,7 @@ import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 import { AdminLoginForm } from '@/components/layout/admin-login-form';
+import { AdminLocaleSwitcher } from '@/components/layout/admin-locale-switcher';
 import { Wordmark } from '@/components/common/wordmark';
 import { getAdminDictionary, getAdminLocale } from '@/lib/auth/admin-locale';
 import { localizeHref } from '@/lib/i18n/config';
@@ -51,7 +52,9 @@ export default async function AdminLoginPage({
           </div>
         </div>
 
-        <div className="mt-8 text-center">
+        {/* The switcher belongs on this screen too: an operator who reads Russian should
+            not have to work out an Uzbek form to reach the control that fixes it. */}
+        <div className="mt-8 flex items-center justify-center gap-2">
           <Link
             href={localizeHref('/', locale)}
             className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -59,6 +62,12 @@ export default async function AdminLoginPage({
             <ArrowLeft className="size-4 rtl:rotate-180" />
             {d.admin.login.backToSite}
           </Link>
+
+          <span aria-hidden className="text-border">
+            ·
+          </span>
+
+          <AdminLocaleSwitcher current={locale} label={d.nav.language} />
         </div>
       </div>
     </main>

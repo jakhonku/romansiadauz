@@ -4,9 +4,11 @@ import { Save, Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
 
+import { ImageUpload } from '@/components/common/image-upload';
 import { RichTextEditor, type EditorLabels } from '@/components/common/rich-text-editor';
 import { Button } from '@/components/ui/button';
 import { Field, Input, Select, Textarea } from '@/components/ui/field';
+import { mediaLabels } from '@/lib/admin/media-labels';
 import { localeMetadata, locales, type Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import { cn } from '@/lib/utils/cn';
@@ -240,7 +242,11 @@ export function NewsForm({
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field id={`seo-title-${locale}`} label={c.seoTitle} optionalLabel={d.common.optional}>
+              <Field
+                id={`seo-title-${locale}`}
+                label={c.seoTitle}
+                optionalLabel={d.common.optional}
+              >
                 {(props) => (
                   <Input
                     {...props}
@@ -332,22 +338,18 @@ export function NewsForm({
             )}
           </Field>
 
-          <Field
+          <ImageUpload
             id="news-cover"
             label={c.coverImage}
+            value={value.coverPath}
+            onChange={(path) => setValue((p) => ({ ...p, coverPath: path }))}
+            folder="news"
+            labels={mediaLabels(d)}
             hint={n.coverHint}
             optionalLabel={d.common.optional}
+            placeholder="news/spring-gala-a1b2c3.jpg"
             className="sm:col-span-2"
-          >
-            {(props) => (
-              <Input
-                {...props}
-                value={value.coverPath}
-                onChange={(event) => setValue((p) => ({ ...p, coverPath: event.target.value }))}
-                placeholder="news/spring-gala-a1b2c3.jpg"
-              />
-            )}
-          </Field>
+          />
         </div>
 
         <label className="mt-5 flex cursor-pointer items-center gap-3">
