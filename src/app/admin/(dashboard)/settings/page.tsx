@@ -36,7 +36,7 @@ export default async function AdminSettingsPage() {
 
   const contactFields: SettingsFieldDef[] = [
     { name: 'phone', label: d.contact.phone, placeholder: '+998 71 200 00 00' },
-    { name: 'email', label: d.contact.email, type: 'email', placeholder: 'info@romansiada.uz' },
+    { name: 'email', label: d.contact.email, type: 'email', placeholder: 'info@romasiada.uz' },
     { name: 'address', label: d.contact.address },
     { name: 'workingHours', label: d.contact.workingHours, placeholder: '09:00 – 18:00' },
   ];

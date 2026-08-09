@@ -1,6 +1,6 @@
 # Romansiada Uzbekistan — Architecture
 
-**Domain:** romansiada.uz
+**Domain:** romasiada.uz
 **Stack:** Next.js 15 (App Router) · React 19 · TypeScript (strict) · Tailwind CSS · shadcn/ui · Framer Motion · Supabase (Postgres + Auth + Storage) · Vercel
 
 This document is the design contract for the implementation. It is written before the

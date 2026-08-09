@@ -77,7 +77,7 @@ Passwords are never stored by this application. Supabase Auth holds the bcrypt h
    | `NEXT_PUBLIC_SUPABASE_URL` | all | |
    | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | all | |
    | `SUPABASE_SERVICE_ROLE_KEY` | all | **Server-only.** Bypasses RLS entirely |
-   | `NEXT_PUBLIC_SITE_URL` | production | `https://romansiada.uz`, no trailing slash |
+   | `NEXT_PUBLIC_SITE_URL` | production | `https://romasiada.uz`, no trailing slash |
    | `SMTP_*` | optional | Unset means no outbound mail; everything else still works |
 
    `NEXT_PUBLIC_SITE_URL` is not cosmetic — canonical URLs, `hreflang`, `sitemap.xml`,

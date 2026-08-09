@@ -9,7 +9,7 @@ import { siteUrl } from '@/lib/env';
  */
 export const siteConfig = {
   url: siteUrl,
-  domain: 'romansiada.uz',
+  domain: 'romasiada.uz',
   /** Both taken from the closing lines of the Regulations. */
   email: 'romansiadauzbekistan@mail.ru',
   phone: '+99899 050 7144',

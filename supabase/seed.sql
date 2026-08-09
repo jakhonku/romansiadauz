@@ -356,7 +356,7 @@ update public.site_settings set
   ),
   contacts = jsonb_build_object(
     'phone', '+998 71 200 00 00',
-    'email', 'info@romansiada.uz',
+    'email', 'info@romasiada.uz',
     'addressUz', 'Toshkent shahri, Amir Temur shoh ko''chasi 1',
     'addressRu', 'город Ташкент, проспект Амира Темура, 1',
     'addressEn', '1 Amir Temur Avenue, Tashkent',
