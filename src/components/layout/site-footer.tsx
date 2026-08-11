@@ -75,17 +75,17 @@ export function SiteFooter({ locale, dictionary }: { locale: Locale; dictionary:
               <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                 {locale === 'uz' ? 'Tashkilotchi' : locale === 'ru' ? 'Организатор' : 'Organiser'}
               </span>
-              <div className="flex items-center gap-3">
-                <div className="relative size-10 overflow-hidden rounded bg-white p-1 border border-border/30 shadow-sm shrink-0">
+              <div className="flex items-center gap-4">
+                <div className="relative size-16 overflow-hidden rounded-lg bg-white p-1 border border-border/30 shadow-sm shrink-0">
                   <Image
                     src="/images/organizer-logo.jpg"
                     alt="Opera san'ati birlashmasi"
-                    width={40}
-                    height={40}
+                    width={64}
+                    height={64}
                     className="object-contain size-full"
                   />
                 </div>
-                <span className="text-xs font-semibold leading-snug text-foreground">
+                <span className="text-sm font-semibold leading-snug text-foreground">
                   {locale === 'uz' ? '«Opera san’ati birlashmasi»' : locale === 'ru' ? '«Opera san’ati birlashmasi»' : '“Opera san’ati birlashmasi”'}
                 </span>
               </div>
