@@ -3,8 +3,8 @@
     "siteName": "Romansiada Uzbekistan",
     "shortName": "Romansiada",
     "region": "Uzbekistan",
-    "tagline": "International Festival of Romance Singers",
-    "description": "Romansiada Uzbekistan is an international festival-competition for young and gifted performers of the romance song. Apply online, read the regulations and follow the festival news."
+    "tagline": "International Competition of Romance Singers",
+    "description": "Romansiada Uzbekistan is an international competition for young and gifted performers of the romance song. Apply online, read the regulations and follow the competition news."
   },
   "nav": {
     "home": "Home",
@@ -69,17 +69,17 @@
   },
   "home": {
     "hero": {
-      "kicker": "International Festival of Romance Singers",
+      "kicker": "International Competition of Romance Singers",
       "title": "Romansiada",
       "subtitle": "Uzbekistan",
       "tagline": "Music unites hearts, culture brings nations closer!",
       "countdown": {
-        "title": "Until the festival begins",
+        "title": "Until the competition begins",
         "days": "days",
         "hours": "hours",
         "minutes": "minutes",
         "seconds": "seconds",
-        "finished": "The festival has begun"
+        "finished": "The competition has begun"
       },
       "ctaPrimary": "Apply now",
       "ctaSecondary": "Learn more",
@@ -91,32 +91,32 @@
       "imageAlt": "Registan Square in Samarkand at sunset with a golden microphone and musical notes on red silk"
     },
     "stats": {
-      "title": "The festival in numbers",
+      "title": "The competition in numbers",
       "years": "Years of history",
       "participants": "Participants",
       "countries": "Countries",
       "goal": "Great purpose",
-      "festivalDate": "Festival date (timer)",
-      "finished": "Festival has started!"
+      "festivalDate": "Competition date (timer)",
+      "finished": "Competition has started!"
     },
     "about": {
-      "kicker": "About the festival",
+      "kicker": "About the competition",
       "title": "The romance — a path from heart to heart",
-      "lead": "Romansiada Uzbekistan is an international festival-competition dedicated to preserving the classical and contemporary romance song, supporting young talent and strengthening the cultural bridge between nations.",
-      "body": "The festival takes place every year in the historic cities of Uzbekistan. Performers from many countries present works from the Russian, Uzbek and world romance heritage. Winners earn the chance to perform on international stages, study with acclaimed masters and record in a professional studio.",
-      "cta": "Explore our history"
+      "lead": "Romansiada Uzbekistan is an international competition dedicated to preserving the classical and contemporary romance song, supporting young talent and strengthening the cultural bridge between nations.",
+      "body": "The competition takes place every year in the historic cities of Uzbekistan. Performers from many countries present works from the Russian, Uzbek and world romance heritage. Winners earn the chance to perform on international stages, study with acclaimed masters and record in a professional studio.",
+      "cta": "Explore the competition history"
     },
     "events": {
       "kicker": "Calendar",
       "title": "Upcoming events",
-      "subtitle": "Festival stages and key dates",
+      "subtitle": "Competition stages and key dates",
       "empty": "No events are scheduled yet. Stay tuned for news.",
       "addToCalendar": "Add to calendar"
     },
     "news": {
       "kicker": "Press centre",
       "title": "Latest news",
-      "subtitle": "Fresh stories from festival life",
+      "subtitle": "Fresh stories from competition life",
       "empty": "News will be published shortly."
     },
     "judges": {
@@ -145,12 +145,12 @@
     }
   },
   "about": {
-    "title": "About the festival",
+    "title": "About the competition",
     "subtitle": "History, mission and objectives",
     "history": {
       "kicker": "History",
       "title": "Our journey",
-      "body": "The Romansiada movement began with a simple idea: to pass the art of the romance song on to a new generation. Over the years the festival has brought thousands of performers from dozens of countries onto one stage and has become one of the most respected vocal competitions in the region."
+      "body": "The Romansiada movement began with a simple idea: to pass the art of the romance song on to a new generation. Over the years the competition has brought thousands of performers from dozens of countries onto one stage and has become one of the most respected vocal competitions in the region."
     },
     "mission": {
       "kicker": "Mission",
@@ -186,7 +186,7 @@
     },
     "organizers": {
       "kicker": "Organisers",
-      "title": "Festival organisers",
+      "title": "Competition organisers",
       "empty": "Details will be added shortly."
     },
     "partners": {
@@ -196,7 +196,7 @@
     }
   },
   "regulations": {
-    "title": "Festival regulations",
+    "title": "Competition regulations",
     "subtitle": "I International Competition of Young Performers of Russian and Uzbek Romance “Uzbek Romansiada”",
     "documentTitle": "REGULATIONS of the I International Competition of Young Performers of Russian and Uzbek Romance “Uzbek Romansiada”",
     "approvalLabel": "APPROVED BY",
@@ -412,7 +412,7 @@
   },
   "news": {
     "title": "News",
-    "subtitle": "Stories and announcements from the festival",
+    "subtitle": "Stories and announcements from the competition",
     "categories": "Sections",
     "allCategories": "All sections",
     "searchPlaceholder": "Search the news…",
@@ -423,7 +423,7 @@
   },
   "gallery": {
     "title": "Photo gallery",
-    "subtitle": "Festival albums",
+    "subtitle": "Competition albums",
     "photos": "photos",
     "openAlbum": "Open album",
     "empty": "Albums will be added shortly.",
@@ -436,13 +436,13 @@
   },
   "videos": {
     "title": "Video gallery",
-    "subtitle": "Performances, interviews and festival reports",
+    "subtitle": "Performances, interviews and competition reports",
     "allCategories": "All sections",
     "watch": "Watch",
     "empty": "Videos will be added shortly."
   },
   "winners": {
-    "title": "Festival winners",
+    "title": "Competition winners",
     "subtitle": "Those who have conquered the stage over the years",
     "filterByYear": "By year",
     "allYears": "All years",
@@ -476,7 +476,7 @@
     }
   },
   "footer": {
-    "about": "Romansiada Uzbekistan is an international festival-competition for young performers of the romance song.",
+    "about": "Romansiada Uzbekistan is an international competition for young performers of the romance song.",
     "navigation": "Navigation",
     "participants": "For participants",
     "contactUs": "Contact",
@@ -484,7 +484,7 @@
     "rights": "All rights reserved.",
     "privacy": "Privacy policy",
     "terms": "Terms of use",
-    "madeWith": "Festival press office"
+    "madeWith": "Competition press office"
   },
   "admin": {
     "title": "Admin panel",
@@ -518,7 +518,7 @@
     },
     "dashboard": {
       "welcome": "Welcome, {name}",
-      "subtitle": "Festival performance at a glance",
+      "subtitle": "Competition performance at a glance",
       "totalRegistrations": "Total applications",
       "pendingRegistrations": "Awaiting review",
       "approvedRegistrations": "Approved",
