@@ -92,26 +92,7 @@ export default async function RegulationsPage({
       <section className="section bg-background">
         <div className="container">
           <article className="mx-auto max-w-3xl">
-            {/* The approval block sits at the head of the paper document; keeping it
-                keeps the page recognisable as the same document rather than a summary
-                of it. */}
-            <Reveal>
-              <div className="grid gap-8 border-b border-border pb-10 sm:grid-cols-2">
-                {r.approvals.map((approval) => (
-                  <div key={approval.name}>
-                    <p className="text-kicker font-semibold uppercase tracking-[0.18em] text-gold-ink">
-                      {r.approvalLabel}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {approval.role}
-                    </p>
-                    <p className="mt-3 border-t border-border pt-3 text-sm font-medium">
-                      {approval.name}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+
 
             <Reveal>
               <h2 className="mt-12 text-center font-display text-display-sm font-semibold leading-tight">
