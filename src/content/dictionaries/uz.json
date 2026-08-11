@@ -3,12 +3,12 @@
     "siteName": "Romansiada Uzbekistan",
     "shortName": "Romansiada",
     "region": "Uzbekistan",
-    "tagline": "Xalqaro romans ijrochilari festivali",
-    "description": "«Romansiada Uzbekistan» — romans janridagi yosh va iste'dodli ijrochilar uchun xalqaro festival-tanlov. Ro'yxatdan o'ting, nizom bilan tanishing va festival yangiliklarini kuzating."
+    "tagline": "Xalqaro romans ijrochilari ko'rik-tanlovi",
+    "description": "«Romansiada Uzbekistan» — romans janridagi yosh va iste'dodli ijrochilar uchun xalqaro ko'rik-tanlov. Ro'yxatdan o'ting, nizom bilan tanishing va tanlov yangiliklarini kuzating."
   },
   "nav": {
     "home": "Bosh sahifa",
-    "about": "Festival haqida",
+    "about": "Tanlov haqida",
     "regulations": "Nizom",
     "notes": "Notalar",
     "news": "Yangiliklar",
@@ -69,7 +69,7 @@
   },
   "home": {
     "hero": {
-      "kicker": "Xalqaro romans ijrochilari festivali",
+      "kicker": "Xalqaro romans ijrochilari ko'rik-tanlovi",
       "title": "Romansiada",
       "subtitle": "Uzbekistan",
       "tagline": "Musiqa qalbni birlashtiradi, madaniyat xalqlarni yaqinlashtiradi!",
@@ -91,32 +91,32 @@
       "imageAlt": "Samarqanddagi Registon maydoni kunbotarda, oltin mikrofon va qizil ipak matoda musiqa notalari bilan"
     },
     "stats": {
-      "title": "Festival raqamlarda",
+      "title": "Tanlov raqamlarda",
       "years": "Yillik tarix",
       "participants": "Ishtirokchi",
       "countries": "Davlat",
       "goal": "Buyuk maqsad",
-      "festivalDate": "Festival sanasi (taymer)",
-      "finished": "Festival boshlandi!"
+      "festivalDate": "Tanlov sanasi (taymer)",
+      "finished": "Tanlov boshlandi!"
     },
     "about": {
-      "kicker": "Festival haqida",
+      "kicker": "Tanlov haqida",
       "title": "Romans — qalbdan qalbga yo'l",
-      "lead": "«Romansiada Uzbekistan» — bu klassik va zamonaviy romans janrini asrab-avaylash, yosh iste'dodlarni qo'llab-quvvatlash va xalqlar o'rtasidagi madaniy ko'prikni mustahkamlashga qaratilgan xalqaro festival-tanlov.",
-      "body": "Festival har yili O'zbekistonning tarixiy shaharlarida o'tkaziladi. Unda turli davlatlardan kelgan ijrochilar rus, o'zbek va jahon romans merosidan namunalar ijro etadilar. Tanlov g'oliblari xalqaro sahnalarda chiqish qilish, tajribali ustozlardan saboq olish va professional yozuv studiyasida ishlash imkoniyatiga ega bo'ladilar.",
-      "cta": "Festival tarixi bilan tanishish"
+      "lead": "«Romansiada Uzbekistan» — bu klassik va zamonaviy romans janrini asrab-avaylash, yosh iste'dodlarni qo'llab-quvvatlash va xalqlar o'rtasidagi madaniy ko'prikni mustahkamlashga qaratilgan xalqaro ko'rik-tanlov.",
+      "body": "Tanlov har yili O'zbekistonning tarixiy shaharlarida o'tkaziladi. Unda turli davlatlardan kelgan ijrochilar rus, o'zbek va jahon romans merosidan namunalar ijro etadilar. Tanlov g'oliblari xalqaro sahnalarda chiqish qilish, tajribali ustozlardan saboq olish va professional yozuv studiyasida ishlash imkoniyatiga ega bo'ladilar.",
+      "cta": "Tanlov tarixi bilan tanishish"
     },
     "events": {
       "kicker": "Taqvim",
       "title": "Yaqinlashib kelayotgan tadbirlar",
-      "subtitle": "Festival bosqichlari va muhim sanalar",
+      "subtitle": "Tanlov bosqichlari va muhim sanalar",
       "empty": "Hozircha rejalashtirilgan tadbirlar yo'q. Yangiliklarni kuzatib boring.",
       "addToCalendar": "Taqvimga qo'shish"
     },
     "news": {
       "kicker": "Matbuot markazi",
       "title": "So'nggi yangiliklar",
-      "subtitle": "Festival hayotidan eng so'nggi xabarlar",
+      "subtitle": "Tanlov hayotidan eng so'nggi xabarlar",
       "empty": "Yangiliklar tez orada e'lon qilinadi."
     },
     "judges": {
@@ -127,14 +127,14 @@
     },
     "gallery": {
       "kicker": "Galereya",
-      "title": "Festival lahzalari",
+      "title": "Tanlov lahzalari",
       "subtitle": "Sahna ortidagi va sahnadagi eng yorqin daqiqalar",
       "empty": "Fotosuratlar tez orada joylanadi."
     },
     "partners": {
       "kicker": "Hamkorlar",
       "title": "Bizning hamkorlarimiz",
-      "subtitle": "Festivalni qo'llab-quvvatlayotgan tashkilotlar"
+      "subtitle": "Tanlovni qo'llab-quvvatlayotgan tashkilotlar"
     },
     "cta": {
       "kicker": "Ishtirok etish",
@@ -145,12 +145,12 @@
     }
   },
   "about": {
-    "title": "Festival haqida",
+    "title": "Tanlov haqida",
     "subtitle": "Tarix, missiya va maqsadlar",
     "history": {
       "kicker": "Tarix",
       "title": "Bizning yo'limiz",
-      "body": "Romansiada harakati romans san'atini yangi avlodga yetkazish g'oyasi bilan boshlangan. Yillar davomida festival o'nlab davlatlardan minglab ijrochilarni bir sahnada birlashtirdi va bugungi kunda mintaqadagi eng nufuzli vokal tanlovlaridan biriga aylandi."
+      "body": "Romansiada harakati romans san'atini yangi avlodga yetkazish g'oyasi bilan boshlangan. Yillar davomida tanlov o'nlab davlatlardan minglab ijrochilarni bir sahnada birlashtirdi va bugungi kunda mintaqadagi eng nufuzli vokal tanlovlaridan biriga aylandi."
     },
     "mission": {
       "kicker": "Missiya",
@@ -160,7 +160,7 @@
     "vision": {
       "kicker": "Vizyon",
       "title": "Kelajak qarashimiz",
-      "body": "Romansiada Uzbekistan'ni Markaziy Osiyodagi romans san'atining asosiy markaziga aylantirish va festival g'oliblariga xalqaro karyera yo'lini ochish."
+      "body": "Romansiada Uzbekistan'ni Markaziy Osiyodagi romans san'atining asosiy markaziga aylantirish va tanlov g'oliblariga xalqaro karyera yo'lini ochish."
     },
     "objectives": {
       "kicker": "Maqsadlar",
@@ -186,7 +186,7 @@
     },
     "organizers": {
       "kicker": "Tashkilotchilar",
-      "title": "Festival tashkilotchilari",
+      "title": "Tanlov tashkilotchilari",
       "empty": "Ma'lumot tez orada qo'shiladi."
     },
     "partners": {
@@ -196,7 +196,7 @@
     }
   },
   "regulations": {
-    "title": "Festival nizomi",
+    "title": "Tanlov nizomi",
     "subtitle": "Rus va o‘zbek romansi yosh ijrochilarining I Xalqaro tanlovi «O‘zbek Romansiadasi»",
     "documentTitle": "Rus va o‘zbek romansi yosh ijrochilarining I Xalqaro tanlovi «O‘zbek Romansiadasi» NIZOMI",
     "approvalLabel": "TASDIQLAYMAN",
@@ -340,7 +340,7 @@
       "round3": "III tur",
       "accompanistName": "Konsertmeyster F.I.Sh.",
       "accompanistWorkplace": "Konsertmeyster ish joyi",
-      "consent": "Shaxsiy ma'lumotlarimni qayta ishlashga va festival qoidalariga roziman"
+      "consent": "Shaxsiy ma'lumotlarimni qayta ishlashga va tanlov qoidalariga roziman"
     },
     "placeholders": {
       "firstName": "Masalan: Dilnoza",
@@ -412,7 +412,7 @@
   },
   "news": {
     "title": "Yangiliklar",
-    "subtitle": "Festival hayotidan xabarlar va e'lonlar",
+    "subtitle": "Tanlov hayotidan xabarlar va e'lonlar",
     "categories": "Bo'limlar",
     "allCategories": "Barcha bo'limlar",
     "searchPlaceholder": "Yangiliklar ichidan qidirish…",
@@ -423,7 +423,7 @@
   },
   "gallery": {
     "title": "Foto galereya",
-    "subtitle": "Festival albomlari",
+    "subtitle": "Tanlov albomlari",
     "photos": "foto",
     "openAlbum": "Albomni ochish",
     "empty": "Albomlar tez orada joylanadi.",
@@ -436,13 +436,13 @@
   },
   "videos": {
     "title": "Video galereya",
-    "subtitle": "Chiqishlar, intervyular va festival reportajlari",
+    "subtitle": "Chiqishlar, intervyular va tanlov reportajlari",
     "allCategories": "Barcha bo'limlar",
     "watch": "Tomosha qilish",
     "empty": "Videolar tez orada joylanadi."
   },
   "winners": {
-    "title": "Festival g'oliblari",
+    "title": "Tanlov g'oliblari",
     "subtitle": "Yillar davomida sahnani zabt etganlar",
     "filterByYear": "Yil bo'yicha",
     "allYears": "Barcha yillar",
@@ -476,7 +476,7 @@
     }
   },
   "footer": {
-    "about": "«Romansiada Uzbekistan» — romans janridagi yosh ijrochilar uchun xalqaro festival-tanlov.",
+    "about": "«Romansiada Uzbekistan» — romans janridagi yosh ijrochilar uchun xalqaro ko'rik-tanlov.",
     "navigation": "Navigatsiya",
     "participants": "Ishtirokchilarga",
     "contactUs": "Aloqa",
@@ -484,7 +484,7 @@
     "rights": "Barcha huquqlar himoyalangan.",
     "privacy": "Maxfiylik siyosati",
     "terms": "Foydalanish shartlari",
-    "madeWith": "Festival matbuot xizmati"
+    "madeWith": "Tanlov matbuot xizmati"
   },
   "admin": {
     "title": "Boshqaruv paneli",
@@ -518,7 +518,7 @@
     },
     "dashboard": {
       "welcome": "Xush kelibsiz, {name}",
-      "subtitle": "Festival bo'yicha umumiy ko'rsatkichlar",
+      "subtitle": "Tanlov bo'yicha umumiy ko'rsatkichlar",
       "totalRegistrations": "Jami arizalar",
       "pendingRegistrations": "Ko'rib chiqilmoqda",
       "approvedRegistrations": "Tasdiqlangan",
