@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 
 import { EmptyState } from '@/components/common/empty-state';
 import { Reveal } from '@/components/motion/reveal';
@@ -103,7 +104,30 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
       <section className="section-sm bg-background">
         <div className="container">
           <SectionHeading kicker={d.about.organizers.kicker} title={d.about.organizers.title} />
-          <EmptyState className="mt-12" message={d.about.organizers.empty} />
+          <Reveal>
+            <div className="mt-12 flex flex-col items-center justify-center gap-6 rounded-2xl border border-border bg-surface p-8 text-center md:flex-row md:text-left">
+              <div className="relative size-32 shrink-0 overflow-hidden rounded-xl bg-white p-2 border border-border shadow-sm">
+                <Image
+                  src="/images/organizer-logo.jpg"
+                  alt="Opera san'ati birlashmasi"
+                  fill
+                  className="object-contain p-1"
+                />
+              </div>
+              <div>
+                <h3 className="font-display text-xl font-semibold">
+                  {locale === 'uz' ? '«Opera san’ati birlashmasi» ijodiy birlashmasi' : 
+                   locale === 'ru' ? 'Творческое объединение «Opera san’ati birlashmasi»' : 
+                   'Creative Association “Opera san’ati birlashmasi”'}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed max-w-lg">
+                  {locale === 'uz' ? 'O‘zbekiston Respublikasi Kambag‘allikni qisqartirish va bandlik vazirligi hamda Madaniyat vazirligi ko‘magida tanlovning asosiy tashkilotchisi hisoblanadi.' :
+                   locale === 'ru' ? 'Является главным организатором конкурса при поддержке Министерства по сокращению бедности и занятости, а также Министерства культуры Республики Узбекистан.' :
+                   'The primary organiser of the competition with the support of the Ministry for Poverty Reduction and Employment and the Ministry of Culture of the Republic of Uzbekistan.'}
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

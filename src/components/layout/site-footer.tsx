@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import {
   FacebookIcon,
@@ -68,6 +69,26 @@ export function SiteFooter({ locale, dictionary }: { locale: Locale; dictionary:
                   </a>
                 );
               })}
+            </div>
+
+            <div className="mt-6 flex flex-col gap-2 border-t border-border/40 pt-4">
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                {locale === 'uz' ? 'Tashkilotchi' : locale === 'ru' ? 'Организатор' : 'Organiser'}
+              </span>
+              <div className="flex items-center gap-3">
+                <div className="relative size-10 overflow-hidden rounded bg-white p-1 border border-border/30 shadow-sm shrink-0">
+                  <Image
+                    src="/images/organizer-logo.jpg"
+                    alt="Opera san'ati birlashmasi"
+                    width={40}
+                    height={40}
+                    className="object-contain size-full"
+                  />
+                </div>
+                <span className="text-xs font-semibold leading-snug text-foreground">
+                  {locale === 'uz' ? '«Opera san’ati birlashmasi»' : locale === 'ru' ? '«Opera san’ati birlashmasi»' : '“Opera san’ati birlashmasi”'}
+                </span>
+              </div>
             </div>
           </div>
 
