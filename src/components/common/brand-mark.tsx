@@ -17,7 +17,7 @@ export function BrandMark({
   title?: string;
 }) {
   return (
-    <span className={cn('relative inline-flex h-12 shrink-0 items-center justify-center', className)}>
+    <span className={cn('relative inline-flex h-10 shrink-0 items-center justify-center', className)}>
       <Image
         src="/images/logo-2026.webp"
         alt={title}

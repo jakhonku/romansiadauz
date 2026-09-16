@@ -32,7 +32,7 @@ export function HomeCta({ locale, dictionary }: { locale: Locale; dictionary: Di
 
       <div className="container relative py-section">
         <Reveal className="mx-auto flex max-w-2xl flex-col items-center text-center">
-          <BrandMark className="h-12 w-12" gradientId="cta-mark" />
+          <BrandMark className="h-24 sm:h-28" gradientId="cta-mark" />
 
           <p className="kicker mt-8 text-gold-soft">{c.kicker}</p>
           <h2 className="mt-4 text-display-lg font-semibold">{c.title}</h2>

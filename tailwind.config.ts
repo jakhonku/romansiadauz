@@ -106,7 +106,7 @@ const config: Config = {
         section: 'clamp(5rem, 10vw, 9rem)',
         'section-sm': 'clamp(3.5rem, 6vw, 5.5rem)',
         /** Header height, shared by the sticky header and the scroll-margin offset. */
-        header: '4.5rem',
+        header: '5rem',
       },
       backgroundImage: {
         'gold-gradient':
