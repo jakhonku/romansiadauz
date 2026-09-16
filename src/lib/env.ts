@@ -26,8 +26,38 @@ const serverSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
 });
 
-function parseOrThrow<T extends z.ZodTypeAny>(schema: T, input: unknown, scope: string): z.infer<T> {
-  const result = schema.safeParse(input);
+/**
+ * Treat a blank variable as an absent one.
+ *
+ * A dashboard stores a variable left empty as `""`, not as missing, and a key pasted
+ * from a file often arrives with a trailing newline. Zod fills in a `.default()` only
+ * for `undefined`, so a blank `NEXT_PUBLIC_SITE_URL` failed `.url()` instead of falling
+ * back to the canonical origin — and a whitespace-padded key failed a length check for
+ * reasons no error message explained. Trimming first, then folding empty to
+ * `undefined`, makes "blank" and "missing" mean the same thing everywhere.
+ *
+ * This is a normalisation, not a leniency: a genuinely required variable still fails,
+ * and fails with its own message.
+ */
+function withoutBlanks(source: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(source)) {
+    if (typeof value !== 'string') {
+      out[key] = value;
+      continue;
+    }
+    const trimmed = value.trim();
+    out[key] = trimmed === '' ? undefined : trimmed;
+  }
+  return out;
+}
+
+function parseOrThrow<T extends z.ZodTypeAny>(
+  schema: T,
+  input: Record<string, unknown>,
+  scope: string,
+): z.infer<T> {
+  const result = schema.safeParse(withoutBlanks(input));
   if (!result.success) {
     const details = result.error.issues.map((i) => `  • ${i.path.join('.')}: ${i.message}`).join('\n');
     throw new Error(`Invalid ${scope} environment variables:\n${details}`);
