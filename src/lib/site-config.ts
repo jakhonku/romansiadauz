@@ -18,17 +18,20 @@ export const siteConfig = {
   addressKey: 'Toshkent',
   foundingYear: 2019,
   /**
-   * Instant the festival opens, for the hero countdown.
+   * Instant the festival opens.
    *
    * § II of the Regulations: 28–30 November 2026 in Tashkent. The document names the
-   * days, not an hour, so the countdown runs to the start of the first day rather than
-   * to an opening time nobody has announced. The `+05:00` offset is not optional:
-   * without it the string is parsed as UTC and the countdown runs five hours late for
-   * everyone in Tashkent.
+   * days, not an hour, so this is the start of the first day rather than an opening
+   * time nobody has announced.
    */
-  festivalStartsAt: '2026-11-15T00:00:00+05:00',
-  /** § III: entries close on 15 November 2026. */
-  applicationsCloseAt: '2026-11-15T23:59:59+05:00',
+  festivalStartsAt: '2026-11-28T00:00:00+05:00',
+  /**
+   * Instant entries close — § III: 20 November 2026 — and the target of the hero
+   * countdown, which counts down the time left to apply rather than the time left
+   * until the competition. The `+05:00` offset is not optional: without it the string
+   * is parsed as UTC and the deadline lands five hours early for everyone in Tashkent.
+   */
+  applicationsCloseAt: '2026-11-20T23:59:59+05:00',
   /**
    * Headline figures for the hero band. Editable from admin → settings → stats once a
    * `site_settings` row exists; these are the pre-launch defaults.

@@ -194,12 +194,13 @@ function DateOfBirthPicker({
     // Equal thirds squeeze the month name ("Сентябрь") into an ellipsis on a phone, so
     // below `sm` the columns are weighted towards it. Unchanged from `sm` up.
     <div
-      className="grid grid-cols-[0.8fr_1.5fr_1.1fr] gap-2.5 sm:grid-cols-3 sm:gap-3"
+      className="grid grid-cols-[0.85fr_1.5fr_1.05fr] gap-2 sm:grid-cols-3 sm:gap-3"
       id={id}
       onBlur={onBlur}
     >
       <Select
         id={`${id}-day`}
+        className="px-2.5 pe-7 sm:px-3.5 sm:pe-8"
         aria-label={ph.day}
         aria-invalid={ariaInvalid}
         aria-describedby={ariaDescribedBy}
@@ -216,6 +217,7 @@ function DateOfBirthPicker({
 
       <Select
         id={`${id}-month`}
+        className="px-2.5 pe-7 sm:px-3.5 sm:pe-8"
         aria-label={ph.month}
         aria-invalid={ariaInvalid}
         aria-describedby={ariaDescribedBy}
@@ -235,6 +237,7 @@ function DateOfBirthPicker({
 
       <Select
         id={`${id}-year`}
+        className="px-2.5 pe-7 sm:px-3.5 sm:pe-8"
         aria-label={ph.year}
         aria-invalid={ariaInvalid}
         aria-describedby={ariaDescribedBy}
@@ -319,11 +322,13 @@ export function RegistrationForm({
     }
 
     setFormError(
-      result.reason === 'rate_limited'
-        ? r.errors.rateLimited
-        : result.reason === 'duplicate'
-          ? r.errors.duplicate
-          : r.errors.generic,
+      result.reason === 'closed'
+        ? r.errors.closed
+        : result.reason === 'rate_limited'
+          ? r.errors.rateLimited
+          : result.reason === 'duplicate'
+            ? r.errors.duplicate
+            : r.errors.generic,
     );
   });
 

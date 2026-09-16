@@ -74,12 +74,12 @@
       "subtitle": "Uzbekistan",
       "tagline": "Music unites hearts, culture brings nations closer!",
       "countdown": {
-        "title": "Until the competition begins",
+        "title": "Until applications close",
         "days": "days",
         "hours": "hours",
         "minutes": "minutes",
         "seconds": "seconds",
-        "finished": "The competition has begun"
+        "finished": "Applications are closed"
       },
       "ctaPrimary": "Apply now",
       "ctaSecondary": "Learn more",
@@ -96,7 +96,7 @@
       "participants": "Participants",
       "countries": "Countries",
       "goal": "Great purpose",
-      "festivalDate": "Competition date (timer)",
+      "applicationsCloseAt": "Applications close (timer)",
       "finished": "Competition has started!"
     },
     "about": {
@@ -242,7 +242,7 @@
         "title": "Participants of the competition",
         "body": [
           "Students of creative higher education institutions, pupils of secondary specialised educational institutions and music schools, as well as amateurs of Russian and Uzbek romance — citizens of the Republic of Uzbekistan and representatives of the countries of Central Asia — may take part in the competition.",
-          "To submit an entry, the registration form on the “Uzbek Romansiada” website (https://romasiada.uz/) must be completed by 15 November 2026.",
+          "To submit an entry, the registration form on the “Uzbek Romansiada” website (https://romasiada.uz/) must be completed by 20 November 2026.",
           "The submission of an entry is regarded as the competitor’s agreement with all the provisions of these Regulations."
         ]
       },
@@ -386,10 +386,16 @@
       "generic": "The application could not be submitted. Please try again.",
       "rateLimited": "Too many attempts. Please try again in a few minutes.",
       "duplicate": "An application with this e-mail has already been submitted.",
-      "fixFields": "Please correct the following fields"
+      "fixFields": "Please correct the following fields",
+      "closed": "The application deadline has passed."
+    },
+    "closed": {
+      "title": "Applications are closed",
+      "body": "Entries for this year's competition are no longer accepted. Watch the news section for the announcement of the next competition.",
+      "cta": "Read the news"
     },
     "applicantsCount": "{count} applications submitted so far",
-    "deadline": "Applications are accepted until 15 November 2026"
+    "deadline": "Applications are accepted until 20 November 2026"
   },
   "validation": {
     "required": "This field is required",

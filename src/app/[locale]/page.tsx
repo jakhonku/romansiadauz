@@ -45,7 +45,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
-      <HomeHero locale={locale} dictionary={dictionary} festivalStartsAt={stats.festivalDate} />
+      <HomeHero
+        locale={locale}
+        dictionary={dictionary}
+        applicationsCloseAt={stats.applicationsCloseAt}
+      />
       <HomeStats locale={locale} dictionary={dictionary} stats={stats} />
       <HomeAbout locale={locale} dictionary={dictionary} />
       <HomeEvents locale={locale} dictionary={dictionary} items={events} />

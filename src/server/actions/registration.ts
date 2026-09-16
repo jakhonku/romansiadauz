@@ -3,14 +3,16 @@
 import { cookies, headers } from 'next/headers';
 
 import { LOCALE_COOKIE, defaultLocale, isLocale } from '@/lib/i18n/config';
+import { applicationsAreOpen, resolveApplicationsCloseAt } from '@/lib/registration-window';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { registrationSchema } from '@/lib/validation/registration';
+import { getSiteStats } from '@/server/queries/settings';
 
 import { callerIp, consumeRateLimit } from './rate-limit';
 
 export type RegistrationResult =
   | { ok: true; reference: string }
-  | { ok: false; reason: 'invalid' | 'rate_limited' | 'duplicate' | 'error' };
+  | { ok: false; reason: 'invalid' | 'closed' | 'rate_limited' | 'duplicate' | 'error' };
 
 /** Postgres unique-violation. Raised by the partial unique index on `email`. */
 const UNIQUE_VIOLATION = '23505';
@@ -25,6 +27,12 @@ const UNIQUE_VIOLATION = '23505';
  * The reference code is *not* generated here — a trigger in 0004 assigns it from a
  * per-year sequence, which removes the read-then-write race that generating it in Node
  * would have under concurrent submissions.
+ *
+ * The closing date is enforced here rather than only in the UI. The page that hides the
+ * form is statically rendered and revalidated hourly, so for up to an hour after the
+ * deadline a cached copy can still be served — and a form left open in a tab overnight
+ * would post whatever happens to be in it. This check is the one an applicant cannot
+ * route around.
  */
 export async function submitRegistration(input: unknown): Promise<RegistrationResult> {
   const parsed = registrationSchema.safeParse(input);
@@ -32,6 +40,13 @@ export async function submitRegistration(input: unknown): Promise<RegistrationRe
 
   const data = parsed.data;
   if (data.website) return { ok: false, reason: 'invalid' };
+
+  // Before the rate limit, so a late submission does not also burn one of the caller's
+  // three hourly attempts on a form that can no longer be accepted.
+  const { applicationsCloseAt } = await getSiteStats();
+  if (!applicationsAreOpen(resolveApplicationsCloseAt(applicationsCloseAt))) {
+    return { ok: false, reason: 'closed' };
+  }
 
   const ip = await callerIp();
   // Tighter than the contact form: an application takes minutes to fill in honestly,

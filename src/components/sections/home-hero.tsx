@@ -21,16 +21,18 @@ import { siteConfig } from '@/lib/site-config';
 export function HomeHero({
   locale,
   dictionary,
-  festivalStartsAt,
+  applicationsCloseAt,
 }: {
   locale: Locale;
   dictionary: Dictionary;
-  festivalStartsAt?: string | null;
+  applicationsCloseAt?: string | null;
 }) {
   const h = dictionary.home.hero;
   const href = (to: string) => localizeHref(to, locale);
+  // The countdown runs to the application deadline, not to the opening night: what a
+  // visitor on the home page can still act on is applying, and only until entries close.
   // Prefer the DB-stored date; fall back to the build-time default.
-  const target = festivalStartsAt ?? siteConfig.festivalStartsAt;
+  const target = applicationsCloseAt ?? siteConfig.applicationsCloseAt;
 
   const facts = [
     { icon: CalendarDays, label: h.facts.annual },
@@ -39,7 +41,7 @@ export function HomeHero({
   ];
 
   return (
-    <section className="relative isolate overflow-hidden bg-surface">
+    <section className="relative isolate flex min-h-svh items-center overflow-hidden bg-surface">
       <div className="absolute inset-0 -z-10">
         <Parallax className="absolute inset-0" distance={70} scaleTo={1.08}>
           <Image
@@ -78,9 +80,16 @@ export function HomeHero({
         />
       </div>
 
-      <div className="container relative pb-24 pt-[calc(theme(spacing.header)+4rem)] sm:pb-28 lg:pb-36 lg:pt-[calc(theme(spacing.header)+7rem)]">
+      {/*
+        Padding in svh, not rem. The hero used a fixed 184px top and 144px bottom, which
+        on a 1536x647 laptop — the commonest desktop this site sees — made it 893px tall
+        and pushed both call-to-action buttons below the fold. Every gap below scales
+        with the viewport for the same reason, so the whole hero lands on one screen at
+        laptop heights and still opens up on a large display.
+      */}
+      <div className="container relative w-full pb-[clamp(2.5rem,6svh,5rem)] pt-[calc(theme(spacing.header)+clamp(1.75rem,5svh,4.5rem))]">
         <div className="max-w-2xl lg:max-w-3xl">
-          <Reveal delay={0.05}>
+          <Reveal immediate delay={0.04}>
             <p className="kicker flex items-center gap-3">
               {h.kicker}
               {/* Dropped on phones: the kicker wraps to two or three lines there, and a
@@ -89,14 +98,14 @@ export function HomeHero({
             </p>
           </Reveal>
 
-          <h1 className="mt-6">
-            <Reveal delay={0.12}>
+          <h1 className="mt-[clamp(0.75rem,2.5svh,1.5rem)]">
+            <Reveal immediate delay={0.1}>
               <span className="block font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold uppercase tracking-[0.02em] text-primary leading-none">
                 {h.title}
               </span>
             </Reveal>
-            <Reveal delay={0.2}>
-              <span className="mt-4 flex items-center gap-4">
+            <Reveal immediate delay={0.16}>
+              <span className="mt-[clamp(0.5rem,1.8svh,1rem)] flex items-center gap-4">
                 <span aria-hidden className="h-px flex-none basis-8 bg-gold/70 sm:basis-12" />
                 <span className="font-display text-base sm:text-lg lg:text-xl font-medium uppercase tracking-[0.22em] text-gold-ink">
                   {h.subtitle}
@@ -106,17 +115,21 @@ export function HomeHero({
             </Reveal>
           </h1>
 
-          <Reveal delay={0.28}>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-foreground/85 sm:text-xl">
+          <Reveal immediate delay={0.22}>
+            <p className="mt-[clamp(1rem,3svh,2rem)] max-w-xl text-lg leading-relaxed text-foreground/85 sm:text-xl">
               {h.tagline}
             </p>
           </Reveal>
-          <Countdown labels={h.countdown} target={target} />
-          <Reveal delay={0.36}>
-            <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-5">
+          <Countdown
+            labels={h.countdown}
+            target={target}
+            className="mt-[clamp(1.25rem,3.5svh,2.25rem)]"
+          />
+          <Reveal immediate delay={0.28}>
+            <ul className="mt-[clamp(1.25rem,3.5svh,2.5rem)] flex flex-wrap gap-x-6 gap-y-3.5 sm:gap-x-8 sm:gap-y-5">
               {facts.map((fact) => (
                 <li key={fact.label} className="flex items-center gap-3">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-full border border-gold/50 text-gold">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full border border-gold/50 text-gold sm:size-11">
                     <fact.icon className="size-[1.15rem]" />
                   </span>
                   <span className="max-w-[9rem] text-xs font-semibold uppercase leading-snug tracking-[0.12em] text-foreground/75">
@@ -127,8 +140,8 @@ export function HomeHero({
             </ul>
           </Reveal>
 
-          <Reveal delay={0.44}>
-            <div className="mt-11 flex flex-wrap gap-4">
+          <Reveal immediate delay={0.34}>
+            <div className="mt-[clamp(1.5rem,3.5svh,2.75rem)] flex flex-wrap gap-3 sm:gap-4">
               <Button asChild size="lg" className="group">
                 <Link href={href('/registration')}>
                   <span className="text-xs font-semibold uppercase tracking-[0.14em]">

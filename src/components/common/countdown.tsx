@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils/cn';
 
 export interface CountdownLabels {
-  /** Sits above the digits, e.g. "Tanlovgacha qoldi". */
+  /** Sits above the digits, e.g. "Ariza qabuli tugashiga qoldi". */
   title: string;
   days: string;
   hours: string;
@@ -36,7 +36,7 @@ function remaining(targetMs: number, nowMs: number): Parts | null {
 }
 
 /**
- * Countdown to the festival date.
+ * Countdown to a deadline — on the home page, the instant entries close.
  *
  * Renders nothing at all on the server and on the first client paint. That is
  * deliberate, not laziness: the remaining time depends on the *viewer's* clock, so

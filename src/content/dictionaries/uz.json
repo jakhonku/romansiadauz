@@ -74,12 +74,12 @@
       "subtitle": "Uzbekistan",
       "tagline": "Musiqa qalbni birlashtiradi, madaniyat xalqlarni yaqinlashtiradi!",
       "countdown": {
-        "title": "Tanlovga qadar",
+        "title": "Ariza qabuli tugashiga qoldi",
         "days": "Kun",
         "hours": "Soat",
         "minutes": "Daqiqa",
         "seconds": "Soniya",
-        "finished": "Tanlov boshlandi!"
+        "finished": "Ariza qabuli yakunlandi"
       },
       "ctaPrimary": "Ro'yxatdan o'tish",
       "ctaSecondary": "Ko'proq ma'lumot",
@@ -96,7 +96,7 @@
       "participants": "Ishtirokchi",
       "countries": "Davlat",
       "goal": "Buyuk maqsad",
-      "festivalDate": "Tanlov sanasi (taymer)",
+      "applicationsCloseAt": "Ariza qabuli tugash sanasi (taymer)",
       "finished": "Tanlov boshlandi!"
     },
     "about": {
@@ -242,7 +242,7 @@
         "title": "Tanlov ishtirokchilari",
         "body": [
           "Tanlovda ijod oliy o‘quv yurtlari talabalari, o‘rta maxsus o‘quv yurtlari va musiqa maktablari o‘quvchilari, shuningdek rus va o‘zbek romansi ixlosmandlari — O‘zbekiston Respublikasi fuqarolari va Markaziy Osiyo mamlakatlari vakillari ishtirok etishlari mumkin.",
-          "Ariza topshirish uchun 2026-yil 15-noyabrga qadar «O‘zbek Romansiadasi» saytida (https://romasiada.uz/) ro‘yxatdan o‘tish shaklini to‘ldirish zarur.",
+          "Ariza topshirish uchun 2026-yil 20-noyabrga qadar «O‘zbek Romansiadasi» saytida (https://romasiada.uz/) ro‘yxatdan o‘tish shaklini to‘ldirish zarur.",
           "Ishtirok etish uchun arizaning mavjudligi konkursantning ushbu Nizomning barcha bandlariga roziligi sifatida baholanadi."
         ]
       },
@@ -386,10 +386,16 @@
       "generic": "Arizani yuborishda xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
       "rateLimited": "Juda ko'p urinish. Bir necha daqiqadan so'ng qayta urinib ko'ring.",
       "duplicate": "Bu e-mail bilan ariza allaqachon topshirilgan.",
-      "fixFields": "Quyidagi maydonlarni to'g'irlang"
+      "fixFields": "Quyidagi maydonlarni to'g'irlang",
+      "closed": "Ariza qabul qilish muddati tugadi."
+    },
+    "closed": {
+      "title": "Ariza qabuli yakunlandi",
+      "body": "Bu yilgi ko'rik-tanlov uchun ariza qabul qilish muddati tugadi. Keyingi tanlov e'lon qilinishini yangiliklar bo'limida kuzatib boring.",
+      "cta": "Yangiliklarni ko'rish"
     },
     "applicantsCount": "Hozirgacha {count} nafar ishtirokchi ariza topshirgan",
-    "deadline": "Arizalar 2026-yil 15-noyabrgacha qabul qilinadi"
+    "deadline": "Arizalar 2026-yil 20-noyabrgacha qabul qilinadi"
   },
   "validation": {
     "required": "Bu maydon to'ldirilishi shart",

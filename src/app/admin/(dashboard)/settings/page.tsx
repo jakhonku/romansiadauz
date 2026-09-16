@@ -71,8 +71,8 @@ export default async function AdminSettingsPage() {
     { name: 'countries', label: d.home.stats.countries, type: 'number' },
     { name: 'goal', label: d.home.stats.goal, type: 'number' },
     {
-      name: 'festivalDate',
-      label: d.home.stats.festivalDate,
+      name: 'applicationsCloseAt',
+      label: d.home.stats.applicationsCloseAt,
       type: 'datetime-local',
     },
   ];
