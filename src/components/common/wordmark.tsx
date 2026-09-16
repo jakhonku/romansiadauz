@@ -32,7 +32,7 @@ export function Wordmark({
     times the header, spilling over the hero headline. A rem value written out cannot
     fail that way.
 
-    The header bar is 4.5rem tall (`spacing.header`), which is what caps `md` at
+    The header bar is 5rem tall (`spacing.header`), which is what caps `md` at
     3.25rem: enough presence to read as a lockup, with room left above and below.
   */
   const scale = {
