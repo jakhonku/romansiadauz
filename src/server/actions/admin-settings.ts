@@ -29,14 +29,18 @@ export type SettingsGroup = (typeof SETTINGS_GROUPS)[number];
  * this action would mean granting the column back. Mail credentials belong in
  * environment variables, where they are never in a database a leaked key can read.
  *
- * The row is a singleton pinned to `id = 1` by a CHECK constraint, so this upserts
- * rather than inserting — a fresh project has no row until the first save.
+ * An UPDATE, not an upsert. Migration 0005 seeds the singleton row pinned to `id = 1`
+ * by a CHECK constraint, so it always exists — and 0009 grants `authenticated` only
+ * column-level UPDATE on this table, never INSERT. An upsert compiles to
+ * `INSERT … ON CONFLICT DO UPDATE`, which Postgres refuses outright with "permission
+ * denied for table site_settings" no matter that the conflict branch is the one that
+ * would have run. Keeping this an UPDATE also keeps a second settings row impossible.
  */
 export async function saveSettingsGroup(
   group: string,
   values: Record<string, unknown>,
 ): Promise<SettingsResult> {
-  await requirePermission('settings.manage');
+  const session = await requirePermission('settings.manage');
 
   if (!(SETTINGS_GROUPS as readonly string[]).includes(group)) {
     return { ok: false, message: 'unknown_group' };
@@ -47,16 +51,25 @@ export async function saveSettingsGroup(
   // A computed key widens to a broad index signature, which supabase-js's
   // excess-property check rejects. The key is guarded against `SETTINGS_GROUPS` above,
   // so it is always a real JSONB column.
-  const patch: Record<string, unknown> = { id: 1, [group]: values as Json };
+  const patch: Record<string, unknown> = { [group]: values as Json, updated_by: session.userId };
 
-  const { error } = await supabase
+  const { error, count } = await supabase
     .from('site_settings')
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    .upsert(patch as any, { onConflict: 'id' });
+    .update(patch as any, { count: 'exact' })
+    .eq('id', 1);
 
   if (error) {
     console.error('[admin:settings]', error.message);
     return { ok: false, message: error.message };
+  }
+
+  // Zero rows is not an error to PostgREST, but it means the seeded singleton is gone
+  // and the save silently did nothing — which is exactly the failure an administrator
+  // must not be told was a success.
+  if (count === 0) {
+    console.error('[admin:settings] no site_settings row with id = 1 — run migration 0005');
+    return { ok: false, message: 'settings_row_missing' };
   }
 
   // Contact details and statistics appear in the footer and on the home page, so every
