@@ -58,7 +58,7 @@ export function HomeEvents({
             ))}
           </Stagger>
         ) : (
-          <EmptyState className="mt-12" message={e.empty} icon={CalendarDays} />
+          <EmptyState className="mt-10" message={e.empty} icon={CalendarDays} />
         )}
       </div>
     </section>

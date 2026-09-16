@@ -30,8 +30,12 @@ export function HomeGallery({
 }) {
   const g = dictionary.home.gallery;
 
+  // A section with nothing to list still shows its heading — a visitor should be able
+  // to see that the section exists at all before the first entry does — but it
+  // does not get the full-height rhythm of a populated one. At `section` spacing an
+  // empty band ran to 760px of near-blank screen; `section-sm` halves that.
   return (
-    <section className="section bg-background">
+    <section className={cn(photos.length ? 'section' : 'section-sm', 'bg-background')}>
       <div className="container">
         <SectionHeading kicker={g.kicker} title={g.title} subtitle={g.subtitle} />
 
@@ -58,7 +62,7 @@ export function HomeGallery({
             ))}
           </Stagger>
         ) : (
-          <EmptyState className="mt-14" message={g.empty} icon={Images} />
+          <EmptyState className="mt-10" message={g.empty} icon={Images} />
         )}
 
         <div className="mt-12 flex justify-center">

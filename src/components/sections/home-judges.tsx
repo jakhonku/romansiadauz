@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/sections/section-heading';
 import { localizeHref, type Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
+import { cn } from '@/lib/utils/cn';
 import type { JudgeSummary } from '@/types/content';
 
 export function HomeJudges({
@@ -21,8 +22,12 @@ export function HomeJudges({
 }) {
   const j = dictionary.home.judges;
 
+  // A section with nothing to list still shows its heading — a visitor should be able
+  // to see that the section exists at all before the first entry does — but it
+  // does not get the full-height rhythm of a populated one. At `section` spacing an
+  // empty band ran to 760px of near-blank screen; `section-sm` halves that.
   return (
-    <section className="section bg-surface">
+    <section className={cn(items.length ? 'section' : 'section-sm', 'bg-surface')}>
       <div className="container">
         <SectionHeading kicker={j.kicker} title={j.title} subtitle={j.subtitle} />
 
@@ -40,7 +45,7 @@ export function HomeJudges({
             ))}
           </Stagger>
         ) : (
-          <EmptyState className="mt-14" message={j.empty} icon={Users} />
+          <EmptyState className="mt-10" message={j.empty} icon={Users} />
         )}
 
         <div className="mt-12 flex justify-center">

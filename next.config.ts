@@ -11,6 +11,16 @@ const supabaseHost = (() => {
 const isDev = process.env.NODE_ENV === 'development';
 
 /**
+ * Is this build served over HTTPS?
+ *
+ * Gates `upgrade-insecure-requests` below. Production on romasiada.uz is HTTPS and
+ * wants it; a build served over plain HTTP — `next dev` or `next start` opened from
+ * another machine on the LAN — must not have it, or the browser rewrites every
+ * stylesheet and script request to https:// and the page arrives as unstyled markup.
+ */
+const isHttps = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://romasiada.uz').startsWith('https://');
+
+/**
  * Content Security Policy.
  *
  * `'unsafe-inline'` on script-src is a deliberate, documented compromise. Next.js can
@@ -35,7 +45,8 @@ const contentSecurityPolicy = [
   `base-uri 'self'`,
   `form-action 'self'`,
   `frame-ancestors 'none'`,
-  `upgrade-insecure-requests`,
+  // HTTPS deployments only — see `isHttps` above.
+  ...(isHttps ? ['upgrade-insecure-requests'] : []),
 ].join('; ');
 
 const securityHeaders = [

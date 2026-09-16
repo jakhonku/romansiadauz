@@ -11,10 +11,18 @@ const config: Config = {
   darkMode: 'class',
   content: ['./src/**/*.{ts,tsx,mdx}'],
   theme: {
+    /**
+     * The measure every page is built on.
+     *
+     * 1360px with 4rem gutters left roughly a fifth of a 1536px laptop screen — the
+     * most common desktop size in this audience — as empty margin on either side of
+     * the content. 1480px with 3rem gutters keeps the layout from running edge to
+     * edge while giving that width back to the page.
+     */
     container: {
       center: true,
-      padding: { DEFAULT: '1.25rem', sm: '2rem', lg: '3rem', '2xl': '4rem' },
-      screens: { '2xl': '1360px' },
+      padding: { DEFAULT: '1.25rem', sm: '2rem', lg: '2.5rem', '2xl': '3rem' },
+      screens: { '2xl': '1480px' },
     },
     extend: {
       colors: {

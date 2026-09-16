@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { SectionHeading } from '@/components/sections/section-heading';
 import { localizeHref, type Locale } from '@/lib/i18n/config';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
+import { cn } from '@/lib/utils/cn';
 import type { NewsSummary } from '@/types/content';
 
 export function HomeNews({
@@ -21,8 +22,12 @@ export function HomeNews({
 }) {
   const n = dictionary.home.news;
 
+  // A section with nothing to list still shows its heading — a visitor should be able
+  // to see that the site has a news page at all before the first entry exists — but it
+  // does not get the full-height rhythm of a populated one. At `section` spacing an
+  // empty band ran to 760px of near-blank screen; `section-sm` halves that.
   return (
-    <section className="section bg-surface">
+    <section className={cn(items.length ? 'section' : 'section-sm', 'bg-surface')}>
       <div className="container">
         <SectionHeading kicker={n.kicker} title={n.title} subtitle={n.subtitle} />
 
@@ -35,7 +40,7 @@ export function HomeNews({
             ))}
           </Stagger>
         ) : (
-          <EmptyState className="mt-14" message={n.empty} icon={Newspaper} />
+          <EmptyState className="mt-10" message={n.empty} icon={Newspaper} />
         )}
 
         <div className="mt-12 flex justify-center">

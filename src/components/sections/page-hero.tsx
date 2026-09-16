@@ -41,7 +41,7 @@ export function PageHero({
       <div className="container relative">
         {crumbs?.length ? <Breadcrumbs items={crumbs} className="mb-6" /> : null}
 
-        <Reveal className="max-w-3xl">
+        <Reveal immediate className="max-w-3xl">
           {kicker ? (
             <span className="kicker flex items-center gap-3">
               <span aria-hidden className="h-px w-8 bg-gold" />

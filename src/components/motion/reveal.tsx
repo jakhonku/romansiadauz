@@ -18,6 +18,15 @@ interface RevealProps {
   as?: ElementType;
   /** Animate every time it scrolls into view rather than only the first time. */
   repeat?: boolean;
+  /**
+   * Animate on mount instead of waiting to be scrolled into view.
+   *
+   * Required for anything above the fold. A scroll-triggered entrance for content that
+   * is already on screen is a bet that the observer fires promptly, and when it does
+   * not — a slow hydration, a tab restored from the background, a bfcache restore — the
+   * result is a hero that stays blank with no way for the visitor to recover it.
+   */
+  immediate?: boolean;
 }
 
 const offsets: Record<Direction, { x: number; y: number }> = {
@@ -44,6 +53,7 @@ export function Reveal({
   distance = 28,
   as = 'div',
   repeat = false,
+  immediate = false,
 }: RevealProps) {
   const shouldReduceMotion = useReducedMotion();
   const MotionTag = motion[as as 'div'] ?? motion.div;
@@ -66,14 +76,15 @@ export function Reveal({
     },
   };
 
+  const trigger = immediate
+    ? { animate: 'visible' as const }
+    : {
+        whileInView: 'visible' as const,
+        viewport: { once: !repeat, margin: '-80px 0px -80px 0px' },
+      };
+
   return (
-    <MotionTag
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: !repeat, margin: '-80px 0px -80px 0px' }}
-      variants={variants}
-    >
+    <MotionTag className={className} initial="hidden" variants={variants} {...trigger}>
       {children}
     </MotionTag>
   );
