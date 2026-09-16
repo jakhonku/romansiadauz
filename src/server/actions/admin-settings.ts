@@ -8,8 +8,17 @@ import type { Json } from '@/types/database.types';
 
 export type SettingsResult = { ok: true } | { ok: false; message: string };
 
-/** The JSONB column groups on the singleton `site_settings` row. */
-export const SETTINGS_GROUPS = ['branding', 'contacts', 'social', 'seo', 'analytics', 'stats'] as const;
+/**
+ * The JSONB column groups on the singleton `site_settings` row.
+ *
+ * Not exported, and it must stay that way: a `'use server'` module may only export
+ * async functions, because every export becomes a callable endpoint. Exporting this
+ * array made `/admin/settings` fail to render at all: a "use server" file can only
+ * export async functions, found object. Type exports are erased before that check and
+ * are fine; runtime values are not. If another module ever needs this list, move it to
+ * its own plain module rather than exporting it from here.
+ */
+const SETTINGS_GROUPS = ['branding', 'contacts', 'social', 'seo', 'analytics', 'stats'] as const;
 export type SettingsGroup = (typeof SETTINGS_GROUPS)[number];
 
 /**
