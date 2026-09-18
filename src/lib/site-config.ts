@@ -42,6 +42,14 @@ export const siteConfig = {
     countries: 20,
     goal: 1,
   },
+  /**
+   * Studio credited at the foot of every page. Kept here rather than inline in the
+   * footer so the name and the link can never drift apart.
+   */
+  developer: {
+    name: 'GWAY',
+    url: 'https://www.gway.uz/',
+  },
   social: {
     instagram: 'https://instagram.com/romansiada.uz',
     telegram: 'https://t.me/romansiada_uz',

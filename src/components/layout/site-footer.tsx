@@ -150,6 +150,25 @@ export function SiteFooter({ locale, dictionary }: { locale: Locale; dictionary:
             ))}
           </ul>
         </div>
+
+        {/* Studio credit — the last line on the page, quiet by default, gold on hover. */}
+        <div className="mt-8 flex justify-center">
+          <a
+            href={siteConfig.developer.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2.5 rounded-full border border-border/60 px-4 py-2 text-[11px] text-muted-foreground transition-colors duration-300 hover:border-gold hover:text-foreground"
+          >
+            <span className="uppercase tracking-[0.14em]">{d.footer.developedBy}</span>
+            <span
+              aria-hidden
+              className="h-3 w-px bg-border transition-colors duration-300 group-hover:bg-gold"
+            />
+            <span className="font-semibold tracking-wide text-foreground transition-colors duration-300 group-hover:text-gold-ink">
+              {siteConfig.developer.name}
+            </span>
+          </a>
+        </div>
       </div>
     </footer>
   );
